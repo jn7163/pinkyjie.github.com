@@ -91,7 +91,7 @@ $$
 
 下面我们就可以使用sedumi函数进行优化求解了，给出Matlab代码：
 
-[code lang="matlab"]
+```matlab
 A1 = [1 1 1 0];
 A2 = [1 0 0 0; -1 0 0 0; 0 1 0 0; 0 -1 0 0; 0 0 1 0];
 b1 = 1;
@@ -110,7 +110,7 @@ K.l = size(A2,1);
 K.s = size(F0,1);
 [x,y,info] = sedumi(Att,bt,ct,K);
 y
-[/code]
+```
 
 最后得到的y即为最优解，它的前三个分量就是我们想要的答案。如下图所示：
 
@@ -120,7 +120,7 @@ y
 
 我们从上面也可以看到，SeDuMi的求解过程还是比较复杂的，不仅需要将优化问题先化成SDP的标准形式，而且参数的配置也相当费功夫，很不直观！在搜索SeDuMi的过程中，我又发现了一个叫YALMIP的工具箱，它的命名挺有意思，Yet Another LMI Package，又一个LMI包，呵呵，不过它可不是徒有虚名啊！简单的说，它可以非常直观的将目标函数和约束条件赋给它的核心函数solvesdp(Constraint,Objective)，下面我们就看看解决同样的问题YALMIP是怎么操作的，废话不说了，直接上Matlab代码：
 
-[code lang="matlab"]
+```matlab
 t = sdpvar(1); % sdpvar声明变量
 y = sdpvar(3,1,'full');
 F0 = [2 -0.5 -0.6; -0.5 2 0.4; -0.6 0.4 3];
@@ -134,7 +134,7 @@ obj = t;
 constraint = [a,b,c];
 solvesdp(constraint,obj);
 double(y)
-[/code]
+```
 
 结果如下图所示：
 

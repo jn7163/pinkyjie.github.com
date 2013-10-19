@@ -26,7 +26,7 @@ tags:
 [![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/07/source.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/07/source.png)
 
 
-属性分别是数据的分隔符，如逗号，空格一类的；然后是数据源的文件路径，也可以是网址，官方提供了很多各种格式的[在线数据源](http://elefant-svn.developer.nicta.com.au/elefant/data/)，本例我们使用在线数据([训练](http://elefant-svn.developer.nicta.com.au/elefant/data/csv/train_cl.csv)，[测试](http://elefant-svn.developer.nicta.com.au/elefant/data/csv/test_mu.csv))[PS1  本人为了找这些个网址操碎了心，因为官方帮助文档给的地址是错的，再次Fuck一下官方文档][PS2  注意，本人的电脑上这个属性无法修改，即修改了也不生效，可能是兼容性问题，如果你的也是这样，不要急，我们一会还有别的方法]；第三项是数据文件的那一 列是标签，这个选项可以是first，last，None，选None就表示该数据源没有标签；最后一项则是读取的行数，填-1就代表全部读进来。而 LoadData()方法顾名思义了，就是读取数据啦。<!-- more -->分别配置好两个数据源之后，我们点击算法组件，看到它有两个属性和两个方法:
+属性分别是数据的分隔符，如逗号，空格一类的；然后是数据源的文件路径，也可以是网址，官方提供了很多各种格式的[在线数据源](http://elefant-svn.developer.nicta.com.au/elefant/data/)，本例我们使用在线数据([训练](http://elefant-svn.developer.nicta.com.au/elefant/data/csv/train_cl.csv)，[测试](http://elefant-svn.developer.nicta.com.au/elefant/data/csv/test_mu.csv))\[PS1  本人为了找这些个网址操碎了心，因为官方帮助文档给的地址是错的，再次Fuck一下官方文档\]\[PS2  注意，本人的电脑上这个属性无法修改，即修改了也不生效，可能是兼容性问题，如果你的也是这样，不要急，我们一会还有别的方法\]；第三项是数据文件的那一 列是标签，这个选项可以是first，last，None，选None就表示该数据源没有标签；最后一项则是读取的行数，填-1就代表全部读进来。而 LoadData()方法顾名思义了，就是读取数据啦。<!-- more -->分别配置好两个数据源之后，我们点击算法组件，看到它有两个属性和两个方法:
 
 
 [![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/07/svm.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/07/svm.png)

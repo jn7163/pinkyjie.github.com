@@ -25,7 +25,7 @@ tags:
 在这个目录下我们可以发现一个components子目录，其下有一个user目录，我们以后自己添加的组件(即py文件)就需要放在这里。注意到这里有一个叫example.py的文件，这就是官方给我们的例子了。
 <!-- more -->
 
-[code lang="Python"]
+```python
 from elefant.framework.core.ports import IN_PORT, OUT_PORT
 from elefant.framework.core.component import CComponent
 from elefant.framework.core.customProperties import CCustomProperty
@@ -131,19 +131,19 @@ def main():
 
 if __name__ == "__main__":
     main()
-[/code]
+```
 
 
 相信有了前面的基础，再看这段代码应该不算太烦吧。首当其冲的是把需要的类Import进来。我们看这个py文件声明了两个组件CompA和CompB，我们发现是以类的形式出现的。通过__comp_name__属性为组件定义名称，即在GUI里显示的名称，通过CCustomProperty()我们可以为组件定义属性，四个参数分别是：类型，默认值，大小范围，说明。在__init__方法中为组件添加端口及协议，我们必须牢记：**端口之上有协议，协议之上绑定数据**。组件A提供两个矩阵。组件B中定义了一个非私有的方法(Python中以双下划线开头的都是私有的)：DoProduct()，这个方法计算两个矩阵的乘积。在mian()方法中进行测试，当然，你也可以写到别的py文件中去。可以看到，依然是老套路：实例化组件--->Connect端口--->调用各个组件的方法。
 
-在这个文件夹下我们还能发现一个__init__.py的文件[注意该文件为只读的，改动时需要使用chmod命令改成可写]，如果我们添加自定义的组件，这个文件起着至关重要的作用：我们必须将自定义组件的名称写进这个文件中去，打开文件，我们可以看到只能一行：
+在这个文件夹下我们还能发现一个__init__.py的文件\[注意该文件为只读的，改动时需要使用chmod命令改成可写\]，如果我们添加自定义的组件，这个文件起着至关重要的作用：我们必须将自定义组件的名称写进这个文件中去，打开文件，我们可以看到只能一行：
 
-[code lang="Python"]
-__GUI_PKG__=['example','MHKS','MatMHKS']
-[/code]
+```python
+__GUI_PKG__ = \['example','MHKS','MatMHKS'\]
+```
 
 
-结果很简单，我们需要将自己添加的py文件的文件名添加到中括号内，上面本人已经添加了两个算法，即MHKS和MatMHKS [貌似example加不加都可以]。然后我们打开GUI，在算法菜单下的user algorithms子菜单项中，我们可以发现刚才example中的组件A和B了。
+结果很简单，我们需要将自己添加的py文件的文件名添加到中括号内，上面本人已经添加了两个算法，即MHKS和MatMHKS \[貌似example加不加都可以\]。然后我们打开GUI，在算法菜单下的user algorithms子菜单项中，我们可以发现刚才example中的组件A和B了。
 
 
 [![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/07/example.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/07/example.png)

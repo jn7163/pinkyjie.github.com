@@ -22,20 +22,20 @@ tags:
 
 由于现有的数据集一般都是以Matlab的格式.mat的形式出现的，Matlab可以轻松的load语句搞定，但Python就不行了，花时间将mat文件提取成普通文本文件必然更心烦。其实这点Python肯定已经想到了，解决方案就是使用Scipy提供的函数，具体如下：
 
-[code lang="Python"]
+```python
 import scipy as sp
 dataset = sp.io.matlab.mio.loadmat(dataset_name)
-[/code]
+```
 
 
 其中dataset_name就是我们需要导入的.mat文件，但问题又来了，导入后返回的dataset变量是一个“字典”的数据结构，它的key就是储存的变量名称，而对应的value就是变量的内容。这个操作并不像Matlab那样直接将.mat里的变量载入workspace，那我们当然还需要进一步使dataset中存储的变量暴露出来，对应的内容赋给对应的变量名称。可以查看dataset变量的组成，发现除了我们自己的变量，还有另外三个小东西：'__globals__'，'__header__'，'__version__'，它们标识了.mat文件的基本信息，但我们并不需要，所以还需要去掉它们。最终，我们通过一段代码实现：
 
-[code lang="Python"]
+```python
 exclude = ['__globals__','__header__','__version__']
 for obj in dataset.keys():
     if obj not in exclude:
         exec(obj + ' = dataset[" ' + obj + ' "] ')
-[/code]
+```
 
 
 通过exec我们就实现了类似语句 **data = dataset["data"]** 的功能。OK，到这里，第一个任务完成，撒花~~可以看到，用Matlab一句load搞定的问题，这里搞了大半天。

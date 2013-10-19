@@ -25,10 +25,10 @@ PCA大概是198x年提出来的吧，简单的说，它是一种通用的降维�
 
 
 
-	
+
   * **噪声**：我们常说“噪音污染”，意思就是“噪声”干扰我们想听到的真正声音。同样，假设样本中某个主要的维度A，它能代表原始数据，是“我们真正想听到的东西”，它本身含有的“能量”(即该维度的方差，为啥？别急，后文该解释的时候就有啦~)本来应该是很大的，但由于它与其他维度有那么一些千丝万缕的相关性，受到这些个相关维度的干扰，它的能量被削弱了，我们就希望通过PCA处理后，使维度A与其他维度的相关性尽可能减弱，进而恢复维度A应有的能量，让我们“听的更清楚”！
 
-	
+
   * **冗余**：冗余也就是多余的意思，就是有它没它都一样，放着就是占地方。同样，假如样本中有些个维度，在所有的样本上变化不明显(极端情况：在所有的样本中该维度都等于同一个数)，也就是说该维度上的方差接近于零，那么显然它对区分不同的样本丝毫起不到任何作用，这个维度即是冗余的，有它没它一个样，所以PCA应该去掉这些维度。
 
 
@@ -66,16 +66,16 @@ $$\Rightarrow S_1=SP_1 \quad S_1\in\mathcal{R}^{N\times p}$$
 
 
 
-	
+
   1. 形成样本矩阵，样本中心化
 
-	
+
   2. 计算样本矩阵的协方差矩阵
 
-	
+
   3. 对协方差矩阵进行特征值分解，选取最大的p个特征值对应的特征向量组成投影矩阵
 
-	
+
   4. 对原始样本矩阵进行投影，得到降维后的新样本矩阵
 
 
@@ -83,44 +83,44 @@ $$\Rightarrow S_1=SP_1 \quad S_1\in\mathcal{R}^{N\times p}$$
 
 首先，随机产生一个10*3维的整数矩阵作为样本集，10为样本的个数，3为样本的维数。
 
-[code lang="matlab"]
+```matlab
 S = fix(rand(10,3)*50);
-[/code]
+```
 
 [![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/sample1.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/sample1.jpg)
 
 计算协方差矩阵：
 
-[code lang="matlab"]
+```matlab
 S = S - repmat(mean(S),10,1);
 C = (S'*S)./(size(S,1)-1);
 or
 C = cov(S);
-[/code]
+```
 
 [![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/cov.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/cov.jpg)
 
 对协方差矩阵进行特征值分解：
 
-[code lang="matlab"]
+```matlab
 [P,Lambda] = eig(C);
-[/code]
+```
 
 [![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/eig.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/eig.jpg)
 
 这里由于三个方差没有明显特别小的，所以我们都保留下来，虽然维度没有降，但观察Lambda(即PCA后的样本协方差矩阵)和C(即原始的协方差矩阵)，可以发现，<del>3个维度上的方差都有增大，也就是能量都比原来增大了，</del>3个维度上的方差有所变化，但对角线之和没有变，能量重新得到了分配，这就是“降噪”的功劳。最后我们得到降维后的样本矩阵：
 
-[code lang="matlab"]
+```matlab
 S1 = S*P;
-[/code]
+```
 
 [![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/new_sample.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/new_sample.jpg)
 
 为了验证，我们调用matlab自带的主成分分析函数princomp：
 
-[code lang="matlab"]
+```matlab
 [COEFF,SCORE] = princomp(S) % COEFF表示投影矩阵，SCORE表示投影后新样本矩阵
-[/code]
+```
 
 [![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/princomp.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/princomp.jpg)
 

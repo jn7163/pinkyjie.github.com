@@ -60,9 +60,9 @@ $$C_{n\times n}=(c_{i,j},c_{i,j}=cov(Dim_{i},Dim_{j}))$$
 上面涉及的内容都比较容易，协方差矩阵似乎也很简单，但实战起来就很容易让人迷茫了。必须要明确一点，**协方差矩阵计算的是不同维度之间的协方差，而不是不同样本之间的。**这个我将结合下面的例子说明，以下的演示将使用Matlab，为了说明计算原理，不直接调用Matlab的cov函数(蓝色部分为Matlab代码)。
 
 首先，随机产生一个10*3维的整数矩阵作为样本集，10为样本的个数，3为样本的维数。
-[code lang="matlab"]
+```matlab
 MySample = fix(rand(10,3)*50)
-[/code]
+```
 
 
 [![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/08/data.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/08/data.jpg)
@@ -73,37 +73,39 @@ MySample = fix(rand(10,3)*50)
 根据公式，计算协方差需要计算均值，那是按行计算均值还是按列呢，我一开始就老是困扰这个问题。前面我们也特别强调了，协方差矩阵是计算不同维度间的协方差，要时刻牢记这一点。样本矩阵的每行是一个样本，每列为一个维度，所以我们要**按列计算均值**。为了描述方便，我们先将三个维度的数据分别赋值：
 
 
-[code lang="matlab"]
+```matlab
 dim1 = MySample(:,1);
 dim2 = MySample(:,2);
 dim3 = MySample(:,3);
-[/code]
+```
 
 
 计算dim1与dim2，dim1与dim3，dim2与dim3的协方差：
 
 
-[code lang="matlab"]
+```matlab
 sum( (dim1-mean(dim1)) .* (dim2-mean(dim2)) ) / ( size(MySample,1)-1 ) % 得到  74.5333
 sum( (dim1-mean(dim1)) .* (dim3-mean(dim3)) ) / ( size(MySample,1)-1 ) % 得到  -10.0889
 sum( (dim2-mean(dim2)) .* (dim3-mean(dim3)) ) / ( size(MySample,1)-1 ) % 得到  -106.4000
-[/code]
+```
 
 
 搞清楚了这个后面就容易多了，协方差矩阵的对角线就是各个维度上的方差，下面我们依次计算：
 
 
-[code lang="matlab"]
+```matlab
 std(dim1)^2 % 得到   108.3222
 std(dim2)^2 % 得到   260.6222
 std(dim3)^2 % 得到   94.1778
-[/code]
+```
 
 
 这样，我们就得到了计算协方差矩阵所需要的所有数据，调用Matlab自带的cov函数进行验证：
 
 
-[code lang="matlab"]cov(MySample)[/code]
+```matlab
+cov(MySample)
+```
 
 
 [![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/08/covResult.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/08/covResult.jpg)
@@ -119,10 +121,10 @@ std(dim3)^2 % 得到   94.1778
 Update：今天突然发现，原来协方差矩阵还可以这样计算，先让样本矩阵中心化，即每一维度减去该维度的均值，使每一维度上的均值为0，然后直接用新的到的样本矩阵乘上它的转置，然后除以(N-1)即可。其实这种方法也是由前面的公式通道而来，只不过理解起来不是很直观，但在抽象的公式推导时还是很常用的！同样给出Matlab代码实现：
 
 
-[code lang="matlab"]
+```matlab
 X = MySample - repmat(mean(MySample),10,1);    % 中心化样本矩阵，使各维度均值为0
 C = (X'*X)./(size(X,1)-1);
-[/code]
+```
 
 
 **总结**

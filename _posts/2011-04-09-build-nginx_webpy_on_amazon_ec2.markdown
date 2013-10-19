@@ -34,18 +34,18 @@ tags:
 
 登陆上主机以后，我们开始配置环境吧。首先下好各种软件，以Ubuntu环境为例。
 
-[code lang="bash"]
+```bash
 sudo apt-get install nginx   # 安装nginx
 sudo apt-get install python-setuptools
 # python默认有，不用装，这一步是为了装好easy_install
 sudo easy_install web.py  # 安装web.py
 sudo apt-get install flup # 发布用
 sudo apt-get install spawn-fcgi # 执行py需要的cgi
-[/code]
+```
 
 这样，所有需要的软件就都安装好了，Amazon的下载速度是很快的。首先，先测试一下web.py，按照官网给的例子写一个code.py。
 
-[code lang="python"]
+```python
 import web
 
 urls = (
@@ -59,19 +59,19 @@ class hello:
 
 if __name__ == "__main__":
     app.run()
-[/code]
+```
 
 然后运行 **python code.py** ，如果出现 **http://0.0.0.0:8080/ **则表明web.py工作正常，按Ctrl +Ｃ结束即可。下面我们要做的就是三步走，第一，修改nginx的配置文件；第二，开启一个 spawn-fcgi 进程；最后，打开nginx服务器。在这之前，我们还需要修改下code.py，以便顺利完成发布，首先修改code.py为可执行，即执行chmod +x code.py，然后在app.run()这句之前加上一句：
 
-[code lang="python"]
+```python
 web.wsgi.runwsgi = lambda func, addr=None: web.wsgi.runfcgi(func, addr)
-[/code]
+```
 
 **修改nginx的配置文件**
 
 nginx默认被安装在/etc/nginx目录中，其中的nginx.conf 就是默认的配置文件，为了避免一开始就修改坏，我们将其拷贝出来一份，比如放在和刚才的code.py相同的文件夹下，这里以~/pytest/为例。打开后我们发现这个文件由http模块和注释掉的mail模块组成，我们要修改的就是http模块。这里配置文件的具体参数我也不大懂，放上我最终修改好的以供参考。
 
-[code lang="bash"]
+```bash
 user www-data;
 worker_processes  1;
 
@@ -127,7 +127,7 @@ http {
         }
     }
 }
-[/code]
+```
 
 主要就是添加了server块的部分，nginx的详细参数意义可以参加[官方的Wiki](http://wiki.nginx.org/NginxChsHttpCoreModule)。
 
@@ -135,9 +135,9 @@ http {
 
 执行如下命令：
 
-[code lang="bash"]
+```bash
 sudo spawn-fcgi -d ~/pytest/ -f ~/pytest/code.py -a 127.0.0.1 -p 9001
-[/code]
+```
 
 这里，-d表示py文件所在的目录，-f表示py文件的绝对路径，-a是地址，-p是端口，这里要与nginx.conf里的设置保持一致。如果你的运气好，就会出现 spawn-fcgi: child spawned successfully: PID: 1517，这说明进程已经成功开启，ID号为1517。但是，通常是会报错的，比如 spawn-fcgi: child exited with: xxx。这时需要检查几点，首先刚才的chmod命令有没有执行，即code.py的可执行属性有没有加上。如果加上以后还不行，那么先把code.py最后加上的web.wsgi.runwsgi = lambda func...这句代码加#号注释掉，然后执行python code.py看是否出现刚才说的http://0.0.0.0:8080，如果代码报错，如[Errno 98] Address already in use，说明刚才python可能没有正常结束，还占用着这个地址，直接killall python，或者用 ps aux | grep “python” 查出python对应的PID，通过kill PID来结束。如果这步还不行，那只能重启试试了。
 
@@ -145,10 +145,10 @@ sudo spawn-fcgi -d ~/pytest/ -f ~/pytest/code.py -a 127.0.0.1 -p 9001
 
 在成功开启一个spawn-fcgi进程后，我们就可以打开nginx了：
 
-[code lang="bash"]
+```bash
 sudo nginx -t -c ~/pytest/nginx.conf
 # 测试自己指定的配置文件是否正确，若正确则执行
 sudo nginx -c ~/pytest/nginx.conf
-[/code]
+```
 
 同样，如果运气好的话，什么也不显示代表正常启动了。否则会报错，如[emerg]: bind() to 0.0.0.0:80 failed (98: Address already in use)，这个错误一方面可能是上面的spawn-fcgi启动不正常导致，先检查下，使用命令 ps aux | grep “code.py” 看是否存在两个结果(因为一个进程是grep查询进程)，如果正常，则可能是nginx重复启动，自己占用了自己的端口。通过命令 ps aux | grep “nginx” 看下是否有nginx的进程，通常是一个master主进程，一个worker进程，如果有，同样几下它们的PID，用kill命令杀掉进程再试，有必要的话再重启下nginx的服务，执行 service nginx restart。一般的话就正常了。如果启动正常，那通过浏览器访问你Public DNS地址，就会出现 hello web.py的网页了。如果此时出现的还是welcome to nginx的默认网页，有可能是nginx的默认配置所致，需要检查下你的/etc/nginx/sites-enabled目录下，是否有一个default的文件，有的话移走，随便移动到哪都行，然后再试，应该就正常了。如果还不行肿么办，因为上面的情况都是我自己遇到的，其他没遇到的那我也没办法了，你只能查看下nginx的error log文件，看有没有神马蛛丝马迹，这个错误日志文件默认在 /var/log/nginx/ 目录下，error.log文件，看看里面记录了什么再进一步排查了。
