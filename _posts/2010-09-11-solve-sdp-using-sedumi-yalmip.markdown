@@ -121,7 +121,7 @@ y
 
 最后得到的y即为最优解，它的前三个分量就是我们想要的答案。如下图所示：
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/09/sedumi.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/09/sedumi.png)
+![]({{ site.img_url }}/solve-sdp-using-sedumi-yalmip-1.png)
 
 **YALMIP一出，谁与争锋**
 
@@ -145,7 +145,7 @@ double(y)
 
 结果如下图所示：
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/09/yalmip.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/09/yalmip.png)
+![]({{ site.img_url }}/solve-sdp-using-sedumi-yalmip-2.png)
 
 可以看到两者的结果基本是一致的，当然，我怀疑YALMIP在操作的过程中有调用SeDuMi的可能性，但是不管怎么说，YALMIP的代码则更直观，更容易理解，甚至连双向不等式都可以直接书写，这都是明显的，可见它的牛逼，所以必然果断抛弃其他一切优化工具箱，你的意见呢？嘿嘿～
 

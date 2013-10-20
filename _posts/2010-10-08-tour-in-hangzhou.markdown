@@ -25,14 +25,13 @@ tags:
 
 在浙大感叹了无数遍“人家这楼真牛逼”，“人家这实验室真上档次”了之后，我们决定轮滑前往西湖，坐在浙大门口的地上，来了一张颇具艺术感的留念~红鞋脚扑朔，绿鞋眼迷离，安能辨我和老石？
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/C360_2010-10-05-15-50-06.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/C360_2010-10-05-15-50-06.jpg)
+![]({{ site.img_url }}/tour-in-hangzhou-1.jpg)
 
 去西湖的路况还是相当复杂的，溜了一段之后老石就表示要换鞋，咱作为一个爱装B的轮滑新手，怎么能换鞋呢，我就扶着老石走啊走，终于来到了西湖十景之一的曲院风荷，赶紧拿出手机I'm at一下~嘿嘿，后来发现我不是为了旅游而来，我就是为了I'm at而来的~哎
 
 西湖的美景确实不错，不过看着却让人有种说不出的伤感，因为这地方太不适合旅游了，全是一堆一堆小情侣在偷情，哎~俗话说的好：“天空越蔚蓝，就越怕抬头看，电影越圆满，就越觉得伤感”，看着一对对小情侣kiss来kiss去，我只想一脚把他们踹到西湖里去。我和老石逛啊逛啊，一路上看美女成为走下去的唯一动力啊，没有白娘子般的女人，只有金轮法王般的男人~来的时候我们是抱着轮滑刷街刷个白娘子回去的决心，其实能刷个法海就不错了，千万别刷个金轮法王~第二天临走前又去了趟西湖，躺在湖边的草地上，偷看了会旁边的情侣亲亲。看着波澜不惊的湖水，让我总有种这水是电脑做出来的感觉，轻轻的风吹着，又让我突然特想听谢雨欣的《遥望》，初中时妞妞整天跟我唱这歌，让我当他歌迷，呵呵~总觉得中学大学的时光除了学习没干别的事，但却总是不经意的回忆起来，怀念起来，让人忍不住想回去看看。不咋搭界的东西被这奇妙的美景掺和到了一起，又让我伤感了一把，转眼看了看老石，懒洋洋的躺着那，露着肚脐睡觉(我掀的衣服)，嘿嘿~
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/C360_2010-10-05-16-55-05.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/C360_2010-10-05-16-55-05.jpg)[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/C360_2010-10-05-16-55-45.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/C360_2010-10-05-16-55-45.jpg)[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/C360_2010-10-05-17-07-59.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/C360_2010-10-05-17-07-59.jpg)[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/C360_2010-10-05-17-07-40.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/C360_2010-10-05-17-07-40.jpg)
-
-最后来张睡美人图~哈哈~
-
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/C360_2010-10-06-14-39-38_副本.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/C360_2010-10-06-14-39-38_副本.jpg)
+![]({{ site.img_url }}/tour-in-hangzhou-2.jpg)
+![]({{ site.img_url }}/tour-in-hangzhou-3.jpg)
+![]({{ site.img_url }}/tour-in-hangzhou-4.jpg)
+![]({{ site.img_url }}/tour-in-hangzhou-5.jpg)

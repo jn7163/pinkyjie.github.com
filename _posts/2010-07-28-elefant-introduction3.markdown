@@ -78,12 +78,12 @@ EndWx()
 
 前面讲到的例子中使用的都是CSV数据源，对于我们常用的Matlab数据源应该怎么处理呢，你一定想到了：拖个Matlab的reader组件不就搞定了，那你拖拖试试，发现了什么？什么！！！Matlab组件没有端口，OMG！
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/07/matlab.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/07/matlab.png)
+![]({{ site.img_url }}/elefant-introduction3-1.png)
 
 没有端口怎么传数据，不要急！GUI办不到的事情，我们只能求助于代码实现，细心的你也应该注意到，Matlab组件有一个“多余”的方法：ShowPort()，意思就是暴露自己的端口，这下你懂了吧。我们可以下载一个[官方的Matlab数据源文件](http://elefant-svn.developer.nicta.com.au/elefant/data/mat/usps.mat)(大名鼎鼎的USPS数据集)研究一下。用Matlab打开，发现其结构是这个样子的:
 
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/07/usps.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/07/usps.png)
+![]({{ site.img_url }}/elefant-introduction3-2.png)
 
 
 里 面有两个结构体x和y，每个结构体中包含train和test两个矩阵，自然x是训练和测试数据，y中是对应的标签，我们写一个小Python文  件进行测试，实例化一个Matlab组件，调用其ShowPort()方法，发现输出的端口名称是  “xtrain”，“xtest”，“ytrain”，“ytest”。原来是这么个规律，知道了端口名称，我们就可以知道对应的协议，知道了协议我们就   能获取协议上的数据，OK，拿到了数据，我们自己写Connect函数进行连接，这样就能使用Matlab数据源了。这当中还有一个问题，我们发现四个端   口上的协议名称全是“DenseMatrix”，也就是说标签对应的协议不是向量而是矩阵，这下麻烦大了，协议不一样就没办法Connect，翻官方文档   也是一无所获。。。经过一天的探索，我的解决方案是自己添加新的端口，指定其协议为“DenseVector”，将标签数据绑定其上，OK！可以看以下实  例代码:

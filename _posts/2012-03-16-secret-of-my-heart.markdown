@@ -47,4 +47,4 @@ Celebrate this love I can't reveal I can't show you <br />
 {% tudou uqFAEFT9Nls %}
 
 
-![]({{ img_url }}/secret-of-my-heart-1.jpg)
+![]({{ site.img_url }}/secret-of-my-heart-1.jpg)

@@ -85,7 +85,7 @@ $$\Rightarrow S_1=SP_1 \quad S_1\in\mathcal{R}^{N\times p}$$
 S = fix(rand(10,3)*50);
 {% endhighlight %}
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/sample1.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/sample1.jpg)
+![]({{ site.img_url }}/covariance-pca-1.jpg)
 
 计算协方差矩阵：
 
@@ -96,7 +96,7 @@ or
 C = cov(S);
 {% endhighlight %}
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/cov.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/cov.jpg)
+![]({{ site.img_url }}/covariance-pca-2.jpg)
 
 对协方差矩阵进行特征值分解：
 
@@ -104,7 +104,7 @@ C = cov(S);
 [P,Lambda] = eig(C);
 {% endhighlight %}
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/eig.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/eig.jpg)
+![]({{ site.img_url }}/covariance-pca-3.jpg)
 
 这里由于三个方差没有明显特别小的，所以我们都保留下来，虽然维度没有降，但观察Lambda(即PCA后的样本协方差矩阵)和C(即原始的协方差矩阵)，可以发现，<del>3个维度上的方差都有增大，也就是能量都比原来增大了，</del>3个维度上的方差有所变化，但对角线之和没有变，能量重新得到了分配，这就是“降噪”的功劳。最后我们得到降维后的样本矩阵：
 
@@ -112,7 +112,7 @@ C = cov(S);
 S1 = S*P;
 {% endhighlight %}
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/new_sample.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/new_sample.jpg)
+![]({{ site.img_url }}/covariance-pca-4.jpg)
 
 为了验证，我们调用matlab自带的主成分分析函数`princomp`：
 
@@ -120,7 +120,7 @@ S1 = S*P;
 [COEFF,SCORE] = princomp(S) % COEFF表示投影矩阵，SCORE表示投影后新样本矩阵
 {% endhighlight %}
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/princomp.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/02/princomp.jpg)
+![]({{ site.img_url }}/covariance-pca-5.jpg)
 
 对比，可以发现，SCORE和$S_1$在不考虑维度顺序和正负的情况下是完全吻合的，之所以我们计算的$S_1$的维度顺序不同，是因为通常都是将投影矩阵P按能量(特征值)的降序排列的，而刚才我们用eig函数得到的结果是升序。另外，在通常的应用中，我们一般是不使用matlab的`princomp`函数的，因为它不能真正的降维(不提供相关参数，还是我没发现？)。一般情况下，我们都是按照协方差矩阵分解后特征值所包含的能量来算的，比如取90%的能量，那就从最大的特征值开始加，一直到部分和占特征值总和的90%为止，此时部分和含有的特征值个数即为p。
 

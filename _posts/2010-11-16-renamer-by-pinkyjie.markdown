@@ -24,7 +24,7 @@ tags:
 这个小东西的编写主要基于Python，感觉Python很适合做类似的小东西。GUI界面使用的是PyQt框架，Qt的Python版本，两个东东都是跨平台的，我是在Windows下写的，不过这个东西在Linux下跑应该也是没问题的。我已经在Google Code([前往](http://code.google.com/p/renamer-by-pinkyjie))中建了项目，包含所有源代码和打包后的exe下载，以后我会继续完善这个东西，加一点我想要的功能。先来张截图吧，直观感觉一下。
 
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/11/rename.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/11/rename.png)
+![]({{ site.img_url }}/renamer-by-pinkyjie-1.png)
 
 
 <!-- more -->

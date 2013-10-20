@@ -24,25 +24,25 @@ tags:
 <!-- more -->
 
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/09/interface.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/09/interface.jpg)
+![]({{ site.img_url }}/mytexpoint-powerpoint-tex-1.jpg)
 
 
 点击右边的新建按钮，新建一个公式，此时，会同时出现两个东东，如下图①和②：
 
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/09/new.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/09/new.jpg)
+![]({{ site.img_url }}/mytexpoint-powerpoint-tex-2.jpg)
 
 
 ①即为出现在PPT上的公式，以图片的形式存在，②即为新打开的Latex编辑窗口，熟悉Latex的孩子对此应该不陌生吧，我们需要更改的只是Color这一行和下面一行的公式部分，下面我随意输入一个公式。根据我们的PPT背景，黄色的公式比较鲜明一些，首先，我们将默认的blue改为yellow，然后添加一句公式，如下：
 
 
-[](http://pinkyjie.com/wordpress/wp-content/uploads/2010/09/equation.jpg)[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/09/new1.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/09/new1.jpg)
+![]({{ site.img_url }}/mytexpoint-powerpoint-tex-3.jpg)
+
+
 这行代码将生成一个简单的方差公式，编辑完成后，点击绿色的运行按钮，此时将调用你机器的上两个软件进行编译，会出现dos窗口，就跟平时我们用Latex的编译窗口一样的，编译完成后，PPT原来的图片new equation就变成了我们想要的公式了。如图，公式是以普通图片形式 出现的，我们可以随意移动调整大小。
 
 
-
-
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/09/ppt.jpg)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/09/ppt.jpg)
+![]({{ site.img_url }}/mytexpoint-powerpoint-tex-4.jpg)
 
 
 公式可能有些大，可以自行调整，若需要修改公式，在保证MyTexPoint打开的情况下，点一下PPT上的公式即可激活代码编辑窗口。

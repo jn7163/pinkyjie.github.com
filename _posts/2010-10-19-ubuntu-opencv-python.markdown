@@ -19,7 +19,7 @@ tags:
 
 **Opencv的编译和安装**
 
-Linux下貌似只能下载Opencv的源码了，来到Opencv的中文官网([http://www.opencv.org.cn/index.php/Download](http://www.opencv.org.cn/index.php/Download))，最新版本是2.1，点击[OpenCV for Linux](http://www.opencv.org.cn/download/OpenCV-2.1.0.tar.bz2)，下载下来的是一个压缩包，随便解压到你喜欢的位置，以我的机器为例，解压到 _/MySoft _下，最终的目录结构为： _/home/pinky/MySoft/OpenCV-2.1.0/ _。由于下载得到的是源码，需要进行编译，官网推荐的编译方式是使用cmake，这里我是用的是cmake的gui版本，即cmke-qt-gui，首先我们需要使用终端安装它。打开终端，运行命令：
+Linux下貌似只能下载Opencv的源码了，来到[Opencv的中文官网](http://www.opencv.org.cn/index.php/Download)，最新版本是2.1，点击[OpenCV for Linux](http://www.opencv.org.cn/download/OpenCV-2.1.0.tar.bz2)，下载下来的是一个压缩包，随便解压到你喜欢的位置，以我的机器为例，解压到 `/MySoft`下，最终的目录结构为： `/home/pinky/MySoft/OpenCV-2.1.0/`。由于下载得到的是源码，需要进行编译，官网推荐的编译方式是使用cmake，这里我是用的是cmake的gui版本，即`cmke-qt-gui`，首先我们需要使用终端安装它。打开终端，运行命令：
 
 {% highlight bash %}
 sudo apt-get install cmake-qt-gui
@@ -43,7 +43,7 @@ apt-get install libpython2.6 python-dev python2.6-dev
 这样以后，编译前所做的工作就基本结束了，从“应用程序”中的“编程”子菜单中打开cmake，Source code这一栏中填写你的OpenCV解压的路径，第二行是编译后的可执行文件放在哪里，可以在OpenCV的路径下新建一个文件夹，如release文件夹，则编译结果会放到其中去，点击Configure按钮，接着出现选择generator的界面，使用默认选项，即Unix Makefiles，点击finish，如果一切顺利的话就会出现以下界面：
 
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/CMake.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/CMake.png)
+![]({{ site.img_url }}/ubuntu-opencv-python-1.png)
 
 
 正常的话上图中底下的白色框中是有信息的，我的截图是在编译过后截的，所以是空白，接着选择编译参数，这里我们只需要注意以下几个参数有没有被选中，其他的默认即可：
@@ -67,10 +67,10 @@ make
 make过程大概需要几分钟左右，过程如下图这样：
 
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/make.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/make.png)
+![]({{ site.img_url }}/ubuntu-opencv-python-2.png)
 
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/cvso.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/cvso.png)
+![]({{ site.img_url }}/ubuntu-opencv-python-3.png)
 
 最终出现的cv.so文件很重要，它就是OpenCV和Python协作的关键，然后再执行install步骤，终端继续运行：
 
@@ -82,7 +82,7 @@ sudo make install
 过程大概如下图：
 
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/installdone.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2010/10/installdone.png)
+![]({{ site.img_url }}/ubuntu-opencv-python-4.png)
 
 
 这样以后，OpenCV的安装步骤宣告结束。

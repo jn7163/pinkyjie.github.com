@@ -34,12 +34,10 @@ tags:
 添加从通讯录和通话记录中选择号码的功能(仅当选择的规则类型为“特定号码”时才会出现)，截图如下：
 
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/fromContact.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/fromContact.png)
+![]({{ site.img_url }}/android-call-sms-firewall-pinkyblocker-1.png)
 
 
-
-
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/fromcalllog.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/fromcalllog.png)
+![]({{ site.img_url }}/android-call-sms-firewall-pinkyblocker-2.png)
 
 
 * * *
@@ -79,7 +77,7 @@ PinkyBlocker是一款简单实用的来电和短信防火墙，通过简单的�
 
 **软件截图：**
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/PinkyBlocker01.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/PinkyBlocker01.png)
+![]({{ site.img_url }}/android-call-sms-firewall-pinkyblocker-3.png)
 
 
 > 软件安装界面和关于界面，这里的“拨打电话”权限是为了拦截电话，本软件不会自动往外拨电话。
@@ -87,43 +85,43 @@ PinkyBlocker是一款简单实用的来电和短信防火墙，通过简单的�
 
 <!-- more -->
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/PinkyBlocker02.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/PinkyBlocker02.png)
+![]({{ site.img_url }}/android-call-sms-firewall-pinkyblocker-4.png)
 
 
 > 软件主界面，由两个tab主成，一个是拦截规则，一个是拦截记录。
 
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/PinkyBlocker03.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/PinkyBlocker03.png)
+![]({{ site.img_url }}/android-call-sms-firewall-pinkyblocker-5.png)
 
 
 > 添加来电拦截规则的页面，有两种选择，拦截特定的号码或者拦截以某些数字开头的号码。
 
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/PinkyBlocker04.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/PinkyBlocker04.png)
+![]({{ site.img_url }}/android-call-sms-firewall-pinkyblocker-6.png)
 
 
 > 添加短信拦截规则的页面，有三种选择，前两种和来电的一样，最后还可以拦截包含某些字词的短信。
 
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/PinkyBlocker05.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/PinkyBlocker05.png)
+![]({{ site.img_url }}/android-call-sms-firewall-pinkyblocker-7.png)
 
 
 > 软件的主菜单，以及长按规则列表出现的上下文菜单。哥有退出菜单，看到没，没有退出菜单和一按返回键就退出神马的最讨厌啦~
 
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/PinkyBlocker06.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/PinkyBlocker06.png)
+![]({{ site.img_url }}/android-call-sms-firewall-pinkyblocker-8.png)
 
 
 > 拦截后会出现状态栏提醒，点击后直接进入拦截日志界面。
 
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/PinkyBlocker07.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/PinkyBlocker07.png)
+![]({{ site.img_url }}/android-call-sms-firewall-pinkyblocker-9.png)
 
 
 > 软件的设置界面，通过设置菜单可以设置是否打开拦截服务，拦截后是否出现状态栏提醒，是否有拦截声音等。
 
 
-[![](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/PinkyBlocker08.png)](http://pinkyjie.com/wordpress/wp-content/uploads/2011/04/PinkyBlocker08.png)
+![]({{ site.img_url }}/android-call-sms-firewall-pinkyblocker-10.png)
 
 
 > 退出程序时的提示，按返回键或退出菜单都会出现该提示，退出后依然可以正常的拦截。
@@ -161,6 +159,6 @@ PinkyBlocker是一款简单实用的来电和短信防火墙，通过简单的�
   * 考虑实现同时满足多个规则时才拦截
 
 
-**最后放上下载链接 [点我下载](http://pinkyjie.com/wordpress/wp-content/uploads/PinkyBlocker.apk) ，有兴趣的可以用下试试，有问题向我反馈！**
+**最后放上下载链接 [点我下载]({{ site.file_url }}/PinkyBlocker.apk)，有兴趣的可以用下试试，有问题向我反馈！**
 
 **（刚刚fix了一个bug，大分辨率的机器伤不起啊，增加了大图标支持高分辨率机器，排版不错乱了~）**
