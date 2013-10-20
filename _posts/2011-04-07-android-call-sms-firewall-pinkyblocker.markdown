@@ -131,7 +131,10 @@ PinkyBlocker是一款简单实用的来电和短信防火墙，通过简单的�
 
 我用模拟器录制了一段操作视频，不太清晰，大家凑合看看吧，一看就懂的！
 
+
+<p>
 <embed src="http://player.youku.com/player.php/sid/XMjU2NzU4MzE2/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+</p>
 
 
 **已知问题：**

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 进击的马斯特
-tagline: Web/Mobile/Life
+tagline:
 ---
 {% include JB/setup %}
 

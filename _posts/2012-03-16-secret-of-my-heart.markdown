@@ -44,7 +44,10 @@ Celebrate this love I can't reveal I can't show you <br />
 终于做了这个决定，别人怎么说我不理，希望你也一样的肯定
 
 
+<p>
 <embed src="http://www.tudou.com/v/uqFAEFT9Nls/&amp;bid=05&amp;resourceId=0_05_05_99/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="480" height="400"></embed>
+</p>
+
 
 
 ![]({{ site.img_url }}/secret-of-my-heart-1.jpg)
