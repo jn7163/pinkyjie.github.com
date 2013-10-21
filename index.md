@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 进击的马斯特
-tagline:
+tagline: Go Fighting! Master!
 ---
 {% include JB/setup %}
 
