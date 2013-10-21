@@ -27,7 +27,7 @@ tags:
 
 ![]({{ site.img_url }}/ubuntu-android-apk-install-1.png)
 
-<!-- more -->
+<!--more-->
 
 填完资料后会发一封邮件到你的邮箱，点击邮箱中的地址激活帐号，如下图，画黑线那个地址。(我不禁觉着这教程太傻瓜了。。。)
 

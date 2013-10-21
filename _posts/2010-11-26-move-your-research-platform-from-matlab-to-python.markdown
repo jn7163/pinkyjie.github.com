@@ -40,7 +40,7 @@ for obj in dataset.keys():
 
 通过exec我们就实现了类似语句`data = dataset["data"]`的功能。OK，到这里，第一个任务完成，撒花~~可以看到，用Matlab一句load搞定的问题，这里搞了大半天。
 
-<!-- more -->
+<!--more-->
 
 **迁移everything**
 

@@ -30,7 +30,7 @@ tags:
 
 其他详细步骤可以看[千百度记忆角落的这篇《Amazon EC2免费一年申请使用图文教程》](http://www.baidu.com.ru/archives/556.html)，非常的详细。所有步骤完成后，就可以在自己的机器上SSH登陆这个VPS了，涉及到公钥证书神马的，因为我是直接用msys在windows上虚拟了一个unix环境中使用ssh的，一条命令搞定，如果你想用putty，SecureCRT一类的SSH客户端，请参见[千百度记忆角落的这篇《Windows下如何用putty连接Amazon EC2实例图文教程！》](http://www.baidu.com.ru/archives/573.html)。
 
-<!-- more -->
+<!--more-->
 
 **搭建nginx+web.py**
 

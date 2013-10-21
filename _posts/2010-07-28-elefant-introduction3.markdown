@@ -22,7 +22,7 @@ tags:
 **深入探究工作原理**
 
 
-点击Tools菜单下我们发现了Generate Code选项，选择该项，会提示你保存一个py文件，聪明的你可能已经猜到了，没错，我们刚才的一系列操作完全可以靠Python代码来实现。现在产生的这个文件，就是我们刚才一系列操作的代码！<!-- more -->
+点击Tools菜单下我们发现了Generate Code选项，选择该项，会提示你保存一个py文件，聪明的你可能已经猜到了，没错，我们刚才的一系列操作完全可以靠Python代码来实现。现在产生的这个文件，就是我们刚才一系列操作的代码！<!--more-->
 
 {% highlight python %}
 from elefant.framework.core.ports import Connect

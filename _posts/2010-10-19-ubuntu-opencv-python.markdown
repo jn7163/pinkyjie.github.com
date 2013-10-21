@@ -33,7 +33,7 @@ sudo aptitude install libgtk2.0-dev
 {% endhighlight %}
 
 
-<!-- more -->
+<!--more-->
 aptitude 可以说是apt-get的一个GUI界面，不过这里用它可能是因为它可以自动安装所有的依赖包吧。这个安装以后，为了后面和Python协作，还需要检查一下你机器上面的Python相关依赖，终端运行命令：
 
 {% highlight bash %}

@@ -21,7 +21,7 @@ tags:
 
 由于该软件并不像MathType那样与Office集成，所以无法在PowerPoint中直接调用它。每次使用的时候，我们需要先打开PowerPoint(本文以2003为例，因为俺觉得07和10都没有03快~官方声明是兼容07和10版的)，然后打开MyTexPoint.exe文件，发现出现了这个一个小窗口，不仔细找还真发现不了。。。
 
-<!-- more -->
+<!--more-->
 
 
 ![]({{ site.img_url }}/mytexpoint-powerpoint-tex-1.jpg)

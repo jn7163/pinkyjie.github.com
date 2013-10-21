@@ -83,7 +83,7 @@ PinkyBlocker是一款简单实用的来电和短信防火墙，通过简单的�
 > 软件安装界面和关于界面，这里的“拨打电话”权限是为了拦截电话，本软件不会自动往外拨电话。
 
 
-<!-- more -->
+<!--more-->
 
 ![]({{ site.img_url }}/android-call-sms-firewall-pinkyblocker-4.png)
 

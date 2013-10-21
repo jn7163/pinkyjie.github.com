@@ -299,7 +299,7 @@ div.content div#page-index {
 .zocial.rss:focus,
 .zocial.rss:hover {
   color:#fb9d3a !important;
-}  
+}
 
 /* Layout */
 /* line 2, ../_sass/_responsive.scss */
@@ -408,4 +408,19 @@ div.sidebar section img.icon {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px;
+}
+
+/* post */
+.post-wrapper {
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 10px;
+  box-shadow: 0 3px 10px #000;
+  font-size: 16px;
+}
+
+/* pagination */
+#pagination {
+  font-size: 14pt;
+  text-align: center;
 }

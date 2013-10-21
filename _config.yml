@@ -114,3 +114,5 @@ JB :
 
 img_url: /assets/images
 file_url: /assets/files
+
+paginate: 5

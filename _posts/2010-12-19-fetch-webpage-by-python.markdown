@@ -38,7 +38,7 @@ parser = BeautifulSoup(html_src)
 
 这样，后续处理HTML源码的工作交给parser变量来负责就好，我们可以简单的调用parser的prettify函数来相对美观的显示源码， 可以看到这样就能看到中文字符了，因为BeautifulSoup能自动处理字符问题，并将返回结果都转化为Unicode编码格式。另 外，BeautifulSoup还能迅速定位到满足条件的指定标签，后面我们会用到~
 
-<!-- more -->
+<!--more-->
 
 **抓取人人网的新鲜事**
 
