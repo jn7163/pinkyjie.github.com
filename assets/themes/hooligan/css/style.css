@@ -424,3 +424,8 @@ div.sidebar section img.icon {
   font-size: 14pt;
   text-align: center;
 }
+
+/* social icons */
+.social-icon {
+  width: 24px;
+}

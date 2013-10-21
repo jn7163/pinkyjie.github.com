@@ -57,45 +57,52 @@
             </ul>
             <ul class="nav pull-right social visible-desktop">
               <li class="divider-vertical"></li>
-              {% if site.author.github %}
+              {% if site.author.email %}
                 <li>
-                  <a href="https://github.com/{{ site.author.github }}" class="zocial github icon" target="_blank">
-                    <span class="hidden-desktop">Github</span>
+                  <a href="mailto:{{ site.author.email }}" target="_blank">
+                    <img class="social-icon" src="{{ site.img_url }}/icons/email.png" alt="Email">
                   </a>
                 </li>
               {% endif %}
-              {% if site.author.googleplus %}
+              {% if site.author.github %}
                 <li>
-                  <a href="https://plus.google.com/{{ site.author.googleplus }}" class="zocial googleplus icon" target="_blank">
-                    <span class="hidden-desktop">Google+</span>
+                  <a href="https://github.com/{{ site.author.github }}" target="_blank">
+                    <img class="social-icon" src="{{ site.img_url }}/icons/github.png" alt="Github">
                   </a>
                 </li>
               {% endif %}
               {% if site.author.twitter %}
                 <li>
-                  <a href="https://twitter.com/{{ site.author.twitter }}" class="zocial twitter icon" target="_blank">
-                  <span class="hidden-desktop">Twitter</span>
+                  <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank">
+                    <img class="social-icon" src="{{ site.img_url }}/icons/twitter.png" alt="Twitter">
                   </a>
                 </li>
               {% endif %}
-              {% if site.author.facebook %}
+              {% if site.author.weibo %}
                 <li>
-                  <a href="http://www.facebook.com/{{ site.author.facebook }}" class="zocial facebook icon" target="_blank">
-                    <span class="hidden-desktop">Facebook</span>
+                  <a href="https://weibo.com/{{ site.author.weibo }}" target="_blank">
+                    <img class="social-icon" src="{{ site.img_url }}/icons/weibo.png" alt="Weibo">
                   </a>
                 </li>
               {% endif %}
-              {% if site.author.linkedin %}
+              {% if site.author.instagram %}
                 <li>
-                  <a href="http://www.linkedin.com/in/{{ site.author.linkedin }}" class="zocial linkedin icon" target="_blank">
-                    <span class="hidden-desktop">LinkedIn</span>
+                  <a href="https://instagram.com/{{ site.author.instagram }}" target="_blank">
+                    <img class="social-icon" src="{{ site.img_url }}/icons/instagram.png" alt="Instagram">
                   </a>
                 </li>
               {% endif %}
-              {% if site.author.feedburner %}
+              {% if site.author.jiepang %}
                 <li>
-                  <a href="http://feeds.feedburner.com/{{ site.author.feedburner }}" class="zocial rss icon" target="_blank">
-                    <span class="hidden-desktop">FeedBurner</span>
+                  <a href="https://jiepang.com/user/{{ site.author.jiepang }}" target="_blank">
+                    <img class="social-icon" src="{{ site.img_url }}/icons/jiepang.png" alt="Jiepang">
+                  </a>
+                </li>
+              {% endif %}
+              {% if site.author.stackoverflow %}
+                <li>
+                  <a href="https://stackoverflow.com/users/{{ site.author.stackoverflow }}" target="_blank">
+                    <img class="social-icon" src="{{ site.img_url }}/icons/stackoverflow.png" alt="StackOverflow">
                   </a>
                 </li>
               {% endif %}
