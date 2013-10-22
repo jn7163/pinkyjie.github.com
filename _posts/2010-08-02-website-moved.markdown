@@ -1,5 +1,5 @@
 ---
-author: sd4399340
+author: 马斯特
 comments: true
 date: 2010-08-02 15:49:52+00:00
 layout: post
