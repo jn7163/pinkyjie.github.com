@@ -30,7 +30,7 @@ tagline: Go Fighting! Master!
 <div class="pagination pagination-centered">
   <hr />
   <ul>
-    <li class="disabled"><span>{% paginator.page %} / {% paginator.total_pages %}</span></li>
+    <li class="disabled"><span>{{ paginator.page }} / {{ paginator.total_pages }}</span></li>
     <li><a href="/">&laquo;</a></li>
     {% if paginator.previous_page %}
       {% if paginator.previous_page == 1 %}
