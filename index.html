@@ -27,38 +27,34 @@ tagline: Go Fighting! Master!
 {% endfor %}
 
 <!-- Pagination links -->
-<div id="pagination">
+<div class="pagination pagination-centered">
   <hr />
-  <div class="pagenavi">
-    <span class="page_number">第{{paginator.page}}页/共{{paginator.total_pages}}页</span>
-    <div class="pagination pagination-centered">
-      <ul>
-        <li><a href="/">&laquo;</a></li>
-        {% if paginator.previous_page %}
-          {% if paginator.previous_page == 1 %}
-            <li><a href="/" class="current">&lt;</a></li>
-          {% else %}
-            <li><a href="/page{{paginator.previous_page}}/">&lt;</a></li>
-          {% endif %}
-        {% else %}
-          <li><span>&lt;</span></li>
-        {% endif %}
-        {% for count in (2..paginator.total_pages) limit:6 %}
-          {% if count == paginator.page %}
-            <li><span class="current-page">{{count}}</span></li>
-          {% else %}
-            <li><a href="/page{{count}}/">{{count}}</a></li>
-          {% endif %}
-        {% endfor %}
-        {% if paginator.next_page %}
-          <li><a href="/page{{paginator.next_page}}/">&gt;</a></li>
-        {% else %}
-          <li><span>&gt;</span></li>
-        {% endif %}
-        <li><a href="/page{{paginator.total_pages}}/">&raquo;</a></li>
-      </ul>
-    </div>
-  </div>
+  <ul>
+    <li class="disabled"><span>{% paginator.page %} / {% paginator.total_pages %}</span></li>
+    <li><a href="/">&laquo;</a></li>
+    {% if paginator.previous_page %}
+      {% if paginator.previous_page == 1 %}
+        <li><a href="/" class="current">&lt;</a></li>
+      {% else %}
+        <li><a href="/page{{paginator.previous_page}}/">&lt;</a></li>
+      {% endif %}
+    {% else %}
+      <li class="disabled"><span>&lt;</span></li>
+    {% endif %}
+    {% for count in (2..paginator.total_pages) limit:6 %}
+      {% if count == paginator.page %}
+        <li class="active"><span>{{count}}</span></li>
+      {% else %}
+        <li><a href="/page{{count}}/">{{count}}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if paginator.next_page %}
+      <li><a href="/page{{paginator.next_page}}/">&gt;</a></li>
+    {% else %}
+      <li class="disabled"><span>&gt;</span></li>
+    {% endif %}
+    <li><a href="/page{{paginator.total_pages}}/">&raquo;</a></li>
+  </ul>
 </div>
 <br />
 <br />
