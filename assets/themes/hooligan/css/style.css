@@ -453,6 +453,7 @@ div.sidebar section img.icon {
 /* sidebar widget */
 .widget {
   box-shadow: 0 3px 10px #000;
+  margin-bottom: 15px;
 }
 
 .widget .widget-title {
