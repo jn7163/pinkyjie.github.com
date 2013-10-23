@@ -439,6 +439,15 @@ div.sidebar section img.icon {
 /* social icons */
 .social-icon {
   width: 24px;
+  border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+}
+
+.social-icon:hover {
+  box-shadow: #fff 0 0 8px;
+  -webkit-box-shadow: #fff 0 0 8px;
+  -moz-box-shadow: #fff 0 0 8px;
 }
 
 /* sidebar widget */
