@@ -9,6 +9,28 @@
 
 <div class="row">
   <div class="span8">
+      <div class="entry-meta">
+        <i class="icon-user"></i>  <span>{{ page.author }}</span> &nbsp;
+        <i class="icon-calendar"></i>  <span>{{ page.date | date:"%Y-%m-%d" }}</span> &nbsp;
+        {% if page.categories[0] %}
+          <i class="icon-bookmark"></i>
+          {% for category in page.categories %}
+            <a href="/categories.html#{{ category }}-ref" target="_blank">
+              <span class="label post-category">{{ category }}</span>
+            </a>
+          {% endfor %}
+        {% endif %}
+         &nbsp;
+        {% if page.tags[0] %}
+          <i class="icon-tag"></i>
+          {% for tag in page.tags %}
+            <a href="/tags.html#{{ tag }}-ref" target="_blank">
+              <span class="label post-tag">{{ tag }}</span>
+            </a>
+          {% endfor %}
+        {% endif %}
+    </div>
+    <br /><br />
     {{ content }}
     <hr>
     <div class="pagination btn-group">
