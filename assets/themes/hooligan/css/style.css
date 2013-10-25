@@ -484,3 +484,7 @@ div.sidebar section img.icon {
   padding: 5px 0;
 }
 
+/* more link */
+.more-link:hover {
+  color: #4cb4e8;
+}
