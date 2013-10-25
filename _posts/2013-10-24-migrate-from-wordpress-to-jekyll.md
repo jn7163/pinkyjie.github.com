@@ -59,14 +59,14 @@ rake theme:switch name="hooligan"
 
 以前研究学术的时候写过好几篇满是公式的博文，原先wordpress里貌似用的是一种插件，到这里显然行不通了。一番搜索后发现一个叫[MathJax](http://www.mathjax.org/)的牛逼东西，用js来渲染公式。在`_includes/themes/hooligan/default.html`里加入
 
-{% highlight javascript %}
+{% highlight html %}
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 {% endhighlight %}
 
 即可，这样就可以用`$$`作为开始结束符来输入公式了。注意这里的`hooligan`是你的主题名称，你的主题如果是别的就改成相应别的。这样的公式是独占一行的，如果要输入inline的公式，则还需要添加
 
-{% highlight javascript %}
+{% highlight html %}
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] }
@@ -130,8 +130,8 @@ comments :
 
 其中的`short_name`就是多说的通用代码里的`short_name`值。然后根据`jekll-bootstrap`的结构，评论由`_includes/JB/comments`管理，打开发现里面是一个ruby的`switch-case`分支结构，在`{% raw %}{% endcase %}{% endraw %}`之前加上多说的判断即可：
 
-{% highlight ruby %}
-{{ "{% when "duoshuo" "}}%}
+{% highlight html %}
+{% raw %}{% when "duoshuo" %}{% endraw %}
    {{ "{% include JB/comments-providers/duoshuo "}}%}
 {% endhighlight%}
 
