@@ -152,7 +152,7 @@ comments :
 
 到现在博客应该像模像样了吧，但唯一不爽的就是首页了，默认的首页`index.md`显示的是所有文章的存档，比较朴素，怎样改成像传统wordpress那样显示文章的摘要和合理分页呢？[官方文档](http://jekyllrb.com/docs/pagination/)同样专门有一节讲分页。首先，在`_config.yml`里配置分页，即添加`paginate: 5`，其中的`5`为每页的文章数，自己把握。然后，删除`index.md`，新建`index.html`，这一步很重要，我原来设置分页一直不成功就卡在这里，官方文档里也有讲，分页只对`html`生效！文档中有中规中矩的写法，大家可以参考，这里放出我修改过的版本。
 
-{% gist 7149607 %}
+{<script src="https://gist.github.com/PinkyJie/}7149607.js"> </script>
 
 这里顺便说一句，大段代码的显示推荐使用github的[gist](https://gist.github.com)，否则转义累死人啊！头部就是主标题副标题，这个没啥说的，下面开始，`paginator.posts`里保存的是该页的所有文章信息，每篇文章的结构大致是`.post-wrapper > .entry-title > .entry-meta > .entry`的`div`嵌套，这些样式你可以在`assets/themes/hooligan/css/style.css`里自定义。其中可以看到`entry-meta`里会输出文章的分类信息和标签信息，`.entry`里输出摘要。摘要如何实现网上有千奇百怪的版本，我也试了很多，心力憔悴，最后发现居然一句话就能实现，网上还有很多为了这个自己写插件的。。。其实想想原理就不难，因为wordpress里使用`<!--more-->`来显示摘要，只要在`post.content`里查找`<!--more-->`的位置显示其前面的内容就是摘要啊！所以`{{ "{{ post.content | split: '<!--more-->' | first "}}}}`用这种类似管道的`filter`方式，先以`<!--more-->`调用`split`分割，然后用`first`取前面即可。其实我不太明白为什么直接写`{{"{{ post.content.split('!--more-->').first "}}}}`为啥不行。。。有懂的可以告诉我～后面的部分就是分页的页码了，我这里为了风格统一，套用了`bootstrap`的分页样式，具体可以看`bootstrap`的[分页文档](http://v2.bootcss.com/components.html#pagination)。这样“高大上”的首页就诞生了。
 
