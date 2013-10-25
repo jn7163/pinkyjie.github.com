@@ -4,7 +4,7 @@ date: 2013-10-24 21:09+08:00
 layout: post
 slug: migrate-from-wordpress-to-jekyll
 title: 从Wordpress迁移到Jekyll
-categoris:
+categories:
 - 网站折腾斯特
 - 斯特之学习研究
 tags:
@@ -21,7 +21,7 @@ tags:
 
 **搭建本地环境**
 
-首先，自然是在自己的github上面new一个repository了，名字必须是`yourname.github.com`，虽然现在github pages的地址已经改为`xxx.github.io`了，但我还没有尝试过repository用io结尾行不。
+首先，自然是在自己的github上面new一个repository了，名字必须是`yourname.github.com`，虽然现在github pages的地址已经改为`yourname.github.io`了，但我还没有尝试过repository用io结尾行不。
 完成以后，就是各种本地的设置了，搭建git环境，搭建ruby环境啊一类的，这里就不详细说了，ruby环境的搭建推荐使用[RVM](https://rvm.io/)，很方便的说，当然，貌似不支持windows。。。如果在widnows下我推荐使用云IDE，就好像浏览器里的虚拟机，`editor+terminal`，我常用`Nitrous.IO`，给个[我的推荐链接](https://www.nitrous.io/join/OoRQwt0SaLc)，有兴趣的可以试试。
 
 <!--more-->

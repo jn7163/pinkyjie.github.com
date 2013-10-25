@@ -476,3 +476,11 @@ div.sidebar section img.icon {
   -moz-background-clip: padding-box;
   background-clip: padding-box;
 }
+
+/* categories in post page */
+.category_box {
+  list-style: none;
+  margin: 0;
+  padding: 5px 0;
+}
+

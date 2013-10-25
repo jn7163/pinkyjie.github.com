@@ -12,23 +12,23 @@ tagline: Go Fighting! Master!
   <div class="entry-meta">
       <i class="icon-user"></i>  <span>{{ post.author }}</span> &nbsp;
       <i class="icon-calendar"></i>  <span>{{ post.date | date:"%Y-%m-%d" }}</span> &nbsp;
-      {% if post.categories[0] %}
+      {% unless post.categories == empty %}
         <i class="icon-bookmark"></i>
         {% for category in post.categories %}
           <a href="/categories.html#{{ category }}-ref" target="_blank">
             <span class="label post-category">{{ category }}</span>
           </a>
         {% endfor %}
-      {% endif %}
+      {% endunless %}
        &nbsp;
-      {% if post.tags[0] %}
+      {% unless post.tags == empty %}
         <i class="icon-tag"></i>
         {% for tag in post.tags %}
           <a href="/tags.html#{{ tag }}-ref" target="_blank">
             <span class="label post-tag">{{ tag }}</span>
           </a>
         {% endfor %}
-      {% endif %}
+      {% endunless %}
   </div>
   <br /><br />
   <div class="entry">
