@@ -154,7 +154,11 @@ comments :
 
 <script src="https://gist.github.com/PinkyJie/7149607.js"> </script>
 
-这里顺便说一句，大段代码的显示推荐使用github的[gist](https://gist.github.com)，否则转义累死人啊！头部就是主标题副标题，这个没啥说的，下面开始，`paginator.posts`里保存的是该页的所有文章信息，每篇文章的结构大致是`.post-wrapper > .entry-title > .entry-meta > .entry`的`div`嵌套，这些样式你可以在`assets/themes/hooligan/css/style.css`里自定义。其中可以看到`entry-meta`里会输出文章的分类信息和标签信息，`.entry`里输出摘要。摘要如何实现网上有千奇百怪的版本，我也试了很多，心力憔悴，最后发现居然一句话就能实现，网上还有很多为了这个自己写插件的。。。其实想想原理就不难，因为wordpress里使用`<!--more-->`来显示摘要，只要在`post.content`里查找`<!--more-->`的位置显示其前面的内容就是摘要啊！所以`{{ "{{ post.content | split: '<!--more-->' | first "}}}}`用这种类似管道的`filter`方式，先以`<!--more-->`调用`split`分割，然后用`first`取前面即可。其实我不太明白为什么直接写`{{"{{ post.content.split('!--more-->').first "}}}}`为啥不行。。。有懂的可以告诉我～后面的部分就是分页的页码了，我这里为了风格统一，套用了`bootstrap`的分页样式，具体可以看`bootstrap`的[分页文档](http://v2.bootcss.com/components.html#pagination)。这样“高大上”的首页就诞生了。
+头部就是主标题副标题，这个没啥说的，下面开始，`paginator.posts`里保存的是该页的所有文章信息，每篇文章的结构大致是`.post-wrapper > .entry-title > .entry-meta > .entry`的`div`嵌套，这些样式你可以在`assets/themes/hooligan/css/style.css`里自定义。其中可以看到`entry-meta`里会输出文章的分类信息和标签信息，`.entry`里输出摘要。摘要如何实现网上有千奇百怪的版本，我也试了很多，心力憔悴，最后发现居然一句话就能实现，网上还有很多为了这个自己写插件的。。。其实想想原理就不难，因为wordpress里使用`<!--more-->`来显示摘要，只要在`post.content`里查找`<!--more-->`的位置显示其前面的内容就是摘要啊！所以`{{ "{{ post.content | split: '<!--more-->' | first "}}}}`用这种类似管道的`filter`方式，先以`<!--more-->`调用`split`分割，然后用`first`取前面即可。其实我不太明白为什么直接写`{{"{{ post.content.split('!--more-->').first "}}}}`为啥不行。。。有懂的可以告诉我～后面的部分就是分页的页码了，我这里为了风格统一，套用了`bootstrap`的分页样式，具体可以看`bootstrap`的[分页文档](http://v2.bootcss.com/components.html#pagination)。这样“高大上”的首页就诞生了。
+
+**大段代码的显示**
+
+大段代码的显示推荐使用github的[gist](https://gist.github.com)，否则转义累死人啊！上面的大段代码就是用的gist显示的，配合了自定义的gist样式。这里值得说一下，gist也是个坑！关于在jekyll嵌入gist，可以使用官方的方案，直接写`<script src="https://gist.github.com/yourname/xxx.js"></script>`，也可以用jekyll的gist标签：`{% raw %}{% gist xxx %}{% endraw %}`。很不幸，这两种方案都有问题，本地预览时正常显示，但上传到github后发现，gist后面的内容被截断，匪夷所思。经过一番算搜索发现，又是jekyll的标签解析惹得货啊。详细可以看这两篇文章：[Fixing your embedding gist snippets](http://mystcolor.me/post/22455268027/fixing-your-embedding-gist-snippets) 和 [Why don't self-closing script tags work?](http://stackoverflow.com/questions/69913/why-dont-self-closing-script-tags-work)。简单来说就是，这两种方式会生成`<script  src="https://gist.github.com/yourname/xxx.js" />`这样的标签，而很多浏览器解析这样的“自关闭标签”有bug，很奇怪吧，非常简单的问题居然有bug！！那怎么破呢，非常简单，加个空格即可，如：`<script src="https://gist.github.com/yourname/xxx.js">  </script>`。
 
 **push到github时没效果**
 
@@ -162,4 +166,4 @@ comments :
 
 **总结**
 
-好了，博客现在差不多了，但对美有要求的你应该不会停止，`jekyll-bootstrap`由于是以`bootstrap`为基础的，所以熟悉前端的孩子修改起来特别方便，比如首页加个侧边栏，各种样式修改，加入`font-awesome`图标等等，慢慢探索吧～
+好了，博客现在差不多了，但对美有要求的你应该不会停止。`jekyll-bootstrap`由于是以`bootstrap`为基础的，所以熟悉前端的孩子修改起来特别方便，比如首页加个侧边栏，各种样式修改，加入`font-awesome`图标等等，慢慢探索吧～用`bootstrap`的另外一大好处就是，这个框架本来就是响应式的，所以不用费心去像wordpress一样装个插件去优化手机版，各种尺寸的屏幕都能做到自适应，非常方便！快把你的博客也迁过来吧！
