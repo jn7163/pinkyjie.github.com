@@ -488,3 +488,29 @@ div.sidebar section img.icon {
 .more-link:hover {
   color: #4cb4e8;
 }
+
+/* sidebar comments */
+.recent-visitors-sec ul {
+  margin-left: 0px;
+}
+
+.recent-visitors-sec img {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.latest-comments-sec img {
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  border-radius: 16px;
+}
+
+.latest-comments-sec ul {
+  margin-left: 0px;
+}
+
+.latest-comments-sec ul li {
+  border: none;
+}
+

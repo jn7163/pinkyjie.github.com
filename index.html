@@ -11,8 +11,9 @@ tagline: Go Fighting! Master!
   </h2>
   <div class="entry-meta">
       <i class="icon-user"></i>  <span>{{ post.author }}</span> &nbsp;
-      <i class="icon-calendar"></i>  <span>{{ post.date | date:"%Y-%m-%d" }}</span> &nbsp;
+      <i class="icon-calendar"></i>  <span>{{ post.date | date:"%Y-%m-%d" }}</span>
       {% unless post.categories == empty %}
+        <br />
         <i class="icon-bookmark"></i>
         {% for category in post.categories %}
           <a href="/categories.html#{{ category }}-ref" target="_blank">

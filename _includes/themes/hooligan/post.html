@@ -29,17 +29,17 @@
   </div>
 
   <div class="span4">
-    <section>
-      <h4>Author</h4>
+    <section class="author-sec">
+      <h3>Author</h3>
       <div class="author"><span>{{ page.author }}</span></div>
     </section>
-    <section>
-      <h4>Published</h4>
+    <section class="pulish-date-sec">
+      <h3>Published</h3>
       <div class="date"><span>{{ page.date | date_to_long_string }}</span></div>
     </section>
     {% unless page.categories == empty %}
-      <section>
-        <h4>Categories</h4>
+      <section class="categories-sec">
+        <h3>Categories</h3>
         <ul class="category_box">
           {% for category in page.categories %}
             <li>
@@ -52,21 +52,21 @@
       </section>
     {% endunless %}
     {% unless page.tags == empty %}
-      <section>
-        <h4>Tags</h4>
+      <section class="tags-sec">
+        <h3>Tags</h3>
         <ul class="tag_box">
           {% assign tags_list = page.tags %}
           {% include JB/tags_list %}
         </ul>
       </section>
     {% endunless %}
-    <section>
-      <h3>Latest Comments</h3>
-      <ul class="ds-recent-comments" data-num-items="10" data-show-avatars="0" data-show-time="0" data-show-title="0" data-show-admin="0" data-excerpt-length="18"></ul>
-    </section>
-    <section>
+    <section class="recent-visitors-sec">
       <h3>Recently Visitors</h3>
-      <ul class="ds-recent-visitors" data-num-items="4" data-avatar-size="45" style="margin-top:10px;"></ul>
+      <ul class="ds-recent-visitors" data-num-items="10" data-avatar-size="45" style="margin-top:10px;"></ul>
+    </section>
+    <section class="latest-comments-sec">
+      <h3>Latest Comments</h3>
+      <ul class="ds-recent-comments" data-num-items="10" data-show-avatars="1" data-show-time="1" data-show-title="0" data-show-admin="0" data-excerpt-length="18"></ul>
     </section>
   </div>
 </div>
