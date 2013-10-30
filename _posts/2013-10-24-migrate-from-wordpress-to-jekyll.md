@@ -135,7 +135,7 @@ comments :
    {{ "{% include JB/comments-providers/duoshuo "}}%}
 {% endhighlight%}
 
-可以看到，实际的评论代码是放在`_includes/JB/comments-probiders`目录下的，在该目录下新建一个文件`duoshuo`，然后将刚才通用代码里的`<div class="ds-thread"></div>`复制进去即可。因为这个`_includes/JB/comments`会被很多模板自动引用，所以评论已经被添加到需要的地方去了。另外，如果你想定制评论，比如每篇博客右侧显示最近的评论和最近的来访者，可以修改`_includes/themes/hooligan/post.html`，这个是文章的默认模板，找到`<div class="span4">`，熟悉`bootstrap`的孩子一定不陌生，这里就是右侧边栏，在这个div的最后面加入：
+可以看到，实际的评论代码是放在`_includes/JB/comments-probiders`目录下的，在该目录下新建一个文件`duoshuo`，然后将刚才通用代码里的`<div class="ds-thread"></div>`复制进去即可。因为这个`_includes/JB/comments`会被很多模板自动引用，所以评论已经被添加到需要的地方去了。另外，如果你想定制评论，比如每篇博客右侧显示最近的评论和最近的来访者，可以修改`_includes/themes/hooligan/page.html`，这个是页面的默认模板，加一个`<div class="span4">`，熟悉`bootstrap`的孩子一定不陌生，这里就是右侧边栏，在这个div的最后面加入：
 
 {% highlight html %}
 <section>
