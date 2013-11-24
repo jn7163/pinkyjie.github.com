@@ -40,6 +40,8 @@ Yeoman就是利用这三个工具来为我们服务的。第一次在命令行�
 
 从这里我们就要开始适应Yeoman这种问答的服务方式，每次你运行一些命令，它就会给出一些选项让你选择。我们看到第一项就是安装generator。下面就以Backbone的项目为例来看看如何利用Yeoman来快速生成框架吧。
 
+<!--more-->
+
 **Backbone的generator**
 
 以往我们要写开始一个Backbone的Web工程，免不了先下载jQuery，Backbone，Underscore，然后CSS上下载个Bootstrap一类的，如果要用模块化的写法的话还要下载RequireJS，然后写RequireJS的初始配置等等等等，非常繁琐。我想牛人应该都有自己的一套脚本去生成这些基本框架吧，作为非牛人的我们有了Yeoman，全交给它就行了。首先，安装Yeoman为Backbone适配的generator：
