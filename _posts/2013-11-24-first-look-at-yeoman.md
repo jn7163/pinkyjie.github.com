@@ -24,9 +24,9 @@ tags:
 
 Yeoman的安装基于npm，所以需要先安装好Node.js，另外如果需要使用Sass来写CSS的话，需要安装Ruby和Compass工具，这个不细说了，很简单的。完事以后在命令行运行`npm install -g yo`即可，如果用Linux的话记得`sudo`啊。如果一切顺利，Yeoman的3个工具：`yo`，`bower`和`grunt`就安装好了。当然这步也可能会报错，比如我自己在windows上就遇到`Error: No compatible version found: yo`的报错。出现这个问题请检查你的Node.js的版本，如我的是`v0.6.15`，太老了，升级到最新版`v0.10.22`再重新执行安装命令即可。安装成功后我们先来看看这3个工具吧：
 
-- yo：主要负责一些scaffolding的工作，配合各种框架的generator快速生成一个web app所需的各种基础文件。顺便吐槽一句，scaffolding这个词翻译成脚手架我实在不明所以。
-- [bower](http://bower.io/)：Twitter出品，类似于npm，用于前端各种第三方库的包管理工具。
-- [grunt](http://gruntjs.com/)：大名鼎鼎的前端自动化工具，可以把它理解成make命令，简单的配置即可自动帮你完成诸如连接js，编译coffeescript，编译scss，跑测试啊等繁琐的工具。
+* yo：主要负责一些scaffolding的工作，配合各种框架的generator快速生成一个web app所需的各种基础文件。顺便吐槽一句，scaffolding这个词翻译成脚手架我实在不明所以。
+* [bower](http://bower.io/)：Twitter出品，类似于npm，用于前端各种第三方库的包管理工具。
+* [grunt](http://gruntjs.com/)：大名鼎鼎的前端自动化工具，可以把它理解成make命令，简单的配置即可自动帮你完成诸如连接js，编译coffeescript，编译scss，跑测试啊等繁琐的工具。
 
 Yeoman就是利用这三个工具来为我们服务的。第一次在命令行运行`yo`命令会看到一张Yeoman的“吉祥物”形象，然后是：
 

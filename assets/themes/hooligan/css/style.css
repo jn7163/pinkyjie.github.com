@@ -514,3 +514,8 @@ div.sidebar section img.icon {
   border: none;
 }
 
+/* line-height of ul in post entry */
+.entry > ul > li, .page-content > .post-content > ul > li {
+  line-height: 25px;
+}
+
