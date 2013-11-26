@@ -20,5 +20,7 @@ wordpress_id: 54
 
 My about.me : [http://about.me/pinkyjie](http://about.me/pinkyjie)
 
-
+<p>
 {% include JB/comments %}
+</p>
+
