@@ -1,6 +1,6 @@
 # My Own Blog
 
-[pinkyjie.github.io](http://pinkyjie.github.io)
+[pinkyjie.com](http://pinkyjie.com)
 
 
 Built with [Jekyll-Bootstrap](http://jekyllbootstrap.com/)
