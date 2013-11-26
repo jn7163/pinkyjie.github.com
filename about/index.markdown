@@ -19,6 +19,3 @@ wordpress_id: 54
 **Contact Me**：pilixiaoxuanfeng AT gmail DOT com
 
 My about.me : [http://about.me/pinkyjie](http://about.me/pinkyjie)
-
-
-{% include JB/comments %}

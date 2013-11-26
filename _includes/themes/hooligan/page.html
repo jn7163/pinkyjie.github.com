@@ -7,6 +7,10 @@
 <div class="row">
   <div class="span8">
     {{ content }}
+    {% if page.comments %}
+      <p>Test</p>
+      {% include JB/comments %}
+    {% endif %}
   </div>
   <div class="span4">
     
