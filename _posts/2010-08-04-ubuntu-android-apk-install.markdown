@@ -1,7 +1,7 @@
 ---
 author: 马斯特
 comments: true
-date: 2010-08-03 18:15:21+00:00
+date: 2010-08-04 18:15:21+00:00
 layout: post
 slug: ubuntu-android-apk-install
 title: Ubuntu下Android手机apk软件的安装
