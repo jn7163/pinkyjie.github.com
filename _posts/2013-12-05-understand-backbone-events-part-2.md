@@ -49,7 +49,7 @@ off: function(name, callback, context) {
 
 <!--more-->
 
-`off`用来接触事件的绑定，传入的参数还是老三样，即事件的三要素：名称、回调、上下文。在[带注释的源码](http://backbonejs.org/docs/backbone.html#section-17)里很详细的介绍了`off`的大致流程。首先这三个参数都是可选的，三要素可以唯一确定一个绑定，忽略一个要素，则范围就会扩大。比如，不传context则，匹配前两个的参数的绑定全部被解绑，如果callback也传，则该事件的所有绑定被解绑，如果连name也不传，也就是直接调`off()`，则所有事件的所有绑定都被解绑。上篇文章分析过，绑定就是把callback填到特定的数组里，那解绑就从数组里删除就好了。
+`off`用来解除事件的绑定，传入的参数还是老三样，即事件的三要素：名称、回调、上下文。在[带注释的源码](http://backbonejs.org/docs/backbone.html#section-17)里很详细的介绍了`off`的大致流程。首先这三个参数都是可选的，三要素可以唯一确定一个绑定，忽略一个要素，则范围就会扩大。比如，不传context，则匹配前两个的参数的绑定全部被解绑，如果callback也不传，则该事件的所有绑定被解绑，如果连name也不传，也就是直接调`off()`，则所有事件的所有绑定都被解绑。上篇文章分析过，绑定就是把callback填到特定的数组里，那解绑就从数组里删除就好了。
 
 明白了原理，来看代码，第2行定义了一堆要用到的变量，第3行又是熟悉的`eventsApi`判断，可见这个name也是支持同时传多个名称的，另外这里还多了一个检查`_events`的条件，如果不存在那说明没有任何事件绑定，直接返回。第4-7行就是刚才分析过的不带参直接调`off()`的情况，直接清空`_events`，接触所有绑定，然后返回。第8行将要解绑的事件名称放入`names`数组，如果传了name就只放一个name，没传就将`_events`里所有事件名称都放进去。从第9行开始，遍历这个`names`数组，每次循环先将绑定到这个事件上的回调放入`events`数组。第11行判断如果这个数组没有值，也就是说不存在回调绑定在这个事件上，那本次循环就直接结束了，如果存在，则继续走。第12行直接清空`this._events[name]`数组，并赋值给`retain`变量，retain的字面意思就是“保持”，意思就是不需要移除的回调会被放回`retain`中去，即放回`this._events[name]`中去。接着看第13行，判断如果传了callback或context，则第14行开始遍历绑定在这个事件上的所有回调，先将每个回调赋值给`ev`，回忆下，这个`ev`是个对象，即`{callback: xxx, context: xxx, ctx: xxx}`。第16-19行判断如果这个`ev`不需要移除，就将其填入`retain`中去。这个判断条件`(callback && callback !== ev.callback && callback !== ev.callback._callback) || (context && context !== ev.context)`也很直观，两种情况下不需要移除。第一种情况，若传入了callback并且传入的callback与`ev.callback`不匹配，并且与`ev.callback._callback`也不匹配，则不需移除，后者主要是为了`once`，回忆一下，用`once`绑定的回调原形存在`_callback`里。第二种情况，若传入了context并且与`ev.context`不匹配，则不用移除。经过这个判断，所有不需移除的绑定都填入了`retain`数组中，接下来第22行，判断若`retain`为空，则直接删除整个`this._events[name]`数组。最后第25行返回this解绑结束，这里顺便提一下，很多函数都返回this的作用就是方便作“链式调用”，比如可以`obj.on(xxx1).off(xxx2)`这样写。
 
@@ -87,7 +87,7 @@ var triggerEvents = function(events, args) {
 };
 {% endhighlight %}
 
-这里将传给回调函数的参数组`args`的前3个先赋给3个变量：`arg1, arg2, arg3`，接着一个switch判断参数组`args`的长度，分情况执行。每种情况下都利用一个while循环去变量绑定在该事件上的所有回调，利用`(ev = events[i]).callback.call(ev.ctx, xxx....);`去调用具体的回调函数，上篇文章也提到过，`ev`对象里虽然有`context`，但真正起作用的是`ctx`，这是为了避免绑定时没传context，具体可以查看[上篇文章](http://pinkyjie.com/2013/12/02/understand-backbone-events-part-1/)。如果参数个数是0-3，就利用前面定义好的`arg1, arg2, arg3`直接传，否则进入default分支，利用`apply`直接传整个参数组`args`。这里初看会有疑惑，其实不管参数组的个数，所有情况都可以用default分支的代码去处理啊，干嘛多此一举呢？官方的解释也用了“difficult-to-believe”这个词，说Backbone里大部分的事件回调都只有3个参数，这一点可以查看官方文档里的[所有事件列表](http://backbonejs.org/#Events-catalog)，确实如此。在这样的情况下，使用switch区分参数长度，可以提高常见情况下（即参数小于3个）的事件分派效率。我还是有点小疑惑，莫非在Javascript里`call`的效率要比`apply`高？好像也没搜到相关的资料证明这一点。总之，事件的触发就是如此了。
+这里将传给回调函数的参数组`args`的前3个先赋给3个变量：`arg1, arg2, arg3`，接着一个switch判断参数组`args`的长度，分情况执行。每种情况下都利用一个while循环去遍历绑定在该事件上的所有回调，利用`(ev = events[i]).callback.call(ev.ctx, xxx....);`去调用具体的回调函数，上篇文章也提到过，`ev`对象里虽然有`context`，但真正起作用的是`ctx`，这是为了避免绑定时没传context，具体可以查看[上篇文章](http://pinkyjie.com/2013/12/02/understand-backbone-events-part-1/)。如果参数个数是0-3，就利用前面定义好的`arg1, arg2, arg3`直接传，否则进入default分支，利用`apply`直接传整个参数组`args`。这里初看会有疑惑，其实不管参数组的个数，所有情况都可以用default分支的代码去处理啊，干嘛多此一举呢？官方的解释也用了“difficult-to-believe”这个词，说Backbone里大部分的事件回调都只有3个参数，这一点可以查看官方文档里的[所有事件列表](http://backbonejs.org/#Events-catalog)，确实如此。在这样的情况下，使用switch区分参数长度，可以提高常见情况下（即参数小于3个）的事件分派效率。我还是有点小疑惑，莫非在Javascript里`call`的效率要比`apply`高？好像也没搜到相关的资料证明这一点。总之，事件的触发就是如此了。
 
 **监听别人的事件**
 
@@ -141,7 +141,7 @@ Events.unbind = Events.off;
 _.extend(Backbone, Events);
 {% endhighlight %}
 
-剩下的3句跟Events相关的代码，前两句是为了和以前的版本保持兼容，将bind和unbind设置为on和off的别名，最后一句将Events对象Mix进了Backbone里去，让Backbone也具有绑定和触发事件的功能。这样做是为了把Backbone作为全局的一个事件总线，使用`Backbone.trigger`和`Backbone.on`去构建一个“发布/订阅”系统。
+剩下的3句跟Events相关的代码，前两句是为了和以前的版本保持兼容，将bind和unbind设置为on和off的别名，最后一句将Events对象Mix进了Backbone里去，让Backbone也具有绑定和触发事件的功能。这样做是为了把Backbone作为全局的一个事件总线，使用`Backbone.trigger`和`Backbone.on`去构建一个“发布者/订阅者”系统。
 
 **总结**
 
