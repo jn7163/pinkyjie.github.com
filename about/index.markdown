@@ -8,14 +8,12 @@ title: 关于
 wordpress_id: 54
 ---
 
-这是一个由 [@PinkyJie](https://twitter.com/PinkyJie) 搭建的博客，分享我的Pinky Ideas。
-
 ![]({{ site.img_url }}/pinkyjie.jpg)
 
-**About Me**： 87降生的长相婉约的挨踢介人士，常被天蝎座鄙视的天蝎男，兜儿揣Google Dream，手拿《模式分类》，爱智能手机，爱识别，爱2B台湾偶像剧，爱动作游戏~非常控唇彩丝袜的女孩子~O(∩_∩)O~
+**关于我**： 马斯特，87年生人，爱溜冰的码农
 
-**My Research  Direction**：模式识别(核方法相关)，机器视觉(感兴趣中)
+**研究方向（读书时）**：模式识别(核方法相关)，机器视觉(感兴趣中)
 
-**Contact Me**：pilixiaoxuanfeng AT gmail DOT com
+**技术**：Web前后端开发，移动App开发
 
-My about.me : [http://about.me/pinkyjie](http://about.me/pinkyjie)
+**联系我**：pilixiaoxuanfeng AT gmail DOT com
