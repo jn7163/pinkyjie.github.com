@@ -494,6 +494,10 @@ div.sidebar section img.icon {
   background: none;
 }
 
+.disqus-comment-sec #dsq-combo-widget.grey #dsq-combo-content .dsq-combo-box li {
+  border-bottom: 1px solid #666;
+}
+
 .disqus-comment-sec #dsq-combo-widget.grey #dsq-combo-tabs li {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -506,9 +510,7 @@ div.sidebar section img.icon {
   background: #888;
 }
 
-.disqus-comment-sec #dsq-combo-widget.gray #dsq-combo-content .dsq-combo-box li {
-  border-bottom: 1px solid #666;
-}
+
 
 /* line-height of ul in post entry */
 .entry > ul > li, .page-content > .post-content > ul > li {
