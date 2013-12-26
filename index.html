@@ -52,11 +52,11 @@ tagline: Go Fighting! Master!
     {% if paginator.previous_page %}
         <li><a href="/page{{paginator.previous_page}}/">prev</a></li>
     {% else %}
-      <li class="single"><a>prev</a></li>
+      <li class="single">prev</li>
     {% endif %}
-    {% for count in (2..paginator.total_pages) limit:5 %}
+    {% for count in (1..paginator.total_pages) limit:6 %}
       {% if count == paginator.page %}
-        <li class="current"><a>{{count}}</a></li>
+        <li class="current">{{count}}</li>
       {% else %}
         <li><a href="/page{{count}}/">{{count}}</a></li>
       {% endif %}
@@ -64,7 +64,7 @@ tagline: Go Fighting! Master!
     {% if paginator.next_page %}
       <li><a href="/page{{paginator.next_page}}/">next</a></li>
     {% else %}
-      <li class="single"><a>next</a></li>
+      <li class="single">next</li>
     {% endif %}
   </ul>
 </div>
