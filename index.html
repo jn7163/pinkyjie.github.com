@@ -50,25 +50,21 @@ tagline: Go Fighting! Master!
   <ul>
     <li class="single"><a> page {{ paginator.page }} of {{ paginator.total_pages }}</a></li>
     {% if paginator.previous_page %}
-      {% if paginator.previous_page == 1 %}
-        <li><a href="/" class="current">prev</a></li>
-      {% else %}
         <li><a href="/page{{paginator.previous_page}}/">prev</a></li>
-      {% endif %}
     {% else %}
-      <li class="disabled"><a>prev</a></li>
+      <li class="single"><a>prev</a></li>
     {% endif %}
-    {% for count in (2..paginator.total_pages) limit:2 %}
+    {% for count in (2..paginator.total_pages) limit:5 %}
       {% if count == paginator.page %}
-        <li class="active"><a>{{count}}</a></li>
+        <li class="current"><a>{{count}}</a></li>
       {% else %}
         <li><a href="/page{{count}}/">{{count}}</a></li>
       {% endif %}
-    {% endfor %}
+    {% endfor %}    
     {% if paginator.next_page %}
       <li><a href="/page{{paginator.next_page}}/">next</a></li>
     {% else %}
-      <li class="disabled"><a>next</a></li>
+      <li class="single"><a>next</a></li>
     {% endif %}
   </ul>
 </div>
