@@ -27,6 +27,19 @@
         </p>
       </div>
     </div>
+    
+    <div class="widget recent-comment-sec">
+      <h3 class="widget-title">Recent Comments</h3>
+      <div class="widget-content">
+        <script type="text/javascript">
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = "http://{{ site.JB.comments.disqus.short_name }}.disqus.com/combination_widget.js?num_items=25&hide_mods=1&default_tab=recent&excerpt_length=50";
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+      </div>
+    </div>
 
   </div>
 </div>
