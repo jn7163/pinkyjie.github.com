@@ -11,7 +11,8 @@ tagline: Go Fighting! Master!
   </h2>
   <div class="entry-meta">
       <i class="icon-user"></i>  <span>{{ post.author }}</span> &nbsp;
-      <i class="icon-calendar"></i>  <span>{{ post.date | date:"%Y-%m-%d" }}</span>
+      <i class="icon-calendar"></i>  <span>{{ post.date | date:"%Y-%m-%d" }}</span> &nbsp;
+      <i class="icon-comment"></i>  <span><a href="{{ post.url }}#disqus_thread"></a></span> &nbsp;
       {% unless post.categories == empty %}
         <br />
         <i class="icon-bookmark"></i>
@@ -76,4 +77,14 @@ tagline: Go Fighting! Master!
 </div>
 <br />
 <br />
+
+<script type="text/javascript">
+  var disqus_shortname = '{{ site.JB.comments.disqus.short_name }}';
+  (function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  }());
+</script>
 
