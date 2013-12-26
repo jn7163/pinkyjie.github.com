@@ -494,11 +494,12 @@ div.sidebar section img.icon {
   background: none;
 }
 
-.disqus-comment-sec #dsq-combo-widget.grey #dsq-combo-tabs li.dsq-active {
+.disqus-comment-sec #dsq-combo-widget.grey #dsq-combo-tabs li {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
   border: 1px solid #888;
+  background: none;
 }
 
 .disqus-comment-sec #dsq-combo-widget.grey #dsq-combo-tabs li.dsq-active {
