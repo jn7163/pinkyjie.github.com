@@ -490,18 +490,22 @@ div.sidebar section img.icon {
 }
 
 /* sidebar comments */
-.disqus-comment-sec #dsq-combo-tabs li {
+.disqus-comment-sec #dsq-combo-widget.grey #dsq-combo-content .dsq-combo-box {
+  background: none;
+}
+
+.disqus-comment-sec #dsq-combo-widget.grey #dsq-combo-tabs li.dsq-active {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
   border: 1px solid #888;
 }
 
-.disqus-comment-sec #dsq-combo-tabs li.dsq-active {
-  background-color: #888;
+.disqus-comment-sec #dsq-combo-widget.grey #dsq-combo-tabs li.dsq-active {
+  background: #888;
 }
 
-.disqus-comment-sec #dsq-combo-widget #dsq-combo-content .dsq-combo-box li {
+.disqus-comment-sec #dsq-combo-widget.gray #dsq-combo-content .dsq-combo-box li {
   border-bottom: 1px solid #666;
 }
 
