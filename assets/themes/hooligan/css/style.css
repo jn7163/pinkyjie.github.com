@@ -1,5 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Advent+Pro);
-@import url(http://fonts.googleapis.com/css?family=Oxygen);
 /* Partials */
 /* Theme Vars */
 /* Compass Vars */
@@ -586,5 +584,11 @@ div.sidebar section img.icon {
   -moz-box-shadow: inset 0 3px 0px -2px rgba(255, 255, 255, .3);
   -webkit-box-shadow: inset 0 3px 0px -2px rgba(255, 255, 255, .3);
   box-shadow: inset 0 3px 0px -2px rgba(255, 255, 255, .3);
+}
+
+/* for google search */
+#google-search {
+  width: 250px;
+  margin-top: -55px;
 }
 

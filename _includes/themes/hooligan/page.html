@@ -1,6 +1,21 @@
 <div class="page-header-wrapper">
 	<div class="page-header">
   		<h1>{{ page.title }} {% if page.tagline %} <small>{{ page.tagline }}</small>{% endif %}</h1>
+      <div id="google-search" class="pull-right">
+        <script>
+          (function() {
+            var cx = '007410329586006165998:64x9itm7vgg';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search></gcse:search>
+      </div>
   </div>
 </div>
 
