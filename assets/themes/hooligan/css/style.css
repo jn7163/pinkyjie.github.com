@@ -587,8 +587,11 @@ div.sidebar section img.icon {
 }
 
 /* for google search */
-#google-search {
+.page-header #google-search {
   width: 250px;
   margin-top: -55px;
 }
 
+.page-header .gsc-results-wrapper-overlay {
+  text-shadow: none;
+}
