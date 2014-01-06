@@ -523,10 +523,10 @@ div.sidebar section img.icon {
   list-style: none;
 }
 
-.paginate ul li { 
+.paginate ul li {
   display: inline;
 }
- 
+
 .paginate li a {
   display: block;
   float: left;
@@ -569,7 +569,7 @@ div.sidebar section img.icon {
   background: linear-gradient(to bottom, #414952 0%,#555e68 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#414952', endColorstr='#555e68',GradientType=0 );
 }
- 
+
 .paginate li.single, .paginate li.current {
   display: block;
   float: left;
@@ -598,7 +598,7 @@ div.sidebar section img.icon {
 
 /* responsive */
 @media all and (max-width: 800px) {
-  .page-header #google-search, .sidebar.span4 {
+  .page-header #google-search, .sidebar.span4, .post-sidebar.span4 {
     display: none;
   }
   .post-wrapper {
