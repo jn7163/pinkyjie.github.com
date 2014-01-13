@@ -143,6 +143,7 @@
     <script type="text/javascript">
       $(function(){
         $("p:has(img), p:has(embed)").css('text-align', 'center');
+        $(".post-wrapper .entry a, .post-content a").attr('target', '_blank');
       });
     </script>
     {% include JB/analytics %}

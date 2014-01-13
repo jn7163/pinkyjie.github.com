@@ -608,3 +608,12 @@ div.sidebar section img.icon {
     box-shadow: none;
   }
 }
+
+/* post font size */
+.post-content {
+  font-size: 17px;
+}
+
+.post-content strong {
+  font-size: 18px;
+}
