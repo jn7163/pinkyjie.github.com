@@ -617,3 +617,7 @@ div.sidebar section img.icon {
 .post-content strong {
   font-size: 18px;
 }
+
+code {
+  font-size: 11pt;
+}
