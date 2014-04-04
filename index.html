@@ -58,7 +58,7 @@ tagline: Go Fighting! Master!
     {% else %}
       <li class="single">prev</li>
     {% endif %}
-    {% for count in (1..paginator.total_pages) limit:6 %}
+    {% for count in (1..paginator.total_pages) %}
       {% if count == paginator.page %}
         <li class="current">{{count}}</li>
       {% else %}
@@ -68,7 +68,7 @@ tagline: Go Fighting! Master!
           <li><a href="/page{{count}}/">{{count}}</a></li>
         {% endif %}
       {% endif %}
-    {% endfor %}    
+    {% endfor %}
     {% if paginator.next_page %}
       <li><a href="/page{{paginator.next_page}}/">next</a></li>
     {% else %}
@@ -78,4 +78,3 @@ tagline: Go Fighting! Master!
 </div>
 <br />
 <br />
-
