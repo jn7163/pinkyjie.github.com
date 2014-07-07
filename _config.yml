@@ -117,7 +117,7 @@ JB :
   #   ./_includes/custom/[HELPER]
   # where [HELPER] is the name of the helper you are overriding.
 
-img_url: /assets/images
-file_url: /assets/files
+img_url: http://pinkyjie-blog.qiniudn.com/images
+file_url: http://pinkyjie-blog.qiniudn.com/files
 
 paginate: 5
