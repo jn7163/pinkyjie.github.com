@@ -4,8 +4,8 @@
 
 # Site
 title: 进击的马斯特
-subtitle: Coding your life
-description: Coding your life
+subtitle: Coding my life
+description: 前端 | 溜冰 | Mac
 author: 马斯特
 email: pilixiaoxuanfeng@gmail.com
 language: zh_CN
@@ -49,7 +49,7 @@ tag_map:
 ## 2: Enable pagination
 ## 1: Disable pagination
 ## 0: Fully Disable
-archive: 2
+archive: 1
 category: 2
 tag: 2
 
@@ -66,7 +66,7 @@ logger_format:
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
 ## http://momentjs.com/docs/#/displaying/format/
-date_format: MMM D YYYY
+date_format: MMM Do YYYY
 time_format: H:mm:ss
 
 # Pagination
@@ -76,11 +76,12 @@ pagination_dir: page
 
 # Disqus
 disqus_shortname:
+duoshuo: pinkyjie-blog
 
 # Extensions
 ## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
 ## Themes: https://github.com/hexojs/hexo/wiki/Themes
-theme: landscape
+theme: hexo-theme-iOS7
 exclude_generator:
 
 # Deployment
@@ -88,3 +89,9 @@ exclude_generator:
 deploy:
   type:
 
+google_analytics: UA-45012422-1
+
+plugins:
+- hexo-generator-feed
+- hexo-generator-sitemap
+- hexo-generator-minify

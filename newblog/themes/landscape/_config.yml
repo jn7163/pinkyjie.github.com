@@ -11,16 +11,17 @@ fancybox: true
 # Sidebar
 sidebar: right
 widgets:
+- recent_posts
 - category
-- tag
+# - tag
 - tagcloud
 - archive
-- recent_posts
+
 
 # Miscellaneous
-google_analytics:
+google_analytics: UA-45012422-1
 favicon: /favicon.png
-twitter:
+twitter: PinkyJie
 google_plus:
 fb_admins:
 fb_app_id:
