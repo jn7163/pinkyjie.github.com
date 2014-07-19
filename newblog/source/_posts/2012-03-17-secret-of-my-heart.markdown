@@ -1,11 +1,6 @@
 ---
-author: 马斯特
-comments: true
-date: 2012-03-17 20:47:18+00:00
-layout: post
-slug: secret-of-my-heart
+date: 2012-03-17 20:47:18
 title: Secret of my heart
-wordpress_id: 501
 categories:
 - 斯特不知道咋分类
 ---
@@ -50,4 +45,4 @@ Celebrate this love I can't reveal I can't show you <br />
 
 
 
-![]({{ site.img_url }}/secret-of-my-heart-1.jpg)
+![](http://pinkyjie-blog.qiniudn.com/images/secret-of-my-heart-1.jpg)

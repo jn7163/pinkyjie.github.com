@@ -1,11 +1,6 @@
 ---
-author: 马斯特
-comments: true
-date: 2010-08-02 15:49:52+00:00
-layout: post
-slug: website-moved
+date: 2010-08-02 15:49:52
 title: 网站迁移完毕
-wordpress_id: 84
 categories:
 - 网站折腾斯特
 ---

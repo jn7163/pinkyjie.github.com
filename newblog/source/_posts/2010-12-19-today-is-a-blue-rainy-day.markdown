@@ -1,11 +1,6 @@
 ---
-author: 马斯特
-comments: true
-date: 2010-12-19 13:03:35+00:00
-layout: post
-slug: today-is-a-blue-rainy-day
+date: 2010-12-19 13:03:35
 title: 是下雨让我变得忧郁，还是我的忧郁让外面的雨下不停~
-wordpress_id: 378
 categories:
 - 斯特之生活点滴
 tags:
