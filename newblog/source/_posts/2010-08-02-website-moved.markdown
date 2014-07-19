@@ -1,0 +1,13 @@
+---
+author: 马斯特
+comments: true
+date: 2010-08-02 15:49:52+00:00
+layout: post
+slug: website-moved
+title: 网站迁移完毕
+wordpress_id: 84
+categories:
+- 网站折腾斯特
+---
+
+由于本人前阵子发表的文章带有图片，“去他爹的”这网站的免费空间限制过多，所以本人花了29元大洋买了一个[合租空间](http://item.taobao.com/item.htm?id=4320568900)，这个用着明显比以前爽啊，文章基本都迁移过来了，其实本来也没几篇来着~
