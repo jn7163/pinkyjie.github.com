@@ -19,7 +19,3 @@ StackOverflow: [PinkyJie](https://stackoverflow.com/users/689948/pinkyjie)
 Twitter: [@PinkyJie](https://twitter.com/PinkyJie)
 
 Weibo: [@颖风Pinky](http://weibo.com/pinkyway)
-
-
-
-
