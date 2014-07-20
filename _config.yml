@@ -87,7 +87,10 @@ exclude_generator:
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo:
+    github: git@github.com:PinkyJie/pinkyjie.github.com.git
+    gitcafe: git@gitcafe.com:PinkyJie/PinkyJie.git,gitcafe-pages
 
 google_analytics: UA-45012422-1
 
