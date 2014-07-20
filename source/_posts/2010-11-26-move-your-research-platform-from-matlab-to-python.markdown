@@ -23,7 +23,7 @@ dataset = sp.io.matlab.mio.loadmat(dataset_name)
 ```
 
 
-其中dataset_name就是我们需要导入的.mat文件，但问题又来了，导入后返回的dataset变量是一个“字典”的数据结构，它的key就是储存的变量名称，而对应的value就是变量的内容。这个操作并不像Matlab那样直接将.mat里的变量载入workspace，那我们当然还需要进一步使dataset中存储的变量暴露出来，对应的内容赋给对应的变量名称。可以查看dataset变量的组成，发现除了我们自己的变量，还有另外三个小东西：`__globals__`，`__header__`，`__version__`，它们标识了.mat文件的基本信息，但我们并不需要，所以还需要去掉它们。最终，我们通过一段代码实现：
+其中dataset\_name就是我们需要导入的.mat文件，但问题又来了，导入后返回的dataset变量是一个“字典”的数据结构，它的key就是储存的变量名称，而对应的value就是变量的内容。这个操作并不像Matlab那样直接将.mat里的变量载入workspace，那我们当然还需要进一步使dataset中存储的变量暴露出来，对应的内容赋给对应的变量名称。可以查看dataset变量的组成，发现除了我们自己的变量，还有另外三个小东西：`__globals__`，`__header__`，`__version__`，它们标识了.mat文件的基本信息，但我们并不需要，所以还需要去掉它们。最终，我们通过一段代码实现：
 
 ``` python
 exclude = ['__globals__','__header__','__version__']
