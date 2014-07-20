@@ -3,7 +3,7 @@
 [pinkyjie.com](http://pinkyjie.com)
 
 
-Built with [Jekyll-Bootstrap](http://jekyllbootstrap.com/)
+Built with [Hexo](http://hexo.io/)
 
 
-Theme by [hooligan](https://github.com/dhulihan/hooligan)
+Theme by [hexo-theme-iOS7](https://github.com/tracy-e/hexo-theme-iOS7)
