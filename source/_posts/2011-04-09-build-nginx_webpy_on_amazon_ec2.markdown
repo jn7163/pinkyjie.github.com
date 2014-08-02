@@ -1,8 +1,7 @@
----
 date: 2011-04-09 09:40:43
 title: 在Amazon的EC2上部署nginx+web.py
 categories:
-- 斯特之学习研究
+- 网站相关
 tags:
 - amazon
 - ec2

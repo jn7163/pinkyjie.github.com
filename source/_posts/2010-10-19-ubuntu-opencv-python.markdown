@@ -1,8 +1,7 @@
----
 date: 2010-10-19 07:18:34
 title: Ubuntu下Opencv与Python的协作
 categories:
-- 斯特之学习研究
+- 模式识别
 tags:
 - OpenCV
 - OpenCV+Python

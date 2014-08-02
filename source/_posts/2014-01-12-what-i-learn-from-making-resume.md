@@ -1,8 +1,7 @@
----
 date: 2014-01-12 21:08
 title: 从做简历中学到的知识
 categories:
-- 斯特之学习研究
+- 前端开发
 tags:
 - Bootstrap3
 - FontAwesome4

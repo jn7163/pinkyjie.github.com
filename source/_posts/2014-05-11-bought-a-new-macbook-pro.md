@@ -1,8 +1,7 @@
----
 date: 2014-05-11 19:00
 title: 入手Macbook Pro
 categories:
-- 斯特之生活点滴
+- 生活点滴
 tags:
 - Mac
 - MacbookPro

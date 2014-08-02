@@ -1,8 +1,7 @@
----
 date: 2013-11-24 13:20
 title: Yeoman初体验
 categories:
-- 斯特之学习研究
+- 前端开发
 tags:
 - Yeoman
 - BackboneJS

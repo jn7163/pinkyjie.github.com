@@ -1,8 +1,7 @@
----
 date: 2010-08-04 18:15:21
 title: Ubuntu下Android手机apk软件的安装
 categories:
-- 斯特教你玩手机
+- 瞎折腾
 tags:
 - Android
 - ssh

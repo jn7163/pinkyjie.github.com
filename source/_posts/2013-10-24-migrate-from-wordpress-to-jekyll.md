@@ -1,9 +1,7 @@
----
 date: 2013-10-24 21:09
 title: 从Wordpress迁移到Jekyll
 categories:
-- 网站折腾斯特
-- 斯特之学习研究
+- 网站相关
 tags:
 - jekyll
 - wordpress

@@ -1,8 +1,7 @@
----
 date: 2010-09-11 12:59:43
 title: 求解SDP问题—使用SeDuMi和YALMIP
 categories:
-- 斯特之学习研究
+- 模式识别
 tags:
 - SDP
 - SeDuMi

@@ -1,8 +1,7 @@
----
 date: 2010-10-10 03:01:19
 title: 参与牧师公益计划，免费发放VPN
 categories:
-- 公益VPN计划
+- 瞎折腾
 tags:
 - Twitter
 - VPN

@@ -1,9 +1,7 @@
----
 date: 2011-02-23 06:10:58
 title: 好久没更博客啦~
 categories:
-- 斯特之学习研究
-- 斯特之生活点滴
+- 网站相关
 tags:
 - aurora
 - bibtex4word

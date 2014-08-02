@@ -1,8 +1,7 @@
----
 date: 2011-02-24 11:14:26
 title: 再谈协方差矩阵之主成分分析
 categories:
-- 斯特之学习研究
+- 模式识别
 tags:
 - matlab
 - PCA

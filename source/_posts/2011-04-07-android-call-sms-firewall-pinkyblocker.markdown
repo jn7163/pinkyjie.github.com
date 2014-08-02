@@ -1,9 +1,7 @@
----
 date: 2011-04-07 12:08:39
 title: PinkyBlocker -- 简易的Android来电短信防火墙
 categories:
-- 斯特之学习研究
-- 斯特教你玩手机
+- Android开发
 tags:
 - Android
 - PinkyBlocker

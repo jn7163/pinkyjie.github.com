@@ -1,8 +1,7 @@
----
 date: 2013-12-18 21:20
 title: 用Backbone的思想写web页面
 categories:
-- 斯特之学习研究
+- 前端开发
 tags:
 - BackboneJS
 - UnderscoreJS

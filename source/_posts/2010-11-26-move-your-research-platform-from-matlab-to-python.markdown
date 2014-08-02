@@ -1,8 +1,7 @@
----
 date: 2010-11-26 13:52:29
 title: 将你的科学计算从Matlab迁移到Python？
 categories:
-- 斯特之学习研究
+- 模式识别
 tags:
 - matlab
 - Python

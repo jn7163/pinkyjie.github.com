@@ -1,8 +1,7 @@
----
 date: 2010-12-19 13:01:32
 title: 使用python抓取网页(以人人网新鲜事和团购网信息为例)
 categories:
-- 斯特之学习研究
+- 桌面开发
 tags:
 - BeautifulSoup
 - Python

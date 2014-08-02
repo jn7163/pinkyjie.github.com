@@ -1,8 +1,7 @@
----
 date: 2013-11-30 14:38
 title: 理解Backbone中extend的实现
 categories: 
-- 斯特之学习研究
+- 前端开发
 tags: 
 - BackboneJS
 - UnderscoreJS

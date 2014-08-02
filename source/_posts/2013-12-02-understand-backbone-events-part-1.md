@@ -1,8 +1,7 @@
----
 date: 2013-12-02 22:28
 title: 理解Backbone中Events的实现(一)
 categories:
-- 斯特之学习研究
+- 前端开发
 tags:
 - BackboneJS
 - UnderscoreJS

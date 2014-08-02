@@ -1,8 +1,7 @@
----
 date: 2010-11-16 12:14:39
 title: “批量重命名”小工具
 categories:
-- 斯特之学习研究
+- 桌面开发
 tags:
 - nsis
 - py2exe

@@ -1,8 +1,7 @@
----
 date: 2010-09-01 11:21:28
 title: MyTexPoint——在PowerPoint中使用Tex
 categories:
-- 斯特之学习研究
+- 瞎折腾
 tags:
 - latex
 - MyTexPoint

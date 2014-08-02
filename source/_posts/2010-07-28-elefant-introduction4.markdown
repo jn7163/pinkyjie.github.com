@@ -1,8 +1,7 @@
----
 date: 2010-07-28 13:35:19
 title: elefant使用心得(四)
 categories:
-- 斯特之学习研究
+- 模式识别
 tags:
 - elefant
 - nicta

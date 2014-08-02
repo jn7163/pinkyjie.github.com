@@ -1,8 +1,7 @@
----
 date: 2012-03-17 20:47:18
 title: Secret of my heart
 categories:
-- 斯特不知道咋分类
+- 生活点滴
 ---
 
 <center>
