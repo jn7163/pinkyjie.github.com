@@ -34,7 +34,7 @@ tags:
 * [Dash](http://kapeli.com/dash) - 整合各种开发文档，方便速查，除了图标磕碜点其他没啥缺点。
 * [The unarchiver](http://wakaba.c3.cx/s/apps/unarchiver) - 解压缩工具，基本够用吧。网上有说兼容性不好，不过我目前没碰到不能解压的情况。
 
-其他Windows常用的也基本都一样，比如QQ、旺旺、evernote一类的。值得一提的就是这些软件都可以通过Homebre-Cask安装哦。
+其他Windows常用的也基本都一样，比如QQ、旺旺、evernote一类的。值得一提的就是这些软件都可以通过Homebrew-Cask安装哦。
 
 ### iOS开发
 
