@@ -1,4 +1,4 @@
-title: Git笔记(一)
+title: Git笔记(一)——[git-commit, git-checkout]
 date: 2014-08-02 16:11:25
 categories:
 - 工具相关
@@ -6,6 +6,8 @@ tags:
 - Git
 - SourceTree
 - 版本控制
+- git-commit
+- git-checkout
 ---
 
 其实一直觉得自己是会用Git的，毕竟咱也是用Github的人啊！可是三月份找工作时候的一次面试颠覆了我的看法：
