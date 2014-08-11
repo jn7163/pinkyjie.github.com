@@ -1,4 +1,4 @@
-title: Git笔记(一)——[git-commit, git-checkout]
+title: Git笔记(一)——[commit, checkout]
 date: 2014-08-02 16:11:25
 categories:
 - 工具相关

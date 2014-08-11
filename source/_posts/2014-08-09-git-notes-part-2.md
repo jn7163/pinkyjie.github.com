@@ -1,5 +1,5 @@
-title: Git笔记(二)——[git-diff, git-reset]
-date: 2014-08-10 06:32:41
+title: Git笔记(二)——[diff, reset]
+date: 2014-08-09 22:32:41
 categories:
 - 工具相关
 tags:
