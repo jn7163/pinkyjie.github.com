@@ -8,7 +8,7 @@ widgets:
 - search
 - menu
 # - weibo
-# - category
+- category
 - tagcloud
 
 excerpt_link: Read More
