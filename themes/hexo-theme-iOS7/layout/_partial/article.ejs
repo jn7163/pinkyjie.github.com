@@ -29,9 +29,9 @@
             <a href="<%- config.root %><%- item.path %>#more" class="more-link"><%= theme.excerpt_link %></a>
           </div>
         <% } %>
-        <% if (item.comment && config.disqus_shortname){ %>
+        <% if (item.comment && config.duoshuo){ %>
         <div class="alignright">
-          <a href="<%- item.permalink %>#disqus_thread" class="comment-link">Comments</a>
+          <a href="<%- item.permalink %>#ds-thread" class="comment-link">Comments</a>
         </div>
         <% } %>
       <% } else { %>
