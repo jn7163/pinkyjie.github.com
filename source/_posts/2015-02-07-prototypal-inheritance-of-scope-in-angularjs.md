@@ -12,11 +12,12 @@ tags:
 
 相信大家写过AngularJS的都会发现，很多人在处理表单的数据绑定时，都习惯性的把ng-model绑定在$scope的一个对象属性上，而不是直接绑定在scope上。比如说使用`<input name="name" ng-model="data.name" />`而不是`<input name="name" ng-model="name" />`。这是为什么呢？这样在controller里面岂不是写起来更复杂吗？每次访问的时候都要多“点”一下，为什么不直接绑在$scope上呢？其实这样写自然是有它的好处的，而且这种写法也是推荐的最佳实践，尤其是在处理嵌套scope的情形下，这样写是很有必要的。为了弄清楚这么写的原因，我们需要深入的研究一下AngularJS里scope的继承。
 
+<!--more-->
+
 ###基于原型链的继承
 
 AngularJS的官方文档里有这么一句话来描述scope：`A "child scope" (prototypically) inherits properties from its parent scope.` 子scope从其父scope那里继承属性，而括号里的词是重点，这种继承是基于原型链的。直接来看一个最简单的例子。
 
-<!--more-->
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 <p data-height="268" data-theme-id="12085" data-slug-hash="xbPPPJ" data-default-tab="result" data-user="pinkyjie" class='codepen'>See the Pen <a href='http://codepen.io/pinkyjie/pen/xbPPPJ/'>xbPPPJ</a> by Pinky Jie (<a href='http://codepen.io/pinkyjie'>@pinkyjie</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
