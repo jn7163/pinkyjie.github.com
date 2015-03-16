@@ -140,7 +140,7 @@ __GUI_PKG__ = ['example','MHKS','MatMHKS']
 结果很简单，我们需要将自己添加的py文件的文件名添加到中括号内，上面本人已经添加了两个算法，即MHKS和MatMHKS \[貌似example加不加都可以\]。然后我们打开GUI，在算法菜单下的user algorithms子菜单项中，我们可以发现刚才example中的组件A和B了。
 
 
-![](http://pinkyjie-blog.qiniudn.com/images/elefant-introduction4-1.png)
+{% img center-img http://pinkyjie-blog.qiniudn.com/images/elefant-introduction4-1.png %}
 
 
 总结一下，添加自己的组件有两个要点：一，py文件放到指定文件夹中；二，改动`__init__.py`文件内容。有的时候我们发现新添加组件后GUI无法执行了，这时我们可以在终端里执行`launchelefant.py`命令打开GUI，如果无法启动会报错，一般的错误就是你新添加的组件的`__inti__.py`文件出错；有时还会碰到这样的情况，打开了GUI但打不开自己的组件，这是因为你的组件中`__init__()`方法出错，因为当你点击组件时会调用该组件的`__init__()`方法组件才能显示出来，无法显示时请检查你的`__init__()`方法方法。

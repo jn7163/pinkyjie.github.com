@@ -49,7 +49,7 @@ $fa-font-path: '../bower_components/font-awesome/fonts/';
 
 经常看到一些div的边框旁边带一个小三角形，如下图黄色高亮区域：
 
-![](http://pinkyjie-blog.qiniudn.com/images/what-i-learn-from-making-resume-1.PNG)
+{% img center-img http://pinkyjie-blog.qiniudn.com/images/what-i-learn-from-making-resume-1.PNG %}
 
 好久好久以前我曾以为是图片做的，用了Bootstrap以后我知道CSS可以做这个效果，但一直没深究，这次才发现原来border配合:before就可以做哇！长姿势啦！至于如何更好的理解这个写法，请参考[这篇文章](http://www.css88.com/archives/1875)，讲的非常好，看完以后脑子里就会留下那个四种颜色组成的正方形图案，You got it！简单来说，将一个div的宽高都设置为0，然后border的宽度就是要三角形的“垂线”的长度，要实现三角形效果，两步就行：将不需要的边的border宽度设为0，其他不显示的边颜色设为透明。妈妈再也不用担心我画三角形了！（最近好像改成爸爸再也不用担心了。。。）
 
@@ -96,7 +96,7 @@ options: {
 
 如此高大上的简历不支持手机浏览你好意思嘛！没错，必须得支持！那就得说说CSS的响应式布局了。以前虽然也知道这个概念，也一直知道Bootstrap就有很多样式是支持响应式的，但一直没有深入研究。其实响应式布局就像标题说的那样简单，就是定义什么样的宽度下套用什么样的样式。比如下图：
 
-![](http://pinkyjie-blog.qiniudn.com/images/what-i-learn-from-making-resume-2.jpg)
+{% img center-img http://pinkyjie-blog.qiniudn.com/images/what-i-learn-from-making-resume-2.jpg %}
 
 上面当页面宽度比较大时显示长的板块导航，当页面宽度缩小到一定程度时，长条导航显然已经不太方便操作，这时自动变成下拉菜单导航框，用户体验一下子就来了有木有！那么CSS文件怎么写呢，其实很简单，如下：
 
@@ -117,7 +117,7 @@ options: {
 
 既然要做响应式，少不了调试手机端的样式什么的，[weinre](http://people.apache.org/~pmuellr/weinre/docs/latest/)就是干这个事的，让你的移动端浏览器也拥有类似Chrome的Webkit Dev Tools。不过使用起来稍稍有那么一点点繁琐，首先使用`npm -g install weinre`来进行安装（ubuntu用户请自觉sudo），接着使用`weinre --boundHost 0.0.0.0`启动服务，用这个参数绑定所有IP地址，这样手机端才能访问，默认会在8080端口启动。当然还有很多别的参数，可以用`weinre -?`查看。打开以后，访问`http://192.168.3.102:8080/`（请自觉替换自己的IP地址），这个界面有简短的教程可以浏览。简单说，这玩意需要你的HTML里包含一个JS文件才行，比如`<script src="http://192.168.3.102:8080/target/target-script-min.js#anonymous"></script>`，那么将这一行加入你的HTML中，然后用手机端访问网页。这时，打开前面文档里显示的地址`http://192.168.3.102:8080/client/#anonymous`，就会看到下图：
 
-![](http://pinkyjie-blog.qiniudn.com/images/what-i-learn-from-making-resume-3.PNG)
+{% img center-img http://pinkyjie-blog.qiniudn.com/images/what-i-learn-from-making-resume-3.PNG %}
 
 一旦包含那个JS的页面被访问，这里的“Targets”就不再是none，将会是访问页面的设备的IP地址。另外注意这个图的各个菜单，是不是很熟悉啊，没错，这和Chrome的Dev Tools工具是一模一样的啊！开始调试吧，不用将手机插到电脑上，只要在一个局域网内访问页面即可哦！不过要注意的是，这玩意功能没有Chrome的调试工具多，而且稍稍有点慢，不过调调CSS足够了。
 

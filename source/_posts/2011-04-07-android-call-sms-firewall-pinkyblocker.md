@@ -27,10 +27,10 @@ tags:
 添加从通讯录和通话记录中选择号码的功能(仅当选择的规则类型为“特定号码”时才会出现)，截图如下：
 
 
-![](http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-1.png)
+{% img center-img http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-1.png %}
 
 
-![](http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-2.png)
+{% img center-img http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-2.png %}
 
 
 * * *
@@ -70,7 +70,7 @@ PinkyBlocker是一款简单实用的来电和短信防火墙，通过简单的�
 
 ### 软件截图：
 
-![](http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-3.png)
+{% img center-img http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-3.png %}
 
 
 {% blockquote %}
@@ -80,7 +80,7 @@ PinkyBlocker是一款简单实用的来电和短信防火墙，通过简单的�
 
 <!--more-->
 
-![](http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-4.png)
+{% img center-img http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-4.png %}
 
 
 {% blockquote %}
@@ -88,7 +88,7 @@ PinkyBlocker是一款简单实用的来电和短信防火墙，通过简单的�
 {% endblockquote %}
 
 
-![](http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-5.png)
+{% img center-img http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-5.png %}
 
 
 {% blockquote %}
@@ -96,7 +96,7 @@ PinkyBlocker是一款简单实用的来电和短信防火墙，通过简单的�
 {% endblockquote %}
 
 
-![](http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-6.png)
+{% img center-img http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-6.png %}
 
 
 {% blockquote %}
@@ -104,7 +104,7 @@ PinkyBlocker是一款简单实用的来电和短信防火墙，通过简单的�
 {% endblockquote %}
 
 
-![](http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-7.png)
+{% img center-img http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-7.png %}
 
 
 {% blockquote %}
@@ -112,7 +112,7 @@ PinkyBlocker是一款简单实用的来电和短信防火墙，通过简单的�
 {% endblockquote %}
 
 
-![](http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-8.png)
+{% img center-img http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-8.png %}
 
 
 {% blockquote %}
@@ -120,7 +120,7 @@ PinkyBlocker是一款简单实用的来电和短信防火墙，通过简单的�
 {% endblockquote %}
 
 
-![](http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-9.png)
+{% img center-img http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-9.png %}
 
 
 {% blockquote %}
@@ -128,7 +128,7 @@ PinkyBlocker是一款简单实用的来电和短信防火墙，通过简单的�
 {% endblockquote %}
 
 
-![](http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-10.png)
+{% img center-img http://pinkyjie-blog.qiniudn.com/images/android-call-sms-firewall-pinkyblocker-10.png %}
 
 
 {% blockquote %}

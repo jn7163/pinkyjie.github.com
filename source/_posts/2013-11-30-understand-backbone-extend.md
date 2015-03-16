@@ -102,7 +102,7 @@ child.prototype = new Surrogate();
 
 这样就可以达到目的，但这样又有了新问题，拿上面的`ClassA`为例，如果我们new一个`ClassA`，可以看到：
 
-![](http://pinkyjie-blog.qiniudn.com/images/understand-backbone-extend-1.PNG)
+{% img center-img http://pinkyjie-blog.qiniudn.com/images/understand-backbone-extend-1.PNG %}
 
 其中的`__proto__`就是prototype，里面就是实例属性，这里也印证了最前面提到的`prop2`属于实例属性。这里面有一个特殊的属性`constructor`，它就是构造函数，也就是`ClassA`的定义本身。所以上面一旦对`prototype`进行了修改，代表构造函数的`constructor`也会被修改，需要重新“改回来”，即：
 

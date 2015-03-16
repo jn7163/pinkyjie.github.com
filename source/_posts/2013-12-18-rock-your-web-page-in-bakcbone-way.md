@@ -25,7 +25,7 @@ Model、View、Controller这三个玩意在每个人心中的地位可能都不�
 
 为了方便描述，这里假设要做一个简单的用户系统，这个系统就只有一个简单的页面，页面分为两部分，上面一个table来展示所有的用户信息，下面一个form，当用户需要新增、修改用户信息时出现。看如下的示意图：
 
-![](http://pinkyjie-blog.qiniudn.com/images/rock-your-web-page-in-backbone-way-1.png)
+{% img center-img http://pinkyjie-blog.qiniudn.com/images/rock-your-web-page-in-backbone-way-1.png %}
 
 按照刚才的思路，显然，这个页面可以分成两个View，如上图黄色矩形框所标。那根据效果图先来搭一下页面的HTML框架吧！
 

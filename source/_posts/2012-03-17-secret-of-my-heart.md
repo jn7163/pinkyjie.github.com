@@ -44,4 +44,4 @@ Celebrate this love I can't reveal I can't show you <br />
 
 
 
-![](http://pinkyjie-blog.qiniudn.com/images/secret-of-my-heart-1.jpg)
+{% img center-img http://pinkyjie-blog.qiniudn.com/images/secret-of-my-heart-1.jpg %}
