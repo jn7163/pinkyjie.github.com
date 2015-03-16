@@ -5,7 +5,7 @@ categories:
 tags:
 - AngularJS
 - scope
-- Controller
+- controller
 ---
 
 AngularJS中在处理controller时提供了两种语法。
