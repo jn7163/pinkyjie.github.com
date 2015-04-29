@@ -108,7 +108,7 @@ plugins:
 # NexT Theme configuration
 # =============================================================================
 
-# # 多说帐号
+# 多说帐号
 duoshuo_shortname: pinkyjie-blog
 
 # 社交链接，将在侧栏中显示
@@ -139,6 +139,9 @@ since: 2010
 
 # 侧边栏头像
 avatar: http://pinkyjie-blog.qiniudn.com/images/avatar.jpg
+
+# 站内搜索
+swiftype_key: 8k3UxSuRWYkrhVg55bC3
 
 # =============================================================================
 # End NexT Theme configuration
