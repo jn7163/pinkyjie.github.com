@@ -7,6 +7,7 @@ tags:
   - 重构
   - 前端自动化
   - 分割task
+  - generator-aio-angular
 date: 2015-03-24 22:02:22
 ---
 
