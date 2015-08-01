@@ -4,6 +4,7 @@ categories:
 tags:
   - promise
   - 异步编程
+  - AngularJS
   - generator-aio-angular
 date: 2015-07-20 22:25:26
 ---
