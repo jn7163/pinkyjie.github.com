@@ -10,7 +10,7 @@ tags:
 - git-reset
 ---
 
-书接[上回](/2014/08/03/git-notes-part-1/)，直入主题！如果你是接着上篇来的，那么先运行`git reset HEAD test.txt`和`git checkout test.txt`来放弃当前的更改，使最新的commit回到“commit temp”，这个时候运行`git status`，会看到“nothing to commit, working directory clean”。这里，“nothing to commit”说明暂存目录是空的，“working directory clean”说明你的工作目录也没有任何修改。
+书接[上回](/2014/08/02/git-notes-part-1/)，直入主题！如果你是接着上篇来的，那么先运行`git reset HEAD test.txt`和`git checkout test.txt`来放弃当前的更改，使最新的commit回到“commit temp”，这个时候运行`git status`，会看到“nothing to commit, working directory clean”。这里，“nothing to commit”说明暂存目录是空的，“working directory clean”说明你的工作目录也没有任何修改。
 
 <!--more-->
 

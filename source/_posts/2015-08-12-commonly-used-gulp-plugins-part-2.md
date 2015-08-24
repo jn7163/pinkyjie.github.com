@@ -9,7 +9,7 @@ tags:
 date: 2015-08-12 20:45:59
 ---
 
-书接[上回](/2015-08-02-commonly-used-gulp-plugins-part-1/)。
+书接[上回](/2015/08/02/commonly-used-gulp-plugins-part-1/)。
 
 <!--more-->
 
