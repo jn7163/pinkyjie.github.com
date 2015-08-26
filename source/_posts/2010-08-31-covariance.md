@@ -47,7 +47,7 @@ $$C\_{n\times n}=(c\_{i,j},c\_{i,j}=cov(Dim\_{i},Dim\_{j}))$$
 
 这个定义还是很容易理解的，我们可以举一个简单的三维的例子，假设数据集有$\\{x,y,z\\}$三个维度，则协方差矩阵为
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/covariance-1.jpg %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/covariance-1.jpg %}
 
 可见，协方差矩阵是一个对称的矩阵，而且对角线是各个维度上的方差。
 
@@ -61,7 +61,7 @@ $$C\_{n\times n}=(c\_{i,j},c\_{i,j}=cov(Dim\_{i},Dim\_{j}))$$
 MySample = fix(rand(10,3)*50)
 ```
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/covariance-2.jpg %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/covariance-2.jpg %}
 
 
 根据公式，计算协方差需要计算均值，那是按行计算均值还是按列呢，我一开始就老是困扰这个问题。前面我们也特别强调了，协方差矩阵是计算不同维度间的协方差，要时刻牢记这一点。样本矩阵的每行是一个样本，每列为一个维度，所以我们要### 按列计算均值。为了描述方便，我们先将三个维度的数据分别赋值：
@@ -98,7 +98,7 @@ std(dim3)^2 % 得到   94.1778
 cov(MySample)
 ```
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/covariance-3.jpg %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/covariance-3.jpg %}
 
 
 把我们计算的数据对号入座，是不是一摸一样？

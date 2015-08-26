@@ -25,7 +25,7 @@ date: 2015-07-25 13:24:44
 
 先来看一张网站的模块图：
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/simple-layout-based-on-ui-router-1.png 图2 %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/simple-layout-based-on-ui-router-1.png 图1 %}
 
 可以看到整个页面分为5个模块，有了多ui-view的支持，我们可以非常直观的用一个ui-view来对应一个模块，那么我们的主template（即`index.jade`，单页面应用通常只有一个index页面）可以这么写（使用[Jade](http://jade-lang.com/)模板引擎）：
 

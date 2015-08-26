@@ -19,7 +19,7 @@ tags:
 
 这个名字嘛，党是Down的音译，不要和谐我！这篇博客就谈谈开发这个插件时的一些想法吧~
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/liang-zi-down-1.png %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/liang-zi-down-1.png %}
 
 <!--more-->
 
@@ -31,7 +31,7 @@ tags:
 
 最先想到的方案自然是抓取网页了，用淘宝账号密码模拟登陆量子恒道，然后模拟一些请求抓取一页一页的网页，提取其中的数据整理下即可。但是一开始动手就发现问题没这么简单啊，查看量子恒道的首页会发现这个登陆框是一个iframe，如下图：
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/liang-zi-down-2.PNG %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/liang-zi-down-2.PNG %}
 
 淘宝大概是专门做了一个网页用来登陆，网址是`https://login.taobao.com/member/login.jhtml?_input_charset=utf-8&from=lzdp&style=minisimple&minipara=0,0,0&redirect_url=http%3A%2F%2Flz.taobao.com%2Flogin%2F%3F_back%3D%252f&rnd=1393660959397&sub=true`，猜想应该是淘宝所有的服务都链接到这个网页去，然后登陆后拿到token再根据网址里的参数`redirect_url`重定向回各个具体的服务吧。那么既然如此，在程序里就直接访问这个iframe的网址，然后登陆后重定向回来就好。这么想着就开始试验，按照[正常的步骤](http://pinkyjie.com/2010/12/19/fetch-webpage-by-python/)组装Post数据，加加header和cookie啊，发现提交表单后会重定向到同一个登陆页面，然后多了一个### 验证码框，欲哭无泪啊！估计是淘宝发现登陆的不是常用的IP地址会让你输验证码，安全啊！虽然说可以借助一些现成的库来识别这个验证码，不过我觉得为了弄个这再上图片识别太折腾了。与此同时我还发现，即便成功登陆还是问题多多。量子恒道的网站应该是SPA（Single Page Application），全部Ajax实现的。这一点可以从网址上得到确认，比如查看实时客户访问的页面网址`http://lz.taobao.com/#recentvisitors/page:1`，这是很典型的SPA。对于这类动态页面，抓起来也会有很多麻烦。所以最后的结论就是放弃这个方案了！
 
@@ -46,7 +46,7 @@ tags:
 
 观察返回的结果，`"cnt:163"`这个就是访客数据的总条数，那么我们完全可以这么去设计，第一个请求`offset=0,limit=1`，从返回的数据里拿到数据的总数，然后第二个请求`offset=0,limit=cnt`即可拿到所有的数据了。现在的问题就只有一个了：如何拿到参数`_s`。联想到`_c`代表`callback`，那么`_s`最有可能代表的就是`session`，带着这个推测打开Devtools的Resource标签，检查Cookie，发现果然有！如下图，名为`lzsession`的cookie就是我们要找的参数`_s`！
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/liang-zi-down-3.PNG %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/liang-zi-down-3.PNG %}
 
 真是得来全不费功夫啊，但是登录问题又来了。尝试退出登录后发现这个cookie没了，很显然，不登陆是没有这个cookie的（session的意思也表示了登录才会有啊魂淡！）。绕了一大圈又回到登录这个老问题上了，肿么弄呢！这个时候我想到，干脆每次用户自己在浏览器端登录后自己拿到这个cookie的值，然后输到一个地方，然后下载。。。（一棵棵白菜飞过来，求别打脸。。。）但是，session也是有有效期的，也就是说，过一段时间这个session就无效了，所以你也不能指望用户提供一次session就万事大吉了。思前想后，最后的折中方案就是弄个Chrome插件吧，用户访问量子恒道的时候显示在地址栏，一旦用户登录，插件是可以拿到当前页面的所有cookie值的，这个时候用户点击完成数据的导出和下载。
 
@@ -54,11 +54,11 @@ tags:
 
 Chrome插件的资料网上还是挺多的，网上也有翻译好的[中文版文档](https://crxdoc-zh.appspot.com/extensions/index)。简单来说，有的插件会一直显示在工具栏最右侧，有的则是显示在地址栏右侧，如下图：
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/liang-zi-down-4.PNG %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/liang-zi-down-4.PNG %}
 
 高亮部分为这两种不同类型的插件，工具栏右侧的会一直显示，不管你访问什么网站，而地址栏的插件则是根据你访问的网站决定的，特定的网站才会显示，称为“Page Action”，这种正是我们需要的。Chrome插件的开发有一套自己的目录结构，可以借助[Yeoman的chrome-extension-generator](https://github.com/yeoman/generator-chrome-extension)，但是我感觉挺复杂的，反正这个插件比较小，也不需要压缩JS/CSS之类的，Yeoman生成的如此庞大的Gruntfile有点小题大做。后来发现有一个叫[extensionizr](http://extensionizr.com/)的网站，简单的点选一下你想要的插件设置即可下载一个Chrome插件的开发模板，这里也推荐一下。
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/liang-zi-down-5.PNG %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/liang-zi-down-5.PNG %}
 
 这篇文章不打算详述Chrome插件的开发过程，我只说说其中几个比较重要的概念。
 

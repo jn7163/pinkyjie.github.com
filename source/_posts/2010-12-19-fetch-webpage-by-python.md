@@ -50,8 +50,8 @@ opener = urllib2.build_opener(myCookie)
 那么这个Handler怎么工作呢，前面说了，它需要捕捉到HTTP请求才行，也就是说，我们需要知道，登录人人的时候发了什么数据包出去，牛逼的 人可以使用各种命令行抓包工具如Tcpdump一类的，我等小民还是图形化的吧。这里我们借助于Firefox的HttpFox来实现，可以从[这里](https://addons.mozilla.org/zh-CN/firefox/addon/6647/)添 加这个牛逼的插件。安装好该插件以后，我们用Firefox登录人人网，然后输入自己的账号和密码，然后，别急，不要按登录按钮，从状态栏打开 HttpFox插件，点击Start按钮开始抓包，然后点击人人网的登陆，登陆过程完成后点击HttpFox的Stop停止抓包，如果一切正常的话应该可 以看到如下信息了。
 
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/fetch-webpage-by-python-1.png %}
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/fetch-webpage-by-python-2.png %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/fetch-webpage-by-python-1.png %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/fetch-webpage-by-python-2.png %}
 
 
 我们可以看到登陆人人的过程中浏览器向人人的服务器发送POST请求数据，有四项，其中两项是你的账号和密码。下面我们就利用代码模拟发出同样的请求就可以啦。
@@ -73,13 +73,13 @@ parser = BeautifulSoup(html_src)
 现在我们的parser里存储的就是含有好友新鲜事的网页源码了，我们怎样提取有用的信息呢？分析网页这种粗活还是交给Firefox的FireBug([这里下载](https://addons.mozilla.org/zh-CN/firefox/addon/1843/))来玩吧。登入你的人人网，随意右击一下新鲜事里某个人的状态，选择“查看元素”，就会蹦出如下窗口，显示出你所点击的部分对应的源码：
 
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/fetch-webpage-by-python-3.png %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/fetch-webpage-by-python-3.png %}
 
 
 我们可以看到，每个新鲜事对应着article标签，我们再仔细看看article标签的详细内容：
 
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/fetch-webpage-by-python-4.png %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/fetch-webpage-by-python-4.png %}
 
 
 里面的h3标签包含了好友的姓名和状态，当然，还有一些肥猪流的表情地址，接触过HTML的对这个应该不陌生吧。所以我们要抓的就是这个h3啦！
@@ -105,7 +105,7 @@ for my_article in article_list:
 这里，我们通过`find(‘div’,'feed-list’).findAll(‘article’)`获取class属性为`feed-list`的div标签，第二个参数直接为一个字符串时代表的就是CSS的class属性了，然后获取其所有article的列表，对照上面的图，这句其 实就是获得了所有新鲜事的列表。然后我们遍历这个列表，对于每个article标签再获取其h3标签，并提取内容，如果标签中直接含有文本，则可以通过 string属性获得，最后，我们去掉一些控制字符，如换行一类的。最终将结果打印出来，当然这只能获取一小部分，“更多新鲜事”的功能还不能达到，有兴 趣的继续研究吧，我觉得通过HttpFox是不难实现的吧。
 
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/fetch-webpage-by-python-5.png %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/fetch-webpage-by-python-5.png %}
 
 
 ### 团购信息聚合小工具
@@ -113,7 +113,7 @@ for my_article in article_list:
 用同样的知识，我们还可以做一些有趣的应用，像现在很火的团购信息聚合，其实思路还是很容易的，就是分析网站的源代码，提取团购的标题，图片和价格 就好了。这里放出源码文件，有兴趣的可以研究下！用PyQt做的界面，按钮的功能还没有实现，只能提取“美团”，“糯米网”，“QQ团购”三个网站，从下 拉列表框里选择就可显示，图片会保存在本地目录里，来个截图看看吧~
 
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/fetch-webpage-by-python-6.png %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/fetch-webpage-by-python-6.png %}
 
 
 打叉的按钮功能没有实现哦~这里是文件下载，一个pyw主窗体文件，两外两个py文件一个是UI，一个是Resource。

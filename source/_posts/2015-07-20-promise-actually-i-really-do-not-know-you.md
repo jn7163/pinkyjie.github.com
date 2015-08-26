@@ -14,9 +14,9 @@ date: 2015-07-20 22:25:26
 <!--more-->
 
 开始前先放两张Callback Hell的搞笑图吧，虽然不是我们今天的主题，但是太搞笑啦！哈哈哈！
-> {% img center-img http://pinkyjie-blog.qiniudn.com/images/promise-actually-i-really-do-not-know-you-1.png 图1 %}
+> {% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/promise-actually-i-really-do-not-know-you-1.png 图1 %}
 >
-> {% img center-img http://pinkyjie-blog.qiniudn.com/images/promise-actually-i-really-do-not-know-you-2.png 图2 %}
+> {% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/promise-actually-i-really-do-not-know-you-2.png 图2 %}
 
 ### Promise应该这么写
 

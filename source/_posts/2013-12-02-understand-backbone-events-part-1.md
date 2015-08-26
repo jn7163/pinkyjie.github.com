@@ -115,9 +115,9 @@ a.trigger('test', 'arg1', 'arg2', 'arg3'); // 触发自定义事件，传3个参
 
 一句一句执行，最后一句trigger执行的时候会看到断点先是断在了`underscore.js`里，然后继续执行又断在了`backbone.js`里，下面两张图分别是程序执行到两个断点处时，`this`和'arguments'变量的实际值，可以验证刚才上面的分析是正确的。
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/understand-backbone-events-part-1-1.PNG %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/understand-backbone-events-part-1-1.PNG %}
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/understand-backbone-events-part-1-2.PNG %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/understand-backbone-events-part-1-2.PNG %}
 
 如果想验证once是否真的让回调只执行一次，可以再次触发事件，发现没有进断点，证明绑定确实只生效一次。
 

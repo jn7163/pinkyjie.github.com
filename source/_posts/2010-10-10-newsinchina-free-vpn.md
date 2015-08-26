@@ -42,27 +42,27 @@ tags:
 
 首先，左键单击任务栏最右边的网络连接图标，然后选择“打开网络和共享中心”，如下图，围观我们宿舍牛逼的无线网络名称吧~颤抖吧~
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/newsinchina-free-vpn-1.jpg %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/newsinchina-free-vpn-1.jpg %}
 
 在打开后的界面，点击“设置新的连接或网络”，如图：
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/newsinchina-free-vpn-2.jpg %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/newsinchina-free-vpn-2.jpg %}
 
 在点击后出现的界面中选择“连接到工作区”，如图：
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/newsinchina-free-vpn-3.jpg %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/newsinchina-free-vpn-3.jpg %}
 
 接下来，选择上面一项“使用我的Internet连接”，如图：
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/newsinchina-free-vpn-4.jpg %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/newsinchina-free-vpn-4.jpg %}
 
 继续来，下面出现的页面就需要输入VPN的服务器地址了，如图，在“Internet地址”这一栏输入分配给你的地址(申请成功的同学通过邮箱发送)：
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/newsinchina-free-vpn-5.jpg %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/newsinchina-free-vpn-5.jpg %}
 
 接下来，就进入了用户名密码界面，输入分配给你的用户名密码即可，“域”这一项可以留空，这一步就不截图了吧，呵呵，突然觉得这教程太傻瓜了点，如果一切都顺利的话，将会自动连接VPN：
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/newsinchina-free-vpn-6.jpg %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/newsinchina-free-vpn-6.jpg %}
 
 设置成功后，以后这个VPN选项就会出现在第一步的菜单中，当你连上了Internet以后，点击连接该VPN即可。
 

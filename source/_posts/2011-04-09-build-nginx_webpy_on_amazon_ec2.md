@@ -16,11 +16,11 @@ tags:
 
 免费申请的条件有两个，首先你得是新用户，另外需要一张能够提供外币支付的信用卡。整个注册过程大概会扣2刀，网上说是测试信用卡是否可用，到底这2刀是否归还我也不清楚。点击 [http://aws.amazon.com/free/](http://aws.amazon.com/free/) ，点右面的sign up进行申请，申请的步骤跟普通的差不多，就是填填姓名啊地址邮箱神马的，需要注意的是留信用卡的地方，信息一定要正确。另外，申请过程中需要打电话确认，一定要使用真实的电话号码，打电话之前会让你重新填写电话的，所以先前注册时随便填电话也行。输完电话号码点call me now，就会收到一个+1开头的号码打来的电话，一堆非常机械的女声洋文以后，会请你输入电脑屏幕闪的四个数字。不要急，输完就行，电话自动挂断后就可以继续注册。我当时就是太紧张了，导致打了两次电话才完成认证。认证完成后收到电邮确认，然后登陆 [https://console.aws.amazon.com/ec2/home](https://console.aws.amazon.com/ec2/home) ，这就是你的控制台了，在Region里选US west，离我们国家近一点的机房，然后点Launch Instance就可以配置操作系统一类的了。配置中有几点需要注意，首先，选操作系统的时候右面加五星的才是免费的，默认的只有Amazon定制的可选，是基于Fedora的，如果想选Ubuntu，可以点第三个标签Community AMIs，在Viewing里选择Free tier eligible，这里会有很多带五星的系统可以选，有Ubuntu啊，Cent OS一类的可以选，而且都是预装了一些服务器程序或Wordpress程序的，如下图：
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/build-nginx_webpy_on_amazon_ec2-1.png %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/build-nginx_webpy_on_amazon_ec2-1.png %}
 
 在select以后进入的下一步中，注册Instance Type选第一项Micro，这个才是免费的。另外，后面配置security的时候要开几个端口，SSH，HTTP和HTTPS都要开，因为要搞webpy，我直接开了8000-9500所有的端口，参见下图：
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/build-nginx_webpy_on_amazon_ec2-2.png %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/build-nginx_webpy_on_amazon_ec2-2.png %}
 
 其他详细步骤可以看[千百度记忆角落的这篇《Amazon EC2免费一年申请使用图文教程》](http://www.baidu.com.ru/archives/556.html)，非常的详细。所有步骤完成后，就可以在自己的机器上SSH登陆这个VPS了，涉及到公钥证书神马的，因为我是直接用msys在windows上虚拟了一个unix环境中使用ssh的，一条命令搞定，如果你想用putty，SecureCRT一类的SSH客户端，请参见[千百度记忆角落的这篇《Windows下如何用putty连接Amazon EC2实例图文教程！》](http://www.baidu.com.ru/archives/573.html)。
 

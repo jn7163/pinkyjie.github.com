@@ -37,7 +37,7 @@ $scope方式就不详细说了，大家应该最常用这种吧，看下面这�
 
 首先有必要澄清下，这个别名是怎么实现的呢？使用AngularJS在Chrome上的调试插件[AngularJS Batarang](https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk)可以很清楚的看出来。安装好插件后打开[上面的例子](http://s.codepen.io/pinkyjie/debug/YPYWGO)，右击页面“审查元素”打开Chrome的DevTools，在Elements标签里选中`<div ng-controller="scopeController as ctrl" class="ng-scope">`这一行，然后点击右边的$scope标签（就是和Styles，Computed在一行的，看不到的话点击右边的小箭头），结果就是这个DOM元素所对应的`$scope`，如下图：
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/controller-as-vs-scope-1.png 图1 %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/controller-as-vs-scope-1.png 图1 %}
 
 原来别名`ctrl`就是定义在`$scope`上的一个对象，这就是controller的一个实例，所有在JS中定义controller时绑定到`this`上的model其实都是绑定到`$scope.ctrl`上的，看到这里你想到了什么？是不是和上篇文章[AngularJS中scope基于原型链的继承](2015/02/07/prototypal-inheritance-of-scope-in-angularjs/)里的`$scope.data`有异曲同工之妙。所以，使用controller as的一大好处就是原型链继承给scope带来的问题都不复存在了，即有效避免了在嵌套scope的情况下子scope的属性隐藏掉父scope属性的情况。
 > 可以发现，无论定义controller时有没有直接依赖`$scope`，DOM中的scope是始终存在的。即使使用controller as，双向绑定还是通过`$scope`的watch以及digest来实现的。

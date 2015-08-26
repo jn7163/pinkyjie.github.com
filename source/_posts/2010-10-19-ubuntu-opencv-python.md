@@ -37,7 +37,7 @@ apt-get install libpython2.6 python-dev python2.6-dev
 这样以后，编译前所做的工作就基本结束了，从“应用程序”中的“编程”子菜单中打开cmake，Source code这一栏中填写你的OpenCV解压的路径，第二行是编译后的可执行文件放在哪里，可以在OpenCV的路径下新建一个文件夹，如release文件夹，则编译结果会放到其中去，点击Configure按钮，接着出现选择generator的界面，使用默认选项，即Unix Makefiles，点击finish，如果一切顺利的话就会出现以下界面：
 
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/ubuntu-opencv-python-1.png %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/ubuntu-opencv-python-1.png %}
 
 
 正常的话上图中底下的白色框中是有信息的，我的截图是在编译过后截的，所以是空白，接着选择编译参数，这里我们只需要注意以下几个参数有没有被选中，其他的默认即可：
@@ -61,10 +61,10 @@ make
 make过程大概需要几分钟左右，过程如下图这样：
 
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/ubuntu-opencv-python-2.png %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/ubuntu-opencv-python-2.png %}
 
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/ubuntu-opencv-python-3.png %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/ubuntu-opencv-python-3.png %}
 
 最终出现的cv.so文件很重要，它就是OpenCV和Python协作的关键，然后再执行install步骤，终端继续运行：
 
@@ -76,7 +76,7 @@ sudo make install
 过程大概如下图：
 
 
-{% img center-img http://pinkyjie-blog.qiniudn.com/images/ubuntu-opencv-python-4.png %}
+{% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/ubuntu-opencv-python-4.png %}
 
 
 这样以后，OpenCV的安装步骤宣告结束。
