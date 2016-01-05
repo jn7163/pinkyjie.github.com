@@ -1,6 +1,7 @@
 title: 关于
 date: 2014-07-20 05:23:37
 threadkey: _posts-about
+comments: true
 ---
 
 **关于我**： 马斯特，87年生人，爱溜冰的码农
