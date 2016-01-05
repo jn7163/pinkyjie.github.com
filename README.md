@@ -6,4 +6,4 @@
 Built with [Hexo](http://hexo.io/)
 
 
-Theme by [hexo-theme-iOS7](https://github.com/tracy-e/hexo-theme-iOS7)
+Theme by [hexo-theme-next](https://github.com/PinkyJie/hexo-theme-next)
