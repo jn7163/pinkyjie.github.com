@@ -94,15 +94,11 @@ deploy:
 
 # google_analytics: UA-45012422-1
 
-# LiveReload
-livereload:
-  port: 35729
-
 plugins:
 - hexo-generator-feed
 - hexo-generator-sitemap
-- hexo-generator-minify
-- hexo-livereload
+- hexo-html-minifier
+- hexo-clean-css
 
 # =============================================================================
 # NexT Theme configuration
