@@ -16,6 +16,8 @@ tags:
 
 第一次关注[Yeoman](http://yeoman.io/)这玩意大概是在去年七月份的时候吧，那个时候偶然发现了Google的[AngularJS](http://angularjs.org/)，然后顺便发现了Yeoman。看Logo第一感觉很像是Jenkins，一个仆人的样子，当时也就只当是一个快速生成网站原型的工具，没细细研究过。直到最近又在很多文章中看到它的身影，决定小试一把。
 
+<!--more-->
+
 ### 安装
 
 Yeoman的安装基于npm，所以需要先安装好Node.js，另外如果需要使用Sass来写CSS的话，需要安装Ruby和Compass工具，这个不细说了，很简单的。完事以后在命令行运行`npm install -g yo`即可，如果用Linux的话记得`sudo`啊。如果一切顺利，Yeoman的3个工具：`yo`，`bower`和`grunt`就安装好了。当然这步也可能会报错，比如我自己在windows上就遇到`Error: No compatible version found: yo`的报错。出现这个问题请检查你的Node.js的版本，如我的是`v0.6.15`，太老了，升级到最新版`v0.10.22`再重新执行安装命令即可。安装成功后我们先来看看这3个工具吧：
@@ -35,8 +37,6 @@ Yeoman就是利用这三个工具来为我们服务的。第一次在命令行�
 ```
 
 从这里我们就要开始适应Yeoman这种问答的服务方式，每次你运行一些命令，它就会给出一些选项让你选择。我们看到第一项就是安装generator。下面就以Backbone的项目为例来看看如何利用Yeoman来快速生成框架吧。
-
-<!--more-->
 
 ### Backbone的generator
 

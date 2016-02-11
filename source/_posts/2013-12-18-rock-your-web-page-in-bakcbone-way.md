@@ -15,11 +15,12 @@ tags:
 
 研究Backbone有一段时间了，接受了Backbone的这种设定后，就会发现已经开始排斥用plain的方式再去写web页面了。但是自己练手的项目还比较自由，要是公司的项目怎么办呢，就是不准你用Backbone库你怎么弄呢！其实，抛开Backbone库本身，照样可以写出Backbone的风格来！学一个库本身不重要，重要的是理解它的思想，并灵活运用到其他地方去。这一说有点高端了，其实我也还在摸索阶段，下面就说说我自己摸索出来的“Backbone风”吧！
 
+<!--more-->
+
 ### View——绝对的核心
 
 Model、View、Controller这三个玩意在每个人心中的地位可能都不一样，如果要问哪个最重要，每个人都会有自己不同的理由。但我这里要说的是，对最终用户来说，View显然是核心，因为它是最终用户唯一能看到的东西，工作在“最前线”的！在传统的MVC框架（如Ruby on Rails）中，View显得“很不上档次”，它只是Template的代名词，只是负责将Controller传过来的Model渲染成页面。而在Backbone这个“伪MVC”（MV\*）库中，赋予了View新的意义，由于它没有真正意义上的Controller，实际上View充当了部分Controller的功能。来回忆下，在Backbone里一个View通常都有哪些property：`el`（代表web页面上的一块区域），`template`（代表模板），`model/collection`（代表要渲染进模板的数据），除此之外就是各种页面元素的事件绑定和处理以及监听其他View或Model/Collection的事件。简单来说，一个Backbone的View就代表了web页面上的一块区域（简单理解就是一个div），它全权负责这块区域，包括如何渲染它，如何处理这块区域内的事件响应，如果根据其他对象的事件来更改这块区域的渲染，等等等等。而一个完整的web页面恰恰可以看成是一个个的区域组成的，所以，View可以说是绝对的核心。这就是我所理解的Backbone风格中最重要的一点！可以大胆的想象，在非常简化的情况下，只要几个View就够了！！！勇敢的少年，随我来实践吧！
 
-<!--more-->
 
 ### 几个View一台戏
 
@@ -83,11 +84,11 @@ Model、View、Controller这三个玩意在每个人心中的地位可能都不�
       <label class="control-label" for="input-gender">Gender:</label>
       <div class="controls">
         <label class="radio inline">
-          <input type="radio" name="gender" value="boy" 
+          <input type="radio" name="gender" value="boy"
             <% if(gender === 'boy') {%>checked <% } %> />Boy
         </label>
         <label class="radio inline">
-          <input type="radio" name="gender" value="girl" 
+          <input type="radio" name="gender" value="girl"
             <% if(gender === 'girl') {%>checked <% } %> />Girl
         </label>
       </div>

@@ -11,6 +11,8 @@ tags:
 
 暑假时就想写一篇关于Ubuntu下配置Opencv与Python协作的文章，苦于当时自己也不是搞得特别清楚，正好最近重装了个Ubuntu 10.10，重新配置了一遍，才算真正明白。网上关于这个的文章虽然一大把，但不是太复杂就是根本不管用，这个配置还是有点闹心的。
 
+<!--more-->
+
 ### Opencv的编译和安装
 
 Linux下貌似只能下载Opencv的源码了，来到[Opencv的中文官网](http://www.opencv.org.cn/index.php/Download)，最新版本是2.1，点击[OpenCV for Linux](http://www.opencv.org.cn/download/OpenCV-2.1.0.tar.bz2)，下载下来的是一个压缩包，随便解压到你喜欢的位置，以我的机器为例，解压到 `/MySoft`下，最终的目录结构为： `/home/pinky/MySoft/OpenCV-2.1.0/`。由于下载得到的是源码，需要进行编译，官网推荐的编译方式是使用cmake，这里我是用的是cmake的gui版本，即`cmke-qt-gui`，首先我们需要使用终端安装它。打开终端，运行命令：
@@ -26,8 +28,6 @@ sudo apt-get install aptitude
 sudo aptitude install libgtk2.0-dev
 ```
 
-
-<!--more-->
 aptitude 可以说是apt-get的一个GUI界面，不过这里用它可能是因为它可以自动安装所有的依赖包吧。这个安装以后，为了后面和Python协作，还需要检查一下你机器上面的Python相关依赖，终端运行命令：
 
 ``` bash

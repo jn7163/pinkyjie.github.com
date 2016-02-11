@@ -12,6 +12,8 @@ tags:
 
 最新由于学术加装B的双重需要，有时候不得不用一下奔图，不过离开了Windows，给俺的G1安装软件就成了必须要面对的大问题，什么91手机助手，豌豆荚这一类的东西统统没有Linux版，根据中国的环境估计以后也不会有，那要管理手机只能寻求最原始的方式了，那就是Android SDK。
 
+<!--more-->
+
 ### 下载Android SDK for Linux
 
 本来这个下载SDK没啥可写的，但因为你我都在天朝，这东西就可以讲很多了，因为[Android Developer网站](http://developer.android.com/index.html)被墙了，俺用脚趾头想了个死去活来也没想通，最后只能用一句话来搪塞：因为这是在天朝。会翻Wall的朋友请狂击[本链接](http://dl.google.com/android/android-sdk_r06-linux_86.tgz)下载，然后跳过本节(囧)，不会的朋友没关系，我在这里简要写一下奔图下怎样使用ssh翻Wall，很有用的哦。
@@ -21,7 +23,6 @@ tags:
 
 {% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/ubuntu-android-apk-install-1.png %}
 
-<!--more-->
 
 填完资料后会发一封邮件到你的邮箱，点击邮箱中的地址激活帐号，如下图，画黑线那个地址。(我不禁觉着这教程太傻瓜了。。。)
 

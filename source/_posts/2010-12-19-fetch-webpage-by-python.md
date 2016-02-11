@@ -12,6 +12,8 @@ tags:
 
 前一段时间写的小东西，一直没工夫把他系统写出来，今天眼睛疼，就写写吧~~(原来博主不蛋疼时也会更新博客的哈~)
 
+<!--more-->
+
 ### python抓取网页基础
 
 python自己带有很多网络应用相关的模块，如：ftplib用于FTP相关操作，smtplib和poplib用于收发电子邮件等等，利用这些 模块自己写一个FTP软件或是邮件客户端类软件完全是可能的，我就简单的试过完全用python脚本收发邮件和操作自己的FTP服务器。当然，这都不是今 天的主角，我们今天要用到的几个模块是：urllib，urllib2，cookielib，BeautifulSoup，我们先来简单介绍下。 urllib和urllib2自然都是处理URL相关的操作，urllib可以从指定的URL下载文件，或是对一些字符串进行编码解码以使他们成为特定的 URL串，而urllib2则比urllib更2一点，哦不对，是更牛逼一点。它有各种各样的Handler啊，Processor啊可以处理更复杂的问 题，比如网络认证，使用代理服务器，使用cookie等等。第三个cookielib，顾名思义，专门处理cookie相关的操作，其他的我也没深入过。 而最后一个包，BeautifulSoup，“美丽的汤”，它是一个第三方的包，专门用于解析HTML和XML文件，使用非常之傻瓜，我们就要靠它来解析 网页源代码了，可以从[这里](http://www.crummy.com/software/BeautifulSoup/#Download)下载，当然你也可以用easy_install安装它，[这里](http://www.crummy.com/software/BeautifulSoup/documentation.zh.html)还有它的中文使用文档，有多例子是相当不错的。
@@ -32,7 +34,6 @@ parser = BeautifulSoup(html_src)
 
 这样，后续处理HTML源码的工作交给parser变量来负责就好，我们可以简单的调用parser的prettify函数来相对美观的显示源码， 可以看到这样就能看到中文字符了，因为BeautifulSoup能自动处理字符问题，并将返回结果都转化为Unicode编码格式。另 外，BeautifulSoup还能迅速定位到满足条件的指定标签，后面我们会用到~
 
-<!--more-->
 
 ### 抓取人人网的新鲜事
 

@@ -12,6 +12,8 @@ tags:
 
 SDP(SemiDefinite Programing，半定规划)是凸优化(Convex Optimization)的一种，貌似近些年来比较热，反正这个东西常常出现在我看的论文中。论文里一般是把一个问题转化为SDP，然后极不负责任的扔了一句可以使用SeDuMi等工具箱解决就完事了，搞的本人非常迷茫，于是决定一探究竟，谁知还搞了个意外收获，那就是YALMIP工具箱。[SeDuMi](http://sedumi.ie.lehigh.edu/)和[YALMIP](http://users.isy.liu.se/johanl/yalmip/)都是Matlab的工具箱，下载和安装请参见它们的主页。下面我就分别谈谈怎么样将两个工具箱应用于SDP求解吧。
 
+<!--more-->
+
 ### SDP问题的对偶原型及求解步骤
 
 下面就是一个典型的SDP问题：
@@ -33,8 +35,6 @@ $$ct = \[b\_{1};-b\_{2};vec(F\_{0})\]$$
 LMI中矩阵的阶数: $K.s = size(F\_{0},1)$
 
 这样，我们就可以调用$\[x,y,info\] = sedumi(Att,bt,ct,K)$来求解了，其中的y即为优化后得到的最优解。
-
-<!--more-->
 
 ### 一个典型的例子
 

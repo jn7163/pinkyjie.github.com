@@ -11,11 +11,11 @@ tags:
 
 昨天在写wordpress上写日志时，发现要编辑许多公式，一番搜索之下发现了Using Latex这个插件(详情请[猛击这里](http://www.dutor.net/index.php/2010/05/wordpress-using-latex/))，Latex在编辑公式方面我觉得是无可替代的王者。今天上午做PPT的时候，又被很多公式弄的心烦，MathType实在太不好使了，自带的就更不用说了。我突发奇想，是不是PowerPoint里面也可以使用Latex来制作公式呢？Google之，果然有！一个叫TexPoint的收费东东，本着不用收费软件的宗旨(画外音：放P！你是没找到破解版吧~)，继续搜索之下发现了这个好东东——MyTexPoint([官网](http://thd.pnpi.spb.ru/~gromov/mytexpoint.html))，人家的介绍就是Free simplified version of TeXPoint，免费简化版的TexPoint，嘿嘿，针对性多强啊~
 
+<!--more-->
+
 下面就由我带领大家领略一下MyTexPoint的风骚吧！猛击[这里](http://thd.pnpi.spb.ru/~gromov/ccount.php?zip)从官方下载，下载下来是个压缩包，绿色版的，随便解压个地方就好。值得注意的是本软件需要你的电脑上已经安装好了[MiKTex](http://miktex.org/) 和 [ghostscript](http://www.ghostscript.com/)，猜想可能需要调用他俩进行编译，安装过[CTex](http://www.ctex.org/HomePage)的朋友这两个东西默认都是装好的。
 
 由于该软件并不像MathType那样与Office集成，所以无法在PowerPoint中直接调用它。每次使用的时候，我们需要先打开PowerPoint(本文以2003为例，因为俺觉得07和10都没有03快~官方声明是兼容07和10版的)，然后打开MyTexPoint.exe文件，发现出现了这个一个小窗口，不仔细找还真发现不了。。。
-
-<!--more-->
 
 
 {% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/mytexpoint-powerpoint-tex-1.jpg %}

@@ -14,12 +14,13 @@ tags:
 
 上周末闲着没事干突然想把博客从Wordpress迁移到Github pages上，于是周日花了一天时间做迁移，期间各种折腾，终于变成了现在这样还算满意的情况。虽然我已经好久不写博客了，但俗话说“书非借不能读也”，博客这一迁移也激起了我重新写博客的欲望。再说，这个博客还身兼重任，那就是——养媳妇！哈哈～还是说说迁移中遇到的乱七八糟的问题吧～
 
+<!--more-->
+
 ### 搭建本地环境
 
 首先，自然是在自己的github上面new一个repository了，名字必须是`yourname.github.com`，虽然现在github pages的地址已经改为`yourname.github.io`了，但我还没有尝试过repository用io结尾行不。
 完成以后，就是各种本地的设置了，搭建git环境，搭建ruby环境啊一类的，这里就不详细说了，ruby环境的搭建推荐使用[RVM](https://rvm.io/)，很方便的说，当然，貌似不支持windows。。。如果在widnows下我推荐使用云IDE，就好像浏览器里的虚拟机，`editor+terminal`，我常用`Nitrous.IO`，给个[我的推荐链接](https://www.nitrous.io/join/OoRQwt0SaLc)，有兴趣的可以试试。
 
-<!--more-->
 
 然后就要在本地安装`Jekyll`了，一句话`gem install jekyll`搞定。[Jekyll](http://jekyllrb.com/)是一个ruby编写的静态站点生成器，在github上搭博客就靠它。但直接用jekyll貌似外观太朴素了，推荐直接使用[jekyll-bootstrap](http://jekyllbootstrap.com/)，从名字就可以看出，这玩意把来自twitter的优秀CSS框架`bootstrap`结合进来，很多漂亮的主题可以选择，而且内置了很多常用的功能。直接从`jekyll-bootstrap`起步吧，先clone下来，然后把remote的地址改成自己的～
 

@@ -1,8 +1,8 @@
 date: 2013-11-30 14:38
 title: 理解Backbone中extend的实现
-categories: 
+categories:
 - 前端开发
-tags: 
+tags:
 - BackboneJS
 - UnderscoreJS
 - Javascript
@@ -13,25 +13,27 @@ tags:
 
 Backbone这库真心不错，虽然后来我也看过AngularJS、EmberJS这样full stack的MVC框架，但始终对UI和Model的双向绑定无爱啊，还是钟爱Backbone啊。前段时间简单研究了下它的源码，谈谈里面继承即extend函数的实现。先来看看来自[带注释的Backbone源码](http://backbonejs.org/docs/backbone.html#section-190)里跟extend有关的源代码。
 
+<!--more-->
+
 ``` javascript
 var extend = function(protoProps, staticProps) {
     var parent = this;
     var child;
-    
+
     if (protoProps && _.has(protoProps, 'constructor')) {
         child = protoProps.constructor;
     } else {
         child = function(){ return parent.apply(this, arguments); };
     }
-    
+
     _.extend(child, parent, staticProps);
-    
+
     var Surrogate = function(){ this.constructor = child; };
     Surrogate.prototype = parent.prototype;
     child.prototype = new Surrogate;
-    
+
     if (protoProps) _.extend(child.prototype, protoProps);
-    
+
     child.__super__ = parent.prototype;
 
     return child;
@@ -40,7 +42,6 @@ var extend = function(protoProps, staticProps) {
 Model.extend = Collection.extend = Router.extend = View.extend = History.extend = extend;
 ```
 
-<!--more-->
 
 从第一行开始看，先看extend的函数定义，两个参数`protoProps`和`staticProps`，从参数的命名就可以猜出来：
 
@@ -122,15 +123,15 @@ child.prototype.constructor = child;
 
 ``` javascript
 __hasProp = {}.hasOwnProperty;
-__extends = function(child, parent) { 
-    for (var key in parent) { 
-        if (__hasProp.call(parent, key)) child[key] = parent[key]; 
+__extends = function(child, parent) {
+    for (var key in parent) {
+        if (__hasProp.call(parent, key)) child[key] = parent[key];
     }
-    function ctor() { this.constructor = child; } 
-    ctor.prototype = parent.prototype; 
-    child.prototype = new ctor(); 
-    child.__super__ = parent.prototype; 
-    return child; 
+    function ctor() { this.constructor = child; }
+    ctor.prototype = parent.prototype;
+    child.prototype = new ctor();
+    child.__super__ = parent.prototype;
+    return child;
 };
 ```
 

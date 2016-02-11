@@ -10,7 +10,12 @@ tags:
 - 前端MVC
 ---
 
-上一篇分析了下[Backbone中extend的实现](http://pinkyjie.com/2013/11/29/understand-backbone-extend/)，这篇就学学Backbone中的Events。`Backbone.Events`其实就是一个plain的object，里面定义了如`on`、`off`、`trigger`等方法，设计它的原因就是方便Events中定义的方法混合进其他任意的object里，为任意object提供绑定、解绑和触发自定义事件的功能，比如[带注释的源码](http://backbonejs.org/docs/backbone.html#section-14)里提供的小例子：
+上一篇分析了下[Backbone中extend的实现](http://pinkyjie.com/2013/11/29/understand-backbone-extend/)，这篇就学学Backbone中的Events。
+
+<!--more-->
+
+
+`Backbone.Events`其实就是一个plain的object，里面定义了如`on`、`off`、`trigger`等方法，设计它的原因就是方便Events中定义的方法混合进其他任意的object里，为任意object提供绑定、解绑和触发自定义事件的功能，比如[带注释的源码](http://backbonejs.org/docs/backbone.html#section-14)里提供的小例子：
 
 ``` javascript
 var object = {};
@@ -21,7 +26,6 @@ object.trigger('expand');
 
 通过UnderscoreJS的extend函数使object拥有了on和trigger方法，绑定和触发了一个叫做expand的自定义事件。
 
-<!--more-->
 
 ### 事件的基本要素
 

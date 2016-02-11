@@ -12,6 +12,8 @@ tags:
 
 书接[上回](http://pinkyjie.com/2013/12/02/understand-backbone-events-part-1/)，上次介绍了`Backbone.Events`的`on`和`once`，这篇继续介绍剩下的，先从`off`开始吧。
 
+<!--more-->
+
 ### off的实现
 
 ``` javascript
@@ -43,7 +45,6 @@ off: function(name, callback, context) {
 }
 ```
 
-<!--more-->
 
 `off`用来解除事件的绑定，传入的参数还是老三样，即事件的三要素：名称、回调、上下文。在[带注释的源码](http://backbonejs.org/docs/backbone.html#section-17)里很详细的介绍了`off`的大致流程。首先这三个参数都是可选的，三要素可以唯一确定一个绑定，忽略一个要素，则范围就会扩大。比如，不传context，则匹配前两个的参数的绑定全部被解绑，如果callback也不传，则该事件的所有绑定被解绑，如果连name也不传，也就是直接调`off()`，则所有事件的所有绑定都被解绑。上篇文章分析过，绑定就是把callback填到特定的数组里，那解绑就从数组里删除就好了。
 

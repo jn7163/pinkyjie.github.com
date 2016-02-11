@@ -19,9 +19,10 @@ tags:
 
 这个名字嘛，党是Down的音译，不要和谐我！这篇博客就谈谈开发这个插件时的一些想法吧~
 
+<!--more-->
+
 {% img center-img http://7jptbo.com1.z0.glb.clouddn.com/images/liang-zi-down-1.png %}
 
-<!--more-->
 
 ### 缘由
 

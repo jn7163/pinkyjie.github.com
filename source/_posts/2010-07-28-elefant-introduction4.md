@@ -12,12 +12,13 @@ tags:
 
 看完前面三篇文章，相信大家对elefant都有一个比较初步的认识了。那么这节我们来看看怎样将自己的算法作为新组件添加到GUI中去，这才是我们最想要的。
 
+<!--more-->
+
 ### 加入自己的算法
 
 如何加入自己的算法，[官方文档](http://elefant.developer.nicta.com.au/Getting_started/component-manual)里有简单的说明，但不完整，我是通过看一个[NICTA的暑期学校视频](http://videolectures.net/mlss08au_webers_mll/)(页面点进去一个老头讲的，有三段)而明白的。首先，我们需要找到Elefant的安装路径，为了找这个我费了半天劲，最后动用了终端的find命令，终于找到奔图下的路径为:
 `/usr/local/lib/python2.6/dist-packages/elefant`
 在这个目录下我们可以发现一个components子目录，其下有一个user目录，我们以后自己添加的组件(即py文件)就需要放在这里。注意到这里有一个叫example.py的文件，这就是官方给我们的例子了。
-<!--more-->
 
 ``` python
 from elefant.framework.core.ports import IN_PORT, OUT_PORT
