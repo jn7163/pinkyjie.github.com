@@ -297,7 +297,7 @@ idleTimeout: 1000
 
 最后，完整的实现可以戳这里：
 
-* `.travis.yml`：https://github.com/PinkyJie/angular1-webpack-starter/blob/master/.travis.yml
-* script部分的脚本：https://github.com/PinkyJie/angular1-webpack-starter/blob/master/publish-to-gh-pages.sh
-* `karma.config.js`：https://github.com/PinkyJie/angular1-webpack-starter/blob/master/karma.config.js
-* `protractor.config.js`：https://github.com/PinkyJie/angular1-webpack-starter/blob/master/protractor.config.js
+* [.travis.yml](https://github.com/PinkyJie/angular1-webpack-starter/blob/master/.travis.yml)
+* [script部分的脚本](https://github.com/PinkyJie/angular1-webpack-starter/blob/master/publish-to-gh-pages.sh)
+* [karma.config.js](https://github.com/PinkyJie/angular1-webpack-starter/blob/master/karma.config.js)
+* [protractor.config.js](https://github.com/PinkyJie/angular1-webpack-starter/blob/master/protractor.config.js)
