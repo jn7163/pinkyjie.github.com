@@ -90,7 +90,7 @@ deploy:
   type: git
   repo:
     github: git@github.com:PinkyJie/pinkyjie.github.com.git,master
-    gitcafe: git@gitcafe.com:PinkyJie/PinkyJie.git,gitcafe-pages
+    # gitcafe: git@gitcafe.com:PinkyJie/PinkyJie.git,gitcafe-pages
 
 # google_analytics: UA-45012422-1
 
