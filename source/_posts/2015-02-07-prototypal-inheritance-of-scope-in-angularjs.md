@@ -14,7 +14,7 @@ tags:
 
 <!--more-->
 
-###基于原型链的继承
+### 基于原型链的继承
 
 AngularJS的官方文档里有这么一句话来描述scope：`A "child scope" (prototypically) inherits properties from its parent scope.` 子scope从其父scope那里继承属性，而括号里的词是重点，这种继承是基于原型链的。直接来看一个最简单的例子。
 
@@ -33,7 +33,7 @@ AngularJS的官方文档里有这么一句话来描述scope：`A "child scope" (
 我们可以从分析实验2入手，因为实验2之前父子scope是可以同步，实验2之后父子scope已经完全独立，就像是父scope和子scope操作的是不同的model一样。那究竟是不是这么回事呢？我们尝试修改代码，在`ChildCtrl`的函数中添加一行`$scope.myName = 'Child Name';`。这时，我们修改两个input框，发现无法同步。这个也很好理解，还拿`toString()`来举例，如果自定义的对象里重写了`toString()`方法，那么这个子对象上的方法就覆盖了继承过来的方法。同样的，这里子scope的`myName`属性覆盖了从父scope继承过来的`myName`属性。
 > 在父scope属性被隐藏的情况下如果要访问其属性，可以使用子scope上的`$parent`属性来显式的访问。
 
-###关于继承属性的读和写
+### 关于继承属性的读和写
 
 实验2造成的结果其实就是在子scope上重新定义了`myName`属性。是什么触发了这个操作呢？我们修改子Child Name的input框值，根据AngularJS的双向绑定，触发了子scope上`myName`属性的写操作，写操作发现子scope上没有自己定义这个属性（可以通过`hasOwnProperty()`函数来确定）时，触发子scope去定义一个`myName`属性。正是由于子scope现在有了自己的`myName`属性，父scope继承过来的`myName`被隐藏(shadow)，导致了两者的更改互不影响。所以可以总结在基于原型链的继承中，子类属性的读和写有这么几个特点：
 * 读子类的属性时，子类有这个属性（`hasOwnProperty`）的时候则读子类自己的，子类没有的时候读父类的，不管子类有没有这个属性，在子类上都不会有新属性被创建。
@@ -49,7 +49,7 @@ AngularJS的官方文档里有这么一句话来描述scope：`A "child scope" (
 区别就在于写`data.myName`的时候会尝试先去读`data`属性，正是由于这个特性，所以在处理表单的数据绑定时才推荐使用点运算符，即把model绑定在scope的某个对象属性上。
 > 可能有人会对这个有异议，考虑这个例子：`var a = {}; a.data.myName = "abc";`，显然执行这句代码会报错，错误是`TypeError: Cannot set property 'myName' of undefined`，说明解释器先尝试去读`a.data`，发现是undefined，然后再去写其`myName`属性，才报了这么一个错！
 
-###其他会产生子scope的标签
+### 其他会产生子scope的标签
 
 除了`ng-controller`会产生子scope外，AngularJS里的还有很多其他标签也同样会产生子scope：
 * `ng-repeat`
@@ -66,7 +66,7 @@ AngularJS的官方文档里有这么一句话来描述scope：`A "child scope" (
 
 这里使用`ng-repeat`可以轻松的将不同的变量传入同一个模板中。
 
-###directive中的scope
+### directive中的scope
 
 directive比较复杂，所以单独拿出来研究，它有一个`scope`参数，根据参数的不同就有不同的行为。
 * 默认情况下，即构造directive的时候不传scope参数，等同于传入`scope: false`，这种情况不会产生新的scope，也就不存在继承的问题，directive的scope和原来是同一个。

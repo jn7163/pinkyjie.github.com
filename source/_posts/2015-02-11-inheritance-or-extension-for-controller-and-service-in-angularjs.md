@@ -21,7 +21,7 @@ tags:
 
 <!--more-->
 
-###controller的继承
+### controller的继承
 
 说到controller，我们在[前面的文章](/2015/02/09/controller-as-vs-scope/)中介绍过有两种写法：使用`$scope`或使用`controller as`。针对这两种方式的区别，我们也可以使用两种不同的继承方式：
 * 使用`controller as`的情况下，特点是controller不再依赖`$scope`，就跟普通的函数差不多，这个时候可以使用Javascript原生的继承方式。
@@ -69,7 +69,7 @@ __*比较*__
 
 可以发现，其实这两种方式最大的区别就是，原生继承中需要调用`extend`函数来继承，并且子controller里需要显式调用父controller的构造函数来是实现属性的继承。而使用`$controller`service则只需要依赖注入和传入`$scope`即可。
 
-###service的继承
+### service的继承
 
 service的继承就比较简单了，AngularJS中的service可以认为是new了service构造函数的实例。看下面这个例子，与上面的例子类似，同样是展示了继承过程中不改变或覆盖父service的属性和方法。
 
@@ -82,13 +82,13 @@ service的继承就比较简单了，AngularJS中的service可以认为是new了
 > 这里的extend和上面自己写的extend有什么区别呢？其实`angular.extend`的功能是一个Shallow Copy，类似上面我们自己的extend中的这段
 ``` javascript
 for (var key in parent) {
-  if (hasProp.call(parent, key)) 
-    child[key] = parent[key]; 
-} 
+  if (hasProp.call(parent, key))
+    child[key] = parent[key];
+}
 ```
 * 第4部分各种定义，可以看到`TestCtrl1`和`TestCtrl2`的定义都是`TestCtrl`，只是一个依赖`ParentService`，另一个依赖`ChildService`罢了。
 
-###service的扩展
+### service的扩展
 
 其实扩展说白了，就是可以把一个已经定义好的service进行修改，为了保证这个修改的优先级，可以在module的config阶段来实现。废话不说，直接上例子吧。
 
