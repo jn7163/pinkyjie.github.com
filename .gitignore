@@ -1,9 +1,9 @@
 .DS_Store
 Thumbs.db
 db.json
-debug.log
+*.log
 node_modules/
 public/
-.deploy/
+.deploy*/
 assets/
 qiniu_conf.json

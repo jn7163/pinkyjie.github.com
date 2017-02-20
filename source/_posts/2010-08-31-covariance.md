@@ -14,7 +14,7 @@ tags:
 
 ### 统计学的基本概念
 
-学过概率统计的孩子都知道，统计里最基本的概念就是样本的均值，方差，或者再加个标准差。首先我们给你一个含有n个样本的集合$X=\\{\{X\_{1},\ldots,X\_{n}\}\\}$，依次给出这些概念的公式描述，这些高中学过数学的孩子都应该知道吧，一带而过。
+学过概率统计的孩子都知道，统计里最基本的概念就是样本的均值，方差，或者再加个标准差。首先我们给你一个含有n个样本的集合$X=\\{X\_1,\ldots,X\_n\\}$，依次给出这些概念的公式描述，这些高中学过数学的孩子都应该知道吧，一带而过。
 
 * 均值：$$\bar{X}=\frac{\sum\_{i=1}^n  X\_{i}}{n}$$
 * 标准差：$$s=\sqrt{\frac{\sum\_{i=1}^n (X\_{i}-\bar{X})^2}{n-1}}$$
@@ -121,4 +121,4 @@ C = (X'*X)./(size(X,1)-1);
 
 P.S.写论文要选Latex，在wordpress里编辑公式还得用[Latex](http://www.dutor.net/index.php/2010/05/wordpress-using-latex/)，用Latex还真对得起咱学计算机这张脸~
 
-在jekyll上可以使用[Mathax](http://docs.mathjax.org/en/v1.1-latest/start.html)
+在hexo上可以使用[MathJax](https://www.mathjax.org/)
