@@ -1,0 +1,1033 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="o7yQBnLIoWby8Y5vNMQywBiMtev-ilWjXt89RQpTvVw" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端 | 溜冰 | Mac" />
+
+
+
+  <meta name="keywords" content="angular1-webpack-starter,持续集成,TravisCI,SauceLabs,SauceConnect,yargs," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> 用TravisCI来做持续集成 // 进击的马斯特 </title>
+</head>
+
+<body>
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">进击的马斯特</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    <!--增加swiftype搜索功能-->
+    <form class="menu-item menu-item-search">
+      <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+    </form>
+    
+    <script type="text/javascript">
+      (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+      (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+      e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+      })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+      _st('install','8k3UxSuRWYkrhVg55bC3','2.0.0');
+    </script>
+    <!--增加swiftype搜索功能end-->
+    
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          分类
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          关于
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              用TravisCI来做持续集成
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2016-02-27
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/工具相关/">工具相关</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/02/27/continuous-integration-with-travis-ci/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="_posts-2016-02-27-continuous-integration-with-travis-ci"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <p>持续集成的好处自不用说，一个是省了手动build部署的繁琐，二是每一个提交都有自动跑测试保证质量。平时在公司Jenkins用的比较多，开源世界里同样也有能和Jenkins比肩的好工具：<a href="https://travis-ci.org/" target="_blank" rel="external">TravisCI</a>。TravisCI可以和Github无缝集成，每次push都可以触发相应的操作，跑测试、自动部署都不在话下。这篇文章就记录一下我在<a href="https://github.com/PinkyJie/angular1-webpack-starter" target="_blank" rel="external">angular1-webpack-starter</a>项目上使用TravisCI的经验，最终实现的效果就是：提交一个commit后，自动跑单元测试，然后build项目，然后将测试覆盖率报告和站点部署到Github Pages上去，最后跑E2E测试。</p>
+<a id="more"></a>
+<h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h3><p>TravisCI的上手非常简单，只需三步：</p>
+<ol>
+<li>用Github账号登录TravisCI，你的所有Repo都会列出来，选择激活你想要build的Repo。</li>
+<li>在Github的Repo里添加<code>.travis.yml</code>配置文件。</li>
+<li>Push代码到Github，触发自动build。</li>
+</ol>
+<p>这里要说的就是<code>.travis.yml</code>这个配置文件了（有人可能要吐槽了：哦NO，又一个配置文件，前端的配置文件实在太多了！没办法啊！(*@ο@*)），<code>.travis.yml</code>的基本格式如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="attr">branches:</span></div><div class="line"><span class="attr">  only:</span></div><div class="line"><span class="bullet">    -</span> master</div><div class="line"><span class="attr">language:</span> node_js</div><div class="line"><span class="attr">node_js:</span></div><div class="line"><span class="bullet">  -</span> stable</div><div class="line"><span class="attr">script:</span></div><div class="line"><span class="bullet">  -</span> xxx</div><div class="line"><span class="attr">after_success:</span></div><div class="line"><span class="bullet">  -</span> xxx</div><div class="line"><span class="attr">env:</span></div><div class="line"><span class="attr">  global:</span></div><div class="line"><span class="attr">  - xxx:</span> xxx</div></pre></td></tr></table></figure>
+<p>基本上不需要解释就可以明白大致的意思，来自Python家族的yml格式可以说是配置文件中格式最简单，最易读的了。</p>
+<ul>
+<li><code>branches</code>：指定要build的是哪个分支，支持build多个分支。</li>
+<li><code>language</code>：指定使用的语言，前端项目的build过程基本都是node啦。</li>
+<li><code>node_js</code>：指定要使用的node版本，可以同时指定多个版本，触发多个build。</li>
+<li><code>script</code>：系统自动运行完<code>npm install</code>后会执行这里指定的命令，简单的功能可以直接写一个npm run script，复杂的逻辑也可以指定执行一个bash脚本。</li>
+<li><code>after_success</code>：这里是<code>script</code>部分跑成功以后才会执行的命令，这里的命令成功与失败不会影响整个Travis任务。</li>
+<li><code>env</code>：这个字段用来定义环境变量，一些需要加密的信息也可以放在这里。</li>
+</ul>
+<p>当然除此之外，Travis还支持很多的配置，可以查看<a href="https://docs.travis-ci.com/user/customizing-the-build/#The-Build-Lifecycle" target="_blank" rel="external">它的文档</a>来认识下build过程的整个生命周期。</p>
+<h3 id="跑单元测试并上传覆盖率报告"><a href="#跑单元测试并上传覆盖率报告" class="headerlink" title="跑单元测试并上传覆盖率报告"></a>跑单元测试并上传覆盖率报告</h3><p>跑测试是自动化部署的第一步，如果单元测试都跑不过的话也不用build项目了。跑单元测试的方法不用多说，配好了karma以后，运行一个<code>npm test</code>就好。这里简单讲讲其中的两个问题：</p>
+<ol>
+<li>识别Travis的环境。</li>
+<li>生成覆盖率报告并上传。</li>
+</ol>
+<h4 id="识别Travis的环境"><a href="#识别Travis的环境" class="headerlink" title="识别Travis的环境"></a>识别Travis的环境</h4><p>为什么需要专门识别Travis的环境呢？由于测试是在Travis的云主机上跑的，本地跑测试一般都是直接启一个Chrome浏览器，但Travis上显然没有Chrome浏览器（据说有Firefox），所以我们需要headless的浏览器PhantomJS来跑测试。虽然Travis自己有环境变量可以帮助我们得知脚本是否运行在Travis上，但我推荐的方法还是直接给npm script传参数比较好，这样方便以后我们移植到其它CI平台。我们要达到的最终目的是：运行<code>npm test</code>则用Chrome来跑，运行<code>npm test -- --ci</code>则用PhantomJS来跑。注意这里中间的<code>--</code>，根据<a href="https://docs.npmjs.com/cli/run-script" target="_blank" rel="external">官方文档</a>的解释，npm需要这个标记来获知npm自己的options已经结束，npm会把中间的<code>--</code>之后的部分都传给你自己的脚本。我们的<code>npm test</code>在package.json中是这样配置的：<code>karma start ./karma.config.js</code>，所以我们需要在karma.config.js中处理传入的<code>--ci</code>参数。不要看karma.config.js只是一个配置文件，其实里面可以随便放任何的nodejs逻辑，只要保证这个文件最后export出一个函数即可：<code>moudule.exports = (config) =&gt; {config.set({...})}</code>。说到处理参数，nodejs中有非常好用的工具：<a href="https://www.npmjs.com/package/yargs" target="_blank" rel="external">yargs</a>，它支持多种处理命令行参数的方式，使用非常简单。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> args = <span class="built_in">require</span>(<span class="string">'yargs'</span>).argv;</div><div class="line"><span class="keyword">const</span> browser = (args.watch || args.ci) ? <span class="string">'PhantomJS'</span> : <span class="string">'Chrome'</span>;</div><div class="line"><span class="keyword">const</span> files = browser === <span class="string">'PhantomJS'</span> ? [</div><div class="line">    <span class="string">'node_modules/babel-core/browser-polyfill.js'</span>,</div><div class="line">    unitTestEntry</div><div class="line">] : [</div><div class="line">    unitTestEntry</div><div class="line">];</div><div class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">config</span>) =&gt;</span> &#123;</div><div class="line">    config.set(&#123;</div><div class="line">        files,</div><div class="line">        <span class="attr">browsers</span>: [</div><div class="line">            browser</div><div class="line">        ],</div><div class="line">        <span class="comment">// ....</span></div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>可以看到，只要将这个包require进来，处理参数起来真是得心应手。第2行中我们指定如果带有<code>--watch</code>或<code>--ci</code>参数，则使用Chrome浏览器（这里的watch模式用于：在开发时代码一更新就自动跑测试，由于需要频繁跑测试，用PhantomJS的话跑的更快一些）。另外，我们采用了ES6，那么在使用PhantomJS的时候就需要额外包含Babel的polyfill（第4行）。</p>
+<h4 id="生成报告并上传"><a href="#生成报告并上传" class="headerlink" title="生成报告并上传"></a>生成报告并上传</h4><p>生成覆盖率测试报告自然是要用karma-coverage了，只需要在karma的配置中配置<code>coverageReproter</code>即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">reporters: [<span class="string">'mocha'</span>, <span class="string">'coverage'</span>],</div><div class="line"><span class="attr">coverageReporter</span>: &#123;</div><div class="line">    <span class="attr">dir</span>: <span class="string">'source/test/unit/results/coverage'</span>,</div><div class="line">    <span class="attr">reporters</span>: [</div><div class="line">        &#123;<span class="attr">type</span>: <span class="string">'lcov'</span>, <span class="attr">subdir</span>: <span class="string">'.'</span>&#125;,</div><div class="line">        &#123;<span class="attr">type</span>: <span class="string">'text-summary'</span>&#125;</div><div class="line">    ]</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p>上面的lcov就用来生成覆盖率报告，运行<code>npm test</code>以后，就会在指定的路径（dir配置）里生成覆盖率报告：以网页的形式展示所有文件的覆盖率。如下图：</p>
+<img src="http://7jptbo.com1.z0.glb.clouddn.com/images/continuous-integration-with-travis-ci-3.png" class="center-img" title="图3">
+<p>这里要重点说的是上传这个报告，一方面需要将这个报告也部署到Github Pages上方便查看，另一方面还可以将报告上传到“特殊”的网站。前者我们将在下一节详细讲，这里主要说这个“特殊”的网站：<a href="https://codecov.io/" target="_blank" rel="external">CodeCov</a>。看名字就知道它是一个专门服务于代码覆盖率的工具，将报告上传后不仅可以在上面方便的查看，关键是可以得到下面这个东西：</p>
+<p><a href="https://codecov.io/github/PinkyJie/angular1-webpack-starter" target="_blank" rel="external"><img src="https://img.shields.io/codecov/c/github/PinkyJie/angular1-webpack-starter.svg?style=flat-square" alt="Codecov"></a></p>
+<p>哈哈，把它放在项目的readme里是不是特别有范（对类似的badge服务感兴趣的可以戳<a href="http://shields.io/" target="_blank" rel="external">Shields</a>，里面有各种各样包罗万象的badge）。上传也是非常的简单，首先安装CodeCov提供的<a href="https://www.npmjs.com/package/codecov.io" target="_blank" rel="external">node工具</a>，然后一条npm script搞定：<code>&quot;codecov&quot;: &quot;cat ./source/test/unit/results/coverage/lcov.info | codecov&quot;,</code>。这样在<code>.travis.yml</code>就可以直接调用<code>npm run codecov</code>来上传报告啦。</p>
+<h3 id="部署到Github-Pages"><a href="#部署到Github-Pages" class="headerlink" title="部署到Github Pages"></a>部署到Github Pages</h3><p>Travis自身支持很多<a href="https://docs.travis-ci.com/user/deployment/" target="_blank" rel="external">deploy的服务</a>，但由于<a href="https://github.com/PinkyJie/angular1-webpack-starter" target="_blank" rel="external">我的项目</a>是一个纯前端的项目，并不需要后台，所以我选择直接把它部署到Github Pages上。Github Pages其实就相当于一个静态的server，其部署流程其实就是把build后的页面push到项目的<code>gh-pages</code>分支下即可。要上传我们也要搞定两个问题：</p>
+<ol>
+<li>项目中的路由使用HTML5模式，需配合webpack-dev-server的<a href="https://webpack.github.io/docs/webpack-dev-server.html#the-historyapifallback-option" target="_blank" rel="external">historyApiFallback配置</a>，而Github Pages上是纯静态server，我们需要使用<code>/#</code>这种路由模式。</li>
+<li><code>git push</code>到Github是需要权限的，你不可能把自己的私钥上传到Travis上去。</li>
+</ol>
+<h4 id="build前更改代码"><a href="#build前更改代码" class="headerlink" title="build前更改代码"></a>build前更改代码</h4><p>先来看第一个问题，解决这个问题的关键就是，在Travis开始build之前，我们需要更改代码里的<code>this.$locationProvider.html5Mode(true);</code>这一句，将true改为false即可。那怎么优雅的做这个更改呢？答案是使用git的patch功能！我们可以先在本地做这个更改，然后运行<code>git diff &gt; gh-pages-patch.diff</code>这样，就会得到这样内容的文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">diff --git a/<span class="built_in">source</span>/app/components/_common/services/router-helper.provider.js b/<span class="built_in">source</span>/app/components/_common/services/router-helper.provider.js</div><div class="line">index 426cf72..5319d32 100644</div><div class="line">--- a/<span class="built_in">source</span>/app/components/_common/services/router-helper.provider.js</div><div class="line">+++ b/<span class="built_in">source</span>/app/components/_common/services/router-helper.provider.js</div><div class="line">@@ -101,7 +101,7 @@ class RouterHelperProvider &#123;</div><div class="line">             mainTitle: <span class="string">''</span>,</div><div class="line">             resolveAlways: &#123;&#125;</div><div class="line">         &#125;;</div><div class="line">-        this.<span class="variable">$locationProvider</span>.html5Mode(<span class="literal">true</span>);</div><div class="line">+        this.<span class="variable">$locationProvider</span>.html5Mode(<span class="literal">false</span>);</div><div class="line">     &#125;</div></pre></td></tr></table></figure>
+<p>其实就是将diff的内容保存到一个文件，然后这个patch文件我们就可以在需要的时候将它应用回去。在Travis上build之前，我们可以直接运行<code>git apply ./gh-pages-patch.diff</code>，这样这行代码的变动就可以应用到Travis拿到的代码上，然后再开始build就可以保证得到的最终网页是正确的了。</p>
+<h4 id="Github的权限问题"><a href="#Github的权限问题" class="headerlink" title="Github的权限问题"></a>Github的权限问题</h4><p>关于Github的权限问题，其实除了使用私钥外，Github也是允许使用Access Token来push代码的，我们就是需要利用这一点来将build后的代码push回gh-pages分支。首先访问Github设置里的<a href="https://github.com/settings/tokens" target="_blank" rel="external">Personal access tokens</a>，选择“Generate new token”来生成新的token，给token起一个名字然后只选择repo权限即可，添加成功后会看到类似下面的页面：</p>
+<img src="http://7jptbo.com1.z0.glb.clouddn.com/images/continuous-integration-with-travis-ci-1.png" class="center-img" title="图1">
+<p>这里必须将token保存到你本地，因为token只会显示一次，一旦你离开这个页面，再也看不到这个token了。有了这个token，我们就可以使用下面的命令来push代码了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push <span class="string">"https://xxx@github.com/PinkyJie/angular1-webpack-starter.git"</span> master:gh-pages</div></pre></td></tr></table></figure>
+<p>其中的xxx就是你的token，而后面是Github项目的地址。当然，因为<code>.travis.yml</code>文件是公开的，我们不可能就直接把这个token明文写在里面，别人有了token就相当于有了你Github所有Repo的push权限（这也是为什么token在生成后只显示一次）。贴心的Travis早就想到了这一点，它提供<a href="https://docs.travis-ci.com/user/encryption-keys/#Usage" target="_blank" rel="external">对“键值对”进行加密的功能</a>。首先我们需要安装Travis提供的加密工具：<code>gem install travis</code>，然后在你的项目目录下（其他目录需要手动指定<code>-r owner/project</code>）运行<code>travis encrypt GITHUB_TOKEN=xxx</code>就会得到类似<code>secure: &quot;...&quot;</code>的输出，将这段输出放在<code>.travis.yml</code>中的环境变量块下面即可：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">env:</span></div><div class="line"><span class="attr">  global:</span></div><div class="line"><span class="attr">  - GitHub_REF:</span> github.com/PinkyJie/angular1-webpack-starter.git</div><div class="line"><span class="attr">  - secure:</span> <span class="string">"..."</span></div></pre></td></tr></table></figure>
+<p>注意，这里的加密是把key和value都加密了，<code>.travis.yml</code>里允许出现多个secure的定义，它们都将作为环境变量供你的脚本调用，在脚本中可以使用<code>${GitHub_TOKEN}</code>和<code>${GitHub_REF}</code>引用上面定义的变量。最后我们还可以给Travis的push提供一个假的身份，这样在Github上我们一看到某个commit就知道这是Travis里push上来的，最终的脚本如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> build</div><div class="line">git init</div><div class="line">git config user.name <span class="string">"Travis CI"</span></div><div class="line">git config user.email <span class="string">"travis@pinkyjie.com"</span></div><div class="line">git add .</div><div class="line">git commit -m <span class="string">"Deploy at `date +"</span>%Y-%m-%d %H:%M<span class="string">"`"</span></div><div class="line">git push --force --quiet <span class="string">"https://<span class="variable">$&#123;GitHub_TOKEN&#125;</span>@<span class="variable">$&#123;GitHub_REF&#125;</span>"</span> master:gh-pages &gt; /dev/null 2&gt;&amp;1</div></pre></td></tr></table></figure>
+<p>可以看到第3-4行，我们给Travis配了一个名字和假的Email，第6行我们给commit配了一个包含时间戳的message，这样就很容易从Github上知道这次部署发生在几点了。</p>
+<p>除了上传build后的代码，我们还可以将前面提到的单元测试覆盖率报告也上传到Github Pages上去，只需要在build完成后将生成的coverage目录复制到build目录即可。有一点值得注意的就是Github Pages有一个设置就是：下划线<code>_</code>开头的文件夹名在web上无法访问。如果你的代码结构中有下划线命名的文件夹，则单元测试报告里也会有同名的文件夹，我们可以将其重命名：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mv ./build/coverage/app/components/_common ./build/coverage/app/components/common</div><div class="line">sed -i <span class="string">'s/href=\"app\/components\/_common/href=\"app\/components\/common/g'</span> ./build/coverage/index.html</div></pre></td></tr></table></figure>
+<p>这里先对文件夹进行重命名，再对文件内容里涉及到的相应超链接进行更新。</p>
+<h3 id="用Sauce-Labs跑E2E测试"><a href="#用Sauce-Labs跑E2E测试" class="headerlink" title="用Sauce Labs跑E2E测试"></a>用Sauce Labs跑E2E测试</h3><p>部署好了自然是要在部署的站点上来一个E2E测试了，这也是为什么我们要把E2E测试放在<code>after_success</code>这个阶段，因为需要等<code>script</code>阶段的部署完成才可以。前端的一个重要的问题就是浏览器兼容性问题，所以我们当然希望E2E测试能够覆盖越多的浏览器越好，比如IE、Chrome、Safari，甚至iOS和Android上的浏览器。这个时候就需要<a href="https://saucelabs.com/" target="_blank" rel="external">Sauce Labs</a>出场了，它就相当于一个云端的浏览器仓库，包含各种设备各种系统上的不同浏览器，可以通过配置文件让你的测试跑在它上面。这么好的服务自然不是免费的，好消息是：对于开源项目，它是完全免费的，虽然只允许同时运行5个浏览器实例，但对于我们来说已经足够了。protractor的配置文件本身就是支持Sauce Labs的，只需要在配置文件中添加<code>sauceUser</code>和<code>sauceKey</code>即可，分别是你注册Sauce Labs时的用户名以及自动生成的Access Key。跟karma的配置文件类似，我们也需要在protractor的配置文件中处理传入参数。看下面这个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (args.ci) &#123;</div><div class="line">    <span class="comment">// run by sauce lab</span></div><div class="line">    config.baseUrl = <span class="string">'http://pinkyjie.com/angular1-webpack-starter/#'</span>;</div><div class="line">    config.sauceUser = <span class="string">'xxx'</span>;</div><div class="line">    config.sauceKey = <span class="string">'xxx'</span>;</div><div class="line">    config.multiCapabilities = [</div><div class="line">        &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">`Chrome (build-<span class="subst">$&#123;args.buildId&#125;</span>)`</span>,</div><div class="line">            <span class="attr">build</span>: <span class="string">`<span class="subst">$&#123;args.buildId&#125;</span>`</span>,</div><div class="line">            <span class="attr">browserName</span>: <span class="string">'chrome'</span>,</div><div class="line">            <span class="attr">platform</span>: <span class="string">'Windows 7'</span></div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">`Safari (build-<span class="subst">$&#123;args.buildId&#125;</span>)`</span>,</div><div class="line">            <span class="attr">build</span>: <span class="string">`<span class="subst">$&#123;args.buildId&#125;</span>`</span>,</div><div class="line">            <span class="attr">browserName</span>: <span class="string">'safari'</span>,</div><div class="line">            <span class="attr">platform</span>: <span class="string">'OS X 10.11'</span></div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">`IE (build-<span class="subst">$&#123;args.buildId&#125;</span>)`</span>,</div><div class="line">            <span class="attr">build</span>: <span class="string">`<span class="subst">$&#123;args.buildId&#125;</span>`</span>,</div><div class="line">            <span class="attr">browserName</span>: <span class="string">'internet explorer'</span>,</div><div class="line">            <span class="attr">platform</span>: <span class="string">'Windows 7'</span>,</div><div class="line">            <span class="attr">version</span>: <span class="string">'11.0'</span></div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">`iOS (build-<span class="subst">$&#123;args.buildId&#125;</span>)`</span>,</div><div class="line">            <span class="attr">build</span>: <span class="string">`<span class="subst">$&#123;args.buildId&#125;</span>`</span>,</div><div class="line">            <span class="attr">browserName</span>: <span class="string">'Safari'</span>,</div><div class="line">            <span class="attr">appiumVersion</span>: <span class="string">'1.4.16'</span>,</div><div class="line">            <span class="attr">deviceName</span>: <span class="string">'iPhone 5s'</span>,</div><div class="line">            <span class="attr">deviceOrientation</span>: <span class="string">'portrait'</span>,</div><div class="line">            <span class="attr">platformVersion</span>: <span class="string">'9.1'</span>,</div><div class="line">            <span class="attr">platformName</span>: <span class="string">'iOS'</span></div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">`Android (build-<span class="subst">$&#123;args.buildId&#125;</span>)`</span>,</div><div class="line">            <span class="attr">build</span>: <span class="string">`<span class="subst">$&#123;args.buildId&#125;</span>`</span>,</div><div class="line">            <span class="attr">browserName</span>: <span class="string">'Browser'</span>,</div><div class="line">            <span class="attr">appiumVersion</span>: <span class="string">'1.4.16'</span>,</div><div class="line">            <span class="attr">deviceName</span>: <span class="string">'Android Emulator'</span>,</div><div class="line">            <span class="attr">deviceOrientation</span>: <span class="string">'portrait'</span>,</div><div class="line">            <span class="attr">platformVersion</span>: <span class="string">'4.4'</span>,</div><div class="line">            <span class="attr">platformName</span>: <span class="string">'Android'</span></div><div class="line">        &#125;</div><div class="line">    ];</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="comment">// local run</span></div><div class="line">    config.baseUrl = <span class="string">'http://localhost:8080'</span>;</div><div class="line">    config.multiCapabilities = [</div><div class="line">        &#123;</div><div class="line">            <span class="attr">browserName</span>: <span class="string">'chrome'</span></div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            <span class="attr">browserName</span>: <span class="string">'chrome'</span>,</div><div class="line">            <span class="attr">chromeOptions</span>: &#123;</div><div class="line">                <span class="attr">args</span>: [<span class="string">'--window-size=375,627'</span>]</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    ];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在配置文件中，我们判断如果传入了<code>--ci</code>则添加<code>sauceUser</code>和<code>sauceKey</code>，否则就不加。另外，有ci的时候我们需要传入不同的<code>baseUrl</code>，没ci则认为是在本地跑测试。两者都使用了<code>multiCapabilities</code>，ci上跑的时候指定了我们要测试的5个浏览器，本地则是开了两个Chrome，一个全屏一个模拟手机分辨率来测试。我们重点来看看使用Sauce Labs时的5个浏览器配置，它们分别是Chrome、Safari、IE、Android浏览器，和iOS上的Safari（Android和iOS的测试使用了<a href="http://appium.io/" target="_blank" rel="external">Appium</a>），当然Sauce Labs还支持很多的浏览器，可以通过<a href="https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/" target="_blank" rel="external">其文档</a>来生成指定浏览器的配置。上面的例子中除了浏览器的系统、名字和版本外，我们还指定了<code>name</code>和<code>build</code>，这也是Sauce Labs特有的配置，这两个配置可以让Sauce Labs更好的显示和组织属于同一个build的测试，如下图：</p>
+<img src="http://7jptbo.com1.z0.glb.clouddn.com/images/continuous-integration-with-travis-ci-2.png" class="center-img" title="图2">
+<p>属于同一个build的所有E2E测试被组织到了一起。这里传入的buildId则是Travis每次build自动生成的ID，我们可以通过环境变量获取：<code>npm run e2e -- --ci --build-id=$TRAVIS_BUILD_NUMBER</code>。</p>
+<h4 id="本地的站点也能测"><a href="#本地的站点也能测" class="headerlink" title="本地的站点也能测"></a>本地的站点也能测</h4><p>有这样一种场景，如果你的网站架在本地的话（比如localhost），外网是无法访问的，这样在Sauce Labs上的云主机也就无法访问你的网站，自然也无法跑测试的。为了解决这个需求，Sauce Labs还提供了一个有用的功能：<a href="https://wiki.saucelabs.com/display/DOCS/Using+Sauce+Connect+for+Testing+Behind+the+Firewall+or+on+Localhost" target="_blank" rel="external">Sauce Connect</a>。它会在本地开启一个tunnel，用来接收protractor的命令，然后传给Sauce Labs云主机上的浏览器。幸运的是Travis也支持这个功能，只需要在<code>.travis.yml</code>中添加指定的配置即可：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="attr">addons:</span></div><div class="line"><span class="attr">  sauce_connect:</span></div><div class="line"><span class="attr">    username:</span> <span class="string">"xxx"</span></div><div class="line"><span class="attr">    access_key:</span> <span class="string">"xxx"</span></div><div class="line"><span class="attr">  apt:</span></div><div class="line"><span class="attr">    sources:</span></div><div class="line"><span class="bullet">    -</span> ubuntu-toolchain-r-test</div><div class="line"><span class="attr">    packages:</span></div><div class="line"><span class="bullet">    -</span> gcc<span class="bullet">-4.8</span></div><div class="line"><span class="bullet">    -</span> g++<span class="bullet">-4.8</span></div></pre></td></tr></table></figure>
+<p>然后在protractor的配置文件中，给每个浏览器的配置添加<code>&#39;tunnel-identifier&#39;: args.jobId</code>即可，而这个jobId也是Travis每次build自动生成的，也可以通过环境变量获取：<code>npm run e2e -- --ci --build-id=$TRAVIS_BUILD_NUMBER --job-id=$TRAVIS_JOB_NUMBER</code>。这样，你就可以在Travis的机器上启一个本地的网站，然后通过Sauce Connect来测试它了。</p>
+<h4 id="Timeout的问题"><a href="#Timeout的问题" class="headerlink" title="Timeout的问题"></a>Timeout的问题</h4><p>这是我自己碰到的一个问题，E2E测试在本地跑的好好的，但放在Sauce Labs上总是提示超时。protractor的文档专门<a href="http://www.protractortest.org/#/timeouts" target="_blank" rel="external">有一个章节</a>来讲超时的问题。简单的说，如果出现超时，可以从两方面入手，一个是增加jasmine的默认超时时间，即在protractor的配置中加入：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">jasmineNodeOpts: &#123;</div><div class="line">    <span class="attr">defaultTimeoutInterval</span>: <span class="number">600</span> * <span class="number">1000</span> <span class="comment">// 毫秒</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>另一方面，Sauce Labs也有3个参数来控制超时，可以在protractor的配置文件中给每个浏览器的配置中加入：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 秒</span></div><div class="line">maxDuration: <span class="number">3600</span>,</div><div class="line"><span class="attr">commandTimeout</span>: <span class="number">600</span>,</div><div class="line"><span class="attr">idleTimeout</span>: <span class="number">1000</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>就我个人的经验，目前项目的E2E测试在本地跑完全没问题，在Sauce Labs上仍然会报错，目前仍在研究中（<a href="https://github.com/PinkyJie/angular1-webpack-starter/issues/9" target="_blank" rel="external">issue 9</a>）</p>
+</blockquote>
+<p>最后，完整的实现可以戳这里：</p>
+<ul>
+<li><a href="https://github.com/PinkyJie/angular1-webpack-starter/blob/master/.travis.yml" target="_blank" rel="external">.travis.yml</a></li>
+<li><a href="https://github.com/PinkyJie/angular1-webpack-starter/blob/master/publish-to-gh-pages.sh" target="_blank" rel="external">script部分的脚本</a></li>
+<li><a href="https://github.com/PinkyJie/angular1-webpack-starter/blob/master/karma.config.js" target="_blank" rel="external">karma.config.js</a></li>
+<li><a href="https://github.com/PinkyJie/angular1-webpack-starter/blob/master/protractor.config.js" target="_blank" rel="external">protractor.config.js</a></li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/angular1-webpack-starter/"> #angular1-webpack-starter </a>
+          
+            <a href="/tags/持续集成/"> #持续集成 </a>
+          
+            <a href="/tags/TravisCI/"> #TravisCI </a>
+          
+            <a href="/tags/SauceLabs/"> #SauceLabs </a>
+          
+            <a href="/tags/SauceConnect/"> #SauceConnect </a>
+          
+            <a href="/tags/yargs/"> #yargs </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/05/webpack-tips/">webpack使用小记</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/21/e2e-testing-in-angular/">Angular里的E2E测试</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div class="ds-thread" data-thread-key="_posts-2016-02-27-continuous-integration-with-travis-ci"
+               data-title="用TravisCI来做持续集成" data-url="http://pinkyjie.com/2016/02/27/continuous-integration-with-travis-ci/">
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="http://pinkyjie-blog.qiniudn.com/images/avatar.jpg" alt="马斯特" />
+          <p class="site-author-name">马斯特</p>
+        </div>
+        <p class="site-description motion-element">前端 | 溜冰 | Mac</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">184</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/PinkyJie" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://twitter.com/PinkyJie" target="_blank">Twitter</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/pinkyway" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://stackoverflow.com/users/689948/pinkyjie" target="_blank">StackOverflow</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本配置"><span class="nav-number">1.</span> <span class="nav-text">基本配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跑单元测试并上传覆盖率报告"><span class="nav-number">2.</span> <span class="nav-text">跑单元测试并上传覆盖率报告</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#识别Travis的环境"><span class="nav-number">2.1.</span> <span class="nav-text">识别Travis的环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成报告并上传"><span class="nav-number">2.2.</span> <span class="nav-text">生成报告并上传</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署到Github-Pages"><span class="nav-number">3.</span> <span class="nav-text">部署到Github Pages</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#build前更改代码"><span class="nav-number">3.1.</span> <span class="nav-text">build前更改代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Github的权限问题"><span class="nav-number">3.2.</span> <span class="nav-text">Github的权限问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用Sauce-Labs跑E2E测试"><span class="nav-number">4.</span> <span class="nav-text">用Sauce Labs跑E2E测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地的站点也能测"><span class="nav-number">4.1.</span> <span class="nav-text">本地的站点也能测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Timeout的问题"><span class="nav-number">4.2.</span> <span class="nav-text">Timeout的问题</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2010 - 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">马斯特</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"pinkyjie-blog"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-45012422-1');ga('send','pageview');
+  </script>
+
+  
+<div style="position:relative; bottom: 23px">
+  <script src="http://s95.cnzz.com/stat.php?id=1253033676&web_id=1253033676&show=pic1" language="JavaScript">
+  </script>
+</div>
+
+
+</body>
+</html>

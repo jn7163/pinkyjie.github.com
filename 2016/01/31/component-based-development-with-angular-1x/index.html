@@ -1,0 +1,1018 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="o7yQBnLIoWby8Y5vNMQywBiMtev-ilWjXt89RQpTvVw" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端 | 溜冰 | Mac" />
+
+
+
+  <meta name="keywords" content="AngularJS,ES6,angular1-webpack-starter,组件式开发,Webpack,directive," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> 用Angular 1.x做组件式开发 // 进击的马斯特 </title>
+</head>
+
+<body>
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">进击的马斯特</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    <!--增加swiftype搜索功能-->
+    <form class="menu-item menu-item-search">
+      <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+    </form>
+    
+    <script type="text/javascript">
+      (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+      (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+      e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+      })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+      _st('install','8k3UxSuRWYkrhVg55bC3','2.0.0');
+    </script>
+    <!--增加swiftype搜索功能end-->
+    
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          分类
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          关于
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              用Angular 1.x做组件式开发
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2016-01-31
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/前端开发/">前端开发</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/01/31/component-based-development-with-angular-1x/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="_posts-2016-01-31-component-based-development-with-angular-1x"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <p>自打去年参加了JSConf后一直断断续续看了很多React的资料，不得不承认React确实在很多方面给人耳目一新的感觉，尤其是组件化的思想给我留下了很深的印象。JSX的语法虽然一开始很难让人接受，但React将函数式编程的思维用在组件化上，确实值得借鉴。作为一个Angular死忠粉，自然很想把这种好的思维方式也用在Angular上了，于是就有了<a href="https://github.com/PinkyJie/angular1-webpack-starter" target="_blank" rel="external">angular1-webpack-starter</a>这个项目。这篇文章就来记录下用Angular来做纯组件式开发的一些尝试吧。</p>
+<a id="more"></a>
+<h3 id="文件夹结构"><a href="#文件夹结构" class="headerlink" title="文件夹结构"></a>文件夹结构</h3><p>文件夹结构怎么安排是每次新开一个项目必定要纠结的问题，社区在这个问题也有过很多思考，比如最初的按照文件类型划分，到后来按照feature来划分。</p>
+<figure class="highlight bash"><figcaption><span>按文件类型区分文件夹</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">app/</div><div class="line">-- controllers/</div><div class="line">---- homeController.js</div><div class="line">---- loginController.js</div><div class="line">-- services/</div><div class="line">---- userService.js</div><div class="line">-- directives/</div><div class="line">---- inputDirective.js</div><div class="line">-- other/</div><div class="line">---- xxx.js</div><div class="line">-- app.js</div><div class="line">-- routes.js</div><div class="line">images/</div><div class="line">-- xxx.png</div><div class="line">-- ...</div><div class="line">styles/</div><div class="line">-- xxx.css</div><div class="line">-- ...</div><div class="line">views/</div><div class="line">-- index.html</div><div class="line">-- ...</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><figcaption><span>按feature区分文件夹</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">app/</div><div class="line">-- core/</div><div class="line">---- userService.js</div><div class="line">---- inputDirective.js</div><div class="line">-- home/</div><div class="line">---- homeController.js</div><div class="line">---- homeRoute.js</div><div class="line">---- home.html</div><div class="line">---- home.css</div><div class="line">-- login/</div><div class="line">---- loginController.js</div><div class="line">---- loginRoute.js</div><div class="line">---- login.html</div><div class="line">---- login.css</div><div class="line">-- app.js</div><div class="line">assets/</div><div class="line">---- images/</div></pre></td></tr></table></figure>
+<p>为什么文件夹结构让人如此纠结？一个好的文件夹结构可以迅速让开发者明白项目的整体结构！更重要的是，在实际开发的过程中，好的文件夹结构可以迅速的让开发者将实际页面与页面对应的源文件对应起来，这可以极大的提高开发效率。从这个评判标准出发，我们可以发现最初的“按文件类型区分”显得稍显粗暴。项目小还好，一旦项目大起来，很难快速的找到与某个页面对应的相应源文件。并且，一个页面是由JS、CSS、HTML共同组成的，那么我要改一个页面，就需要从3个文件夹里找，稍显低效。一旦项目大了，参加项目的人一多，文件命名一乱，找起文件来非常繁琐。为了解决这个痛点，社区又提出了第二种方法：按feature来区分，将属于同一feature（一般是一个页面或一组页面）的JS、CSS、HTML放在一起，将公用的文件放在单独的文件夹里。这样一来，结构分明，而且找起文件来也相对轻松。所以，目前这种文件夹结构及类似的衍生成为社区的主流。但这种结构是否真的适合组件式开发呢？通常一个feature（页面）是由多个组件组成的，显然组件的粒度要比feature细的多。一种直接的想法就是我们将feature层级直接替换成组件，按组件区分文件夹，但这样一来，页面与组件的关系又很难从文件夹结构中反映出来。所以，我们需要这样一种新的文件夹组织方式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">app/</div><div class="line">-- components/</div><div class="line">---- _core/</div><div class="line">---- _layout/</div><div class="line">---- home-hero/</div><div class="line">---- login-form/</div><div class="line">-- pages/</div><div class="line">---- home/</div><div class="line">---- login/</div><div class="line">index.html</div><div class="line">index.js</div></pre></td></tr></table></figure>
+<p>整个结构分为pages和components，一目了然，属于一个组件的资源放在一起，而页面只是将这些组件“组合”起来。这个新的组织方式可以说就是为组件化而生，开发者一看就知道是怎么回事。关于这种文件夹结构的详细解释，可以参看<a href="https://github.com/fouber/blog/issues/10" target="_blank" rel="external">这篇文章</a>。</p>
+<h3 id="用函数式思维实现组件"><a href="#用函数式思维实现组件" class="headerlink" title="用函数式思维实现组件"></a>用函数式思维实现组件</h3><p>有了文件夹结构，剩下的就是如何实现组件和页面了。React的一大思想就是将函数式编程的思维引入到组件开发上来：<code>UI = f(states)</code> 一个组件就是一个函数。函数有三个要素：输入参数，实现逻辑和返回值。对应到组件上来说，这三要素就变成：</p>
+<ul>
+<li>输入参数<code>states</code> =&gt; 将组件渲染到页面上需要的数据，使用这个组件（模仿函数的概念可以称之为“调用者”）需要将数据源传入组件。</li>
+<li>实现逻辑<code>f()</code> =&gt; 组件内部的交互逻辑。</li>
+<li>返回值<code>UI</code> =&gt; 组件渲染后的页面。</li>
+</ul>
+<p>具体到Angular框架上来讲，组件有其对应的概念——<code>directive</code>，那么我们就来看看这三个要素要怎么应用到directive上来。我们来思考一个具体的例子，比如我们有一个<code>phone-form</code>的表单组件，它允许用户查看、编辑、新增一款手机的型号、品牌、价格、系统等参数，如下图所示。</p>
+<img src="http://7jptbo.com1.z0.glb.clouddn.com/images/component-based-development-with-angular-1x-1.PNG" class="center-img" title="图1">
+<p>为了让一个组件具备这三种功能，那么它的输入参数需要点什么呢？</p>
+<ul>
+<li><code>state</code>变量，指明当前表单处于什么状态：查看、编辑还是新增。</li>
+<li><code>phone</code>变量，充当传入的model，在查看和编辑状态下需传入当前的phone，新增状态下传空。</li>
+<li><code>cancel()</code>函数和<code>submit()</code>函数，作为组件本身它不知道这两个button需要干什么，需要外部调用者来告诉组件。</li>
+</ul>
+<p>关于参数的传入，directive上又有很多讲究了。首先，为了让我们的directive尽可能的通用和可重用，必须使用独立的scope（<a href="https://docs.angularjs.org/guide/directive#isolating-the-scope-of-a-directive" target="_blank" rel="external">isolate  scope</a>），也就是定义directive的时候使用<code>scope: {}</code>配置。独立scope可以让directive的scope脱离当前的父scope（这里称为父scope并不是说独立scope派生自它，而是说DOM树关系），防止不小心对父scope的数据进行更改。确立了使用独立scope，我们还需要思考使用哪种绑定方式来传值。Angular提供了<code>=</code>、<code>@</code>、<code>&amp;</code>三种方式，关于三者的区别可以参见StackOverflow上的<a href="http://stackoverflow.com/questions/14050195/angularjs-what-is-the-difference-between-and-in-directive-scope" target="_blank" rel="external">这个回答</a>，这里简单解释一下：</p>
+<ul>
+<li><code>=</code>: 双向绑定，建立起父scope和directive独立scope的双向联系，如果directive中需要更改传入的变量，并且这个更改要传回父scope，则使用这种绑定。</li>
+<li><code>@</code>: 字符串绑定，它是将父scope的字符串传入独立scope，比如<code>aaa=&quot;bbb&quot;</code>则传入bbb这个字面字符串，`aaa={{bbb}}`则传入bbb变量在父scope上的值，总之它的结果是字符串。很多地方将其解释为单向绑定是不对的，因为它只能绑定字符串。</li>
+<li><code>&amp;</code>: 表达式绑定，简单来说就是将传入的表达式在父scope上执行，一般用于传入函数表达式，它将一个函数绑定在独立scope上。也可以将<code>&amp;</code>用于单向绑定，如<code>aaa=bbb</code>则会将一个<code>aaa()</code>函数绑定在独立scope上，它的返回值是父scope上的bbb属性值（相当于一个getter函数），但aaa()函数返回的仅仅是初始化directive时计算得到的bbb的值，后续父scope对bbb的更改不会反应到独立scope上。</li>
+</ul>
+<p>具体到我们的例子上，<code>state</code>变量只是告诉当前组件应处于<code>view/edit/new</code>三种状态中的哪一种，完全可以使用<code>@</code>绑定。而<code>phone</code>变量仅需要将phone从父scope传入directive的scope，directive里对phone的更改不需要传回父scope，所以是单向绑定，可以使用<code>&amp;</code>。最后，两个函数自然是使用<code>&amp;</code>绑定了。从“输入参数”这个层面上来看，一旦要“调用”某个组件，你就必须负责提供这个组件需要的各种数据，这些数据有些可能必须通过异步请求才能拿到。所以在将组件组合成页面时，这些数据一般由页面的controller准备好然后传递给组件。</p>
+<p>说完了“输入参数”，来说说后两项。“实现逻辑”自然是放在directive的controller里实现了（用于UI组件时建议不要使用link函数，使用controller在语义上更好），看似没啥可说的，但其实这一块也有很多讲究。函数式编程中一个重要的概念就是“纯函数”（<a href="https://en.wikipedia.org/wiki/Pure_function" target="_blank" rel="external">pure function</a>）。简单的说，就是纯函数不会产生很多副作用，比如说它不能更改传入的参数本身，它不能依赖一些全局变量，不能有异步的HTTP请求或DB请求。举个例子，JS中操作数组的<code>slice</code>和<code>splice</code>，前者就是个纯函数，而后者不是，因为它会改变调用者本身。那么把这种理念用在组件开发上，就要求组件在自己的controller实现逻辑中，要注意一下几点：</p>
+<ol>
+<li>即便采用<code>=</code>绑定了也不能直接修改传入的值，否则就会影响父scope的值，函数不纯了，或者干脆永远不要使用<code>=</code>绑定。</li>
+<li>不能有异步的HTTP调用，意味着组件不能调用service进行HTTP请求。</li>
+<li>想要改变数据，只能fire事件。</li>
+</ol>
+<p>所以，组件里如果需要改变model的值就需要fire一个change事件，service里响应事件后更新model，然后fire一个update事件，父scope响应这个事件，再更新自己的model。这也正是<a href="https://facebook.github.io/flux/" target="_blank" rel="external">Flux架构</a>提出的原因，没有了副作用，整个程序的状态改变就变得可控，出现问题后也比较好追溯。当然，它也确实增加了编写程序的复杂度，是否需要全盘应用它还是视具体的项目而定了。</p>
+<p>最后，“返回值”这项就不用说了，直接在HTML里“调用”这个组件即可，组件就可以渲染到最终的页面上去了。</p>
+<blockquote>
+<p>（整个组件的具体实现可以<a href="https://github.com/PinkyJie/angular1-webpack-starter/tree/master/source/app/components/phone-form" target="_blank" rel="external">参见Github</a>，值得一提的是，实际项目中<code>phone-form</code>组件上phone的绑定并没有使用<code>&amp;</code>，而是使用了<code>=</code>，因为父scope中的phone是异步service得到的，初始化directive时得到的phone是空值。）</p>
+</blockquote>
+<h3 id="将组件“组合”成页面"><a href="#将组件“组合”成页面" class="headerlink" title="将组件“组合”成页面"></a>将组件“组合”成页面</h3><p>采用上述的文件夹结构后，一个很自然的想法是：我们可以模拟node的commonJS模块那样，每个component文件夹有一个<code>index.js</code>来将这个组件的各个资源粘合在一起（需配合Webpack），然后将component这个模块暴露出去。来看看上面的<code>phone-form</code>这个组件的<code>index.js</code>的实现（采用ES6）：</p>
+<figure class="highlight javascript"><figcaption><span>index.js for phone-form component</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> angular <span class="keyword">from</span> <span class="string">'angular'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> PhoneFormController <span class="keyword">from</span> <span class="string">'./phone-form.controller'</span>;</div><div class="line"><span class="keyword">import</span> PhoneFromDirective <span class="keyword">from</span> <span class="string">'./phone-form.directive'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> phoneForm = angular.module(<span class="string">'app.components.phoneForm'</span>, [])</div><div class="line">    .controller(PhoneFormController.name, PhoneFormController)</div><div class="line">    .directive(<span class="string">`aioPhoneForm`</span>, PhoneFromDirective);</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> phoneForm;</div></pre></td></tr></table></figure>
+<p>那么在phone-detail页面我们需要“调用”这个component时怎么写呢？同样，每个page文件夹里也有一个<code>index.js</code>来将这个页面需要的各个组件引用进来，然后将这个页面暴露出去给整个程序的入口<code>index.js</code>来引用。来看看<code>phone-detail</code>这个页面的<code>index.js</code>的实现（采用ES6）：</p>
+<figure class="highlight javascript"><figcaption><span>index.js for phone-detail component</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> angular <span class="keyword">from</span> <span class="string">'angular'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> PhoneDetailController <span class="keyword">from</span> <span class="string">'./detail/phone-detail.controller'</span>;</div><div class="line"><span class="keyword">import</span> phoneForm <span class="keyword">from</span> <span class="string">'../../components/phone-form'</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> angular.module(<span class="string">'app.pages.phone-detail'</span>, [</div><div class="line">    phoneForm.name</div><div class="line">])</div><div class="line">    .controller(PhoneDetailController.name, PhoneDetailController)</div></pre></td></tr></table></figure>
+<p>可以看到，页面只需要将组件所在的Angular module声明为依赖就可以了。这样在页面的HTML中就可以直接使用这个组件了：</p>
+
+undefined
+
+
+<p>注意上面在传递<code>submit</code>的时候，参数<code>phone</code>有些奇怪，它没有挂在<code>vm</code>下，说明它不是父scope上的变量，那这个传递进去的phone是什么呢？要解决这个疑问，我们就要来分析分析组件间的通信了。</p>
+<h3 id="组件间通信"><a href="#组件间通信" class="headerlink" title="组件间通信"></a>组件间通信</h3><p>说到组件间通信，我们可以简单的分为：</p>
+<ul>
+<li>外部向组件内传递数据（父scope =&gt; directive）</li>
+<li>组件向外部传递数据（directive =&gt; 父scope）</li>
+<li>组件与组件间传递数据（directive A &lt;=&gt; directive B）</li>
+</ul>
+<p>显然，我们还是可以像Angular中不同controller间的通信方法一样，使用service作为中间层来交换数据，或者使用事件来传递，这两种方法在此不再赘述。我们来看看其他两种方式。</p>
+<h4 id="通过属性传参（即前面提到的“输入参数”）"><a href="#通过属性传参（即前面提到的“输入参数”）" class="headerlink" title="通过属性传参（即前面提到的“输入参数”）"></a>通过属性传参（即前面提到的“输入参数”）</h4><p>前面有讲到，父scope给directive的独立scope传参时有三种绑定方式，采用<code>=</code>绑定时可以在父scope和独立scope之间建立双向通信，<code>@</code>只是单向的向directive中传递字符串。<code>&amp;</code>就比较有意思了，一方面，前面讲过，它可以实现单向绑定，将一个getter函数绑定在directive的独立scope上，这相当于将父scope的变量单向传递给独立scope。另一方面，它允许directive调用外部定义好的函数，通过这个函数我们其实可以<strong>将directive的独立scope里的变量传递给父scope</strong>。我们回到上部分最后提到的问题，使用<code>submit=&quot;vm.updatePhone(phone)&quot;</code>传入函数时，这里的phone其实并不是父scope的变量（其实也没必要显式的传入父scope的变量，因为这个函数定义在父scope上，里面你是可以任意访问父scope的变量和其他函数的），它只是一个<strong>形参</strong>，而这个形参的具体值可以由directive中调用时来填充。有了这个形参，我们就可以在directive的controller中将独立scope上的变量传递给父scope的函数调用。但注意在directive中的controller调用submit方法时，也需要采取特殊的语法：<code>this.submit({phone: phoneData})</code>，我们需要传入一个object，key就是形参名，value就是我们要传入的真正值。通过这么两种<code>&amp;</code>的不同用法我们可以看到，<code>&amp;</code>是可以用来建立双向通信的，下面这个小demo能帮助你更好的理解这种双向通信：</p>
+<p><a class="jsbin-embed" href="http://jsbin.com/xucexi/embed?html,js,console" target="_blank" rel="external">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.35.9"></script></p>
+<p>上面的代码中，属性<code>getVar</code>和<code>func</code>采用的都是<code>&amp;</code>绑定，属性<code>getVar</code>将一个getter函数绑定到directive上，directive通过这个函数获得从父scope单向传递过来的变量，而属性<code>func</code>将另一个函数绑定到directive上，directive通过这个函数将自己的变量传递出去。</p>
+<h4 id="通过directive的require配置"><a href="#通过directive的require配置" class="headerlink" title="通过directive的require配置"></a>通过directive的<code>require</code>配置</h4><p><code>require</code>配置相信大家都见到过，一般在使用directive进行自定义表单校验时，肯定会接触到<code>require: &#39;ngModel&#39;</code>：在带有<code>ng-modal</code>属性的input标签上定义directiveA，并且在在directiveA的配置中加上<code>require: &#39;ngModal&#39;</code>，那么在directiveA的link函数中就可以获得第4个参数，这个参数通常命名为<code>ngModelController</code>，也就是定义在<code>ng-model</code>这个框架自带的directive上的controller函数。这表明，通过<code>require</code>配置可以在directiveA的link函数中访问到另一个directiveB的controller函数，也就是说directiveA的实现依赖directiveB，这对于实现类似Tab这种container的UI组件非常有用。另外，require还支持很多前缀，可以指定要依赖的controller的搜索路径，可以参考<a href="https://demisx.github.io/angularjs/directives/2014/11/25/angular-directive-require-property-options.html" target="_blank" rel="external">这篇文章</a>。值得注意的是，一旦使用<code>require</code>，directiveA的定义只能使用link函数，directiveB只能使用controller函数，相当于directiveB通过controller函数将自己的API暴露出去了。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>可以看到，Angular作为一个不是那么opinionated的框架，写法有很多，我们完全可以把React倡导的一些概念给融合进来取长补短。最后再安利一下<a href="https://github.com/PinkyJie/angular1-webpack-starter" target="_blank" rel="external">angular1-webpack-starter</a>这个项目，后面应该还会围绕这个项目的实践写一些其他文章吧。</p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AngularJS/"> #AngularJS </a>
+          
+            <a href="/tags/ES6/"> #ES6 </a>
+          
+            <a href="/tags/angular1-webpack-starter/"> #angular1-webpack-starter </a>
+          
+            <a href="/tags/组件式开发/"> #组件式开发 </a>
+          
+            <a href="/tags/Webpack/"> #Webpack </a>
+          
+            <a href="/tags/directive/"> #directive </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/11/angular-1-x-with-es6/">ES6与Angular 1.x</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/26/thoughts-from-jsconf-2015-in-shenzhen/">JSConf2015（ShenJS）深圳之行有感</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div class="ds-thread" data-thread-key="_posts-2016-01-31-component-based-development-with-angular-1x"
+               data-title="用Angular 1.x做组件式开发" data-url="http://pinkyjie.com/2016/01/31/component-based-development-with-angular-1x/">
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="http://pinkyjie-blog.qiniudn.com/images/avatar.jpg" alt="马斯特" />
+          <p class="site-author-name">马斯特</p>
+        </div>
+        <p class="site-description motion-element">前端 | 溜冰 | Mac</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">184</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/PinkyJie" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://twitter.com/PinkyJie" target="_blank">Twitter</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/pinkyway" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://stackoverflow.com/users/689948/pinkyjie" target="_blank">StackOverflow</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件夹结构"><span class="nav-number">1.</span> <span class="nav-text">文件夹结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用函数式思维实现组件"><span class="nav-number">2.</span> <span class="nav-text">用函数式思维实现组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将组件“组合”成页面"><span class="nav-number">3.</span> <span class="nav-text">将组件“组合”成页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件间通信"><span class="nav-number">4.</span> <span class="nav-text">组件间通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过属性传参（即前面提到的“输入参数”）"><span class="nav-number">4.1.</span> <span class="nav-text">通过属性传参（即前面提到的“输入参数”）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过directive的require配置"><span class="nav-number">4.2.</span> <span class="nav-text">通过directive的require配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2010 - 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">马斯特</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"pinkyjie-blog"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-45012422-1');ga('send','pageview');
+  </script>
+
+  
+<div style="position:relative; bottom: 23px">
+  <script src="http://s95.cnzz.com/stat.php?id=1253033676&web_id=1253033676&show=pic1" language="JavaScript">
+  </script>
+</div>
+
+
+</body>
+</html>

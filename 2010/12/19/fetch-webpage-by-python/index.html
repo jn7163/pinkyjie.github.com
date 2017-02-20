@@ -1,0 +1,984 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="o7yQBnLIoWby8Y5vNMQywBiMtev-ilWjXt89RQpTvVw" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端 | 溜冰 | Mac" />
+
+
+
+  <meta name="keywords" content="Python,BeautifulSoup,urllib,人人网,团购," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> 使用python抓取网页(以人人网新鲜事和团购网信息为例) // 进击的马斯特 </title>
+</head>
+
+<body>
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">进击的马斯特</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    <!--增加swiftype搜索功能-->
+    <form class="menu-item menu-item-search">
+      <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+    </form>
+    
+    <script type="text/javascript">
+      (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+      (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+      e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+      })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+      _st('install','8k3UxSuRWYkrhVg55bC3','2.0.0');
+    </script>
+    <!--增加swiftype搜索功能end-->
+    
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          分类
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          关于
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              使用python抓取网页(以人人网新鲜事和团购网信息为例)
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2010-12-19
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/桌面开发/">桌面开发</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2010/12/19/fetch-webpage-by-python/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="_posts-2010-12-19-fetch-webpage-by-python"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <p>前一段时间写的小东西，一直没工夫把他系统写出来，今天眼睛疼，就写写吧~~(原来博主不蛋疼时也会更新博客的哈~)</p>
+<a id="more"></a>
+<h3 id="python抓取网页基础"><a href="#python抓取网页基础" class="headerlink" title="python抓取网页基础"></a>python抓取网页基础</h3><p>python自己带有很多网络应用相关的模块，如：ftplib用于FTP相关操作，smtplib和poplib用于收发电子邮件等等，利用这些 模块自己写一个FTP软件或是邮件客户端类软件完全是可能的，我就简单的试过完全用python脚本收发邮件和操作自己的FTP服务器。当然，这都不是今 天的主角，我们今天要用到的几个模块是：urllib，urllib2，cookielib，BeautifulSoup，我们先来简单介绍下。 urllib和urllib2自然都是处理URL相关的操作，urllib可以从指定的URL下载文件，或是对一些字符串进行编码解码以使他们成为特定的 URL串，而urllib2则比urllib更2一点，哦不对，是更牛逼一点。它有各种各样的Handler啊，Processor啊可以处理更复杂的问 题，比如网络认证，使用代理服务器，使用cookie等等。第三个cookielib，顾名思义，专门处理cookie相关的操作，其他的我也没深入过。 而最后一个包，BeautifulSoup，“美丽的汤”，它是一个第三方的包，专门用于解析HTML和XML文件，使用非常之傻瓜，我们就要靠它来解析 网页源代码了，可以从<a href="http://www.crummy.com/software/BeautifulSoup/#Download" target="_blank" rel="external">这里</a>下载，当然你也可以用easy_install安装它，<a href="http://www.crummy.com/software/BeautifulSoup/documentation.zh.html" target="_blank" rel="external">这里</a>还有它的中文使用文档，有多例子是相当不错的。</p>
+<p>我们先来看看最简单的网页抓取，其实网页抓取就是将所要的网页源代码文件下载下来，然后对其分析以提取对自己有用的信息。最简单的抓取用一句话就可以搞定：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib</div><div class="line">html_src = urllib.urlopen(<span class="string">'http://www.baidu.com'</span>).read()</div></pre></td></tr></table></figure>
+<p>这样就会打印出百度首页的HTML源码了，还是很easy的。urllib的urlopen函数会返回一个“类文件”对象，所以直接调用 read()即可获取里面的内容了。但是这样打印得到的内容是一团糟，排版不好看，编码问题也没解决，所以是看不到中文字符的。这就需要我们的 BeautifulSoup包了，我们可以使用上面得到的源代码字符串html_src来初始化一个BeautifulSoup对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> BeautifulSoup <span class="keyword">import</span> BeautifulSoup</div><div class="line">parser = BeautifulSoup(html_src)</div></pre></td></tr></table></figure>
+<p>这样，后续处理HTML源码的工作交给parser变量来负责就好，我们可以简单的调用parser的prettify函数来相对美观的显示源码， 可以看到这样就能看到中文字符了，因为BeautifulSoup能自动处理字符问题，并将返回结果都转化为Unicode编码格式。另 外，BeautifulSoup还能迅速定位到满足条件的指定标签，后面我们会用到~</p>
+<h3 id="抓取人人网的新鲜事"><a href="#抓取人人网的新鲜事" class="headerlink" title="抓取人人网的新鲜事"></a>抓取人人网的新鲜事</h3><p>前面讲的是最简单的抓取情形了，但通常我们需要面对更复杂的情形，拿人人网来说，需要登录自己的账号才能显示新鲜事，这样我们就只能求助于更2一点 的urllib2模块了。试想，我们需要一个opener来打开你的人人网首页，而为了进入首先就需要认证，而这个登录认证需要cookie的支持，那我 们就需要在这个opener之上搭建一个处理cookie的Handler：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib,urllib2,cookielib</div><div class="line"><span class="keyword">from</span> BeautifulSoup <span class="keyword">import</span> BeautifulSoup</div><div class="line">myCookie = urllib2.HTTPCookieProcessor(cookielib.CookieJar());</div><div class="line">opener = urllib2.build_opener(myCookie)</div></pre></td></tr></table></figure>
+<p>首先import我们需要的所有模块，然后使用urllib2模块的HTTPCookieProcessor搭建一个处理cookie的 Handler，传入cookielib模块的CookieJar函数作为参数，这个这个函数处理HTTP的cookie，简单地说，它从HTTP请求中 提取cookie，然后将其返回给HTTP响应。然后利用urllib2的build_opener来建立我们需要的opener，这个opener已经 满足我们处理cookie的要求了。</p>
+<p>那么这个Handler怎么工作呢，前面说了，它需要捕捉到HTTP请求才行，也就是说，我们需要知道，登录人人的时候发了什么数据包出去，牛逼的 人可以使用各种命令行抓包工具如Tcpdump一类的，我等小民还是图形化的吧。这里我们借助于Firefox的HttpFox来实现，可以从<a href="https://addons.mozilla.org/zh-CN/firefox/addon/6647/" target="_blank" rel="external">这里</a>添 加这个牛逼的插件。安装好该插件以后，我们用Firefox登录人人网，然后输入自己的账号和密码，然后，别急，不要按登录按钮，从状态栏打开 HttpFox插件，点击Start按钮开始抓包，然后点击人人网的登陆，登陆过程完成后点击HttpFox的Stop停止抓包，如果一切正常的话应该可 以看到如下信息了。</p>
+<img src="http://7jptbo.com1.z0.glb.clouddn.com/images/fetch-webpage-by-python-1.png" class="center-img">
+<img src="http://7jptbo.com1.z0.glb.clouddn.com/images/fetch-webpage-by-python-2.png" class="center-img">
+<p>我们可以看到登陆人人的过程中浏览器向人人的服务器发送POST请求数据，有四项，其中两项是你的账号和密码。下面我们就利用代码模拟发出同样的请求就可以啦。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">post_data = &#123;</div><div class="line">    <span class="string">'email'</span>:<span class="string">'xxxxx'</span>,</div><div class="line">    <span class="string">'password'</span>:<span class="string">'xxxxx'</span>,</div><div class="line">    <span class="string">'origURL'</span>:<span class="string">'http://www.renren.com/Home.do'</span>,</div><div class="line">    <span class="string">'domain'</span>:<span class="string">'renren.com'</span></div><div class="line">&#125;</div><div class="line">req = urllib2.Request(<span class="string">'http://www.renren.com/PLogin.do'</span>, urllib.urlencode(post_data))</div><div class="line">html_src = openner.open(req).read()</div><div class="line">parser = BeautifulSoup(html_src)</div></pre></td></tr></table></figure>
+<p>首先，构造一个字典来存储我们刚才抓到的POST数据，然后通过urllib2的Request类来自己构造一个“请求”对象，请求的递交网址就是 上面捕捉的POST请求的URL部分，后面跟着我们的POST数据，注意，这里需要使用urllib的urlencode方法重新编码，以使其成为合法的 URL串。下面的过程就跟前面提到的简单抓取过程一样，只不过这里打开的不是简单的网址，而是将网址和POST数据封装后的Request请求，同样，我 们将源码赋给BeautifulSoup以便后面处理。</p>
+<p>现在我们的parser里存储的就是含有好友新鲜事的网页源码了，我们怎样提取有用的信息呢？分析网页这种粗活还是交给Firefox的FireBug(<a href="https://addons.mozilla.org/zh-CN/firefox/addon/1843/" target="_blank" rel="external">这里下载</a>)来玩吧。登入你的人人网，随意右击一下新鲜事里某个人的状态，选择“查看元素”，就会蹦出如下窗口，显示出你所点击的部分对应的源码：</p>
+<img src="http://7jptbo.com1.z0.glb.clouddn.com/images/fetch-webpage-by-python-3.png" class="center-img">
+<p>我们可以看到，每个新鲜事对应着article标签，我们再仔细看看article标签的详细内容：</p>
+<img src="http://7jptbo.com1.z0.glb.clouddn.com/images/fetch-webpage-by-python-4.png" class="center-img">
+<p>里面的h3标签包含了好友的姓名和状态，当然，还有一些肥猪流的表情地址，接触过HTML的对这个应该不陌生吧。所以我们要抓的就是这个h3啦！</p>
+<h3 id="BeautifulSoup抓取标签内容"><a href="#BeautifulSoup抓取标签内容" class="headerlink" title="BeautifulSoup抓取标签内容"></a>BeautifulSoup抓取标签内容</h3><p>下面就是我们的parser露脸的时候了，BeautifulSoup提供了很多定位标签的方法，简单的说，主要就是find函数和findAll 函数了，常用的参数就是name和attrs，一个是标签的名字，一个是标签的属性，name是个字符串，而attrs是个字典，比如说<code>find(‘img’,{‘src’:&#39;abc.jpg’})</code>就会返回类似这样的标签：<code>&lt;img src=”abc.jpg”&gt;</code>。而find与findAll的区别就是，find只返回第一个满足要求的标签，而findAll返回所有符合要求的 标签的列表。获取标签后，还有很多方便的方法获取子标签，例如，通过点操作符，tag.a可以获取tag所代表的标签下的子标签a，再如 tag.contents可以获取其所有孩子的列表，更多应用可以查看它的文档。下面就具体到本例来看怎么抓取我们想要的内容。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">article_list = parser.find(<span class="string">'div'</span>,<span class="string">'feed-list'</span>).findAll(<span class="string">'article'</span>)</div><div class="line"><span class="keyword">for</span> my_article <span class="keyword">in</span> article_list:</div><div class="line">    state = []</div><div class="line">    <span class="keyword">for</span> my_tag <span class="keyword">in</span> my_article.h3.contents:</div><div class="line">        factor = my_tag.string</div><div class="line">        <span class="keyword">if</span> factor != <span class="keyword">None</span>:</div><div class="line">            factor = factor.replace(<span class="string">u'\xa0'</span>,<span class="string">''</span>)</div><div class="line">            factor = factor.strip(<span class="string">u'\r\n'</span>)</div><div class="line">            factor = factor.strip(<span class="string">u'\n'</span>)</div><div class="line">            state.append(factor)</div><div class="line">    <span class="keyword">print</span> <span class="string">' '</span>.join(state)</div></pre></td></tr></table></figure>
+<p>这里，我们通过<code>find(‘div’,&#39;feed-list’).findAll(‘article’)</code>获取class属性为<code>feed-list</code>的div标签，第二个参数直接为一个字符串时代表的就是CSS的class属性了，然后获取其所有article的列表，对照上面的图，这句其 实就是获得了所有新鲜事的列表。然后我们遍历这个列表，对于每个article标签再获取其h3标签，并提取内容，如果标签中直接含有文本，则可以通过 string属性获得，最后，我们去掉一些控制字符，如换行一类的。最终将结果打印出来，当然这只能获取一小部分，“更多新鲜事”的功能还不能达到，有兴 趣的继续研究吧，我觉得通过HttpFox是不难实现的吧。</p>
+<img src="http://7jptbo.com1.z0.glb.clouddn.com/images/fetch-webpage-by-python-5.png" class="center-img">
+<h3 id="团购信息聚合小工具"><a href="#团购信息聚合小工具" class="headerlink" title="团购信息聚合小工具"></a>团购信息聚合小工具</h3><p>用同样的知识，我们还可以做一些有趣的应用，像现在很火的团购信息聚合，其实思路还是很容易的，就是分析网站的源代码，提取团购的标题，图片和价格 就好了。这里放出源码文件，有兴趣的可以研究下！用PyQt做的界面，按钮的功能还没有实现，只能提取“美团”，“糯米网”，“QQ团购”三个网站，从下 拉列表框里选择就可显示，图片会保存在本地目录里，来个截图看看吧~</p>
+<img src="http://7jptbo.com1.z0.glb.clouddn.com/images/fetch-webpage-by-python-6.png" class="center-img">
+<p>打叉的按钮功能没有实现哦~这里是文件下载，一个pyw主窗体文件，两外两个py文件一个是UI，一个是Resource。</p>
+<p><a href="http://pinkyjie-blog.qiniudn.com/files/TuanGou.7z" target="_blank" rel="external">打包下载</a></p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/"> #Python </a>
+          
+            <a href="/tags/BeautifulSoup/"> #BeautifulSoup </a>
+          
+            <a href="/tags/urllib/"> #urllib </a>
+          
+            <a href="/tags/人人网/"> #人人网 </a>
+          
+            <a href="/tags/团购/"> #团购 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2010/12/19/today-is-a-blue-rainy-day/">是下雨让我变得忧郁，还是我的忧郁让外面的雨下不停~</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2010/11/26/move-your-research-platform-from-matlab-to-python/">将你的科学计算从Matlab迁移到Python？</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div class="ds-thread" data-thread-key="_posts-2010-12-19-fetch-webpage-by-python"
+               data-title="使用python抓取网页(以人人网新鲜事和团购网信息为例)" data-url="http://pinkyjie.com/2010/12/19/fetch-webpage-by-python/">
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="http://pinkyjie-blog.qiniudn.com/images/avatar.jpg" alt="马斯特" />
+          <p class="site-author-name">马斯特</p>
+        </div>
+        <p class="site-description motion-element">前端 | 溜冰 | Mac</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">184</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/PinkyJie" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://twitter.com/PinkyJie" target="_blank">Twitter</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/pinkyway" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://stackoverflow.com/users/689948/pinkyjie" target="_blank">StackOverflow</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#python抓取网页基础"><span class="nav-number">1.</span> <span class="nav-text">python抓取网页基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抓取人人网的新鲜事"><span class="nav-number">2.</span> <span class="nav-text">抓取人人网的新鲜事</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeautifulSoup抓取标签内容"><span class="nav-number">3.</span> <span class="nav-text">BeautifulSoup抓取标签内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#团购信息聚合小工具"><span class="nav-number">4.</span> <span class="nav-text">团购信息聚合小工具</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2010 - 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">马斯特</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"pinkyjie-blog"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-45012422-1');ga('send','pageview');
+  </script>
+
+  
+<div style="position:relative; bottom: 23px">
+  <script src="http://s95.cnzz.com/stat.php?id=1253033676&web_id=1253033676&show=pic1" language="JavaScript">
+  </script>
+</div>
+
+
+</body>
+</html>

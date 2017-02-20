@@ -1,0 +1,1002 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="o7yQBnLIoWby8Y5vNMQywBiMtev-ilWjXt89RQpTvVw" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端 | 溜冰 | Mac" />
+
+
+
+  <meta name="keywords" content="Yeoman,BackboneJS,Bower,Grunt,AngularJS,RequireJS,Addy Osmani,前端自动化,Javascript," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> Yeoman初体验 // 进击的马斯特 </title>
+</head>
+
+<body>
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">进击的马斯特</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    <!--增加swiftype搜索功能-->
+    <form class="menu-item menu-item-search">
+      <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+    </form>
+    
+    <script type="text/javascript">
+      (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+      (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+      e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+      })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+      _st('install','8k3UxSuRWYkrhVg55bC3','2.0.0');
+    </script>
+    <!--增加swiftype搜索功能end-->
+    
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          分类
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          关于
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Yeoman初体验
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2013-11-24
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/前端开发/">前端开发</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/11/24/first-look-at-yeoman/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="_posts-2013-11-24-first-look-at-yeoman"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <p>第一次关注<a href="http://yeoman.io/" target="_blank" rel="external">Yeoman</a>这玩意大概是在去年七月份的时候吧，那个时候偶然发现了Google的<a href="http://angularjs.org/" target="_blank" rel="external">AngularJS</a>，然后顺便发现了Yeoman。看Logo第一感觉很像是Jenkins，一个仆人的样子，当时也就只当是一个快速生成网站原型的工具，没细细研究过。直到最近又在很多文章中看到它的身影，决定小试一把。</p>
+<a id="more"></a>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Yeoman的安装基于npm，所以需要先安装好Node.js，另外如果需要使用Sass来写CSS的话，需要安装Ruby和Compass工具，这个不细说了，很简单的。完事以后在命令行运行<code>npm install -g yo</code>即可，如果用Linux的话记得<code>sudo</code>啊。如果一切顺利，Yeoman的3个工具：<code>yo</code>，<code>bower</code>和<code>grunt</code>就安装好了。当然这步也可能会报错，比如我自己在windows上就遇到<code>Error: No compatible version found: yo</code>的报错。出现这个问题请检查你的Node.js的版本，如我的是<code>v0.6.15</code>，太老了，升级到最新版<code>v0.10.22</code>再重新执行安装命令即可。安装成功后我们先来看看这3个工具吧：</p>
+<ul>
+<li>yo：主要负责一些scaffolding的工作，配合各种框架的generator快速生成一个web app所需的各种基础文件。顺便吐槽一句，scaffolding这个词翻译成脚手架我实在不明所以。</li>
+<li><a href="http://bower.io/" target="_blank" rel="external">bower</a>：Twitter出品，类似于npm，用于前端各种第三方库的包管理工具。</li>
+<li><a href="http://gruntjs.com/" target="_blank" rel="external">grunt</a>：大名鼎鼎的前端自动化工具，可以把它理解成make命令，简单的配置即可自动帮你完成诸如连接js，编译coffeescript，编译scss，跑测试啊等繁琐的工具。</li>
+</ul>
+<p>Yeoman就是利用这三个工具来为我们服务的。第一次在命令行运行<code>yo</code>命令会看到一张Yeoman的“吉祥物”形象，然后是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[?] What would you like to <span class="keyword">do</span>? (Use arrow keys)</div><div class="line">  --------</div><div class="line">&gt; Install a generator</div><div class="line">  Find some <span class="built_in">help</span></div><div class="line">  Get me out of here!</div></pre></td></tr></table></figure>
+<p>从这里我们就要开始适应Yeoman这种问答的服务方式，每次你运行一些命令，它就会给出一些选项让你选择。我们看到第一项就是安装generator。下面就以Backbone的项目为例来看看如何利用Yeoman来快速生成框架吧。</p>
+<h3 id="Backbone的generator"><a href="#Backbone的generator" class="headerlink" title="Backbone的generator"></a>Backbone的generator</h3><p>以往我们要写开始一个Backbone的Web工程，免不了先下载jQuery，Backbone，Underscore，然后CSS上下载个Bootstrap一类的，如果要用模块化的写法的话还要下载RequireJS，然后写RequireJS的初始配置等等等等，非常繁琐。我想牛人应该都有自己的一套脚本去生成这些基本框架吧，作为非牛人的我们有了Yeoman，全交给它就行了。首先，安装Yeoman为Backbone适配的generator：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g generator-backbone</div></pre></td></tr></table></figure>
+<p>然后新建一个项目文件夹，使用Yeoman初始化项目。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir yeoman-backbone-project</div><div class="line">yo backbone</div></pre></td></tr></table></figure>
+<p>问答式服务又来了，Yeoman会询问你：是否包含Bootstrap for Sass和CoffeeScript，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">     _-----_</div><div class="line">    |       |</div><div class="line">    |--(o)--|   .--------------------------.</div><div class="line">   `---------´  |    Welcome to Yeoman,    |</div><div class="line">    ( _´U`_ )   |   ladies and gentlemen!  |</div><div class="line">    /___A___\   <span class="string">'__________________________'</span></div><div class="line">     |  ~  |</div><div class="line">   __<span class="string">'.___.'</span>__</div><div class="line"> ´   `  |° ´ Y `</div><div class="line"></div><div class="line">Out of the box I include HTML5 Boilerplate, jQuery, Backbone.js and Modernizr.</div><div class="line">[?] What more would you like?</div><div class="line">&gt;[X] Twitter Bootstrap <span class="keyword">for</span> Sass</div><div class="line"> [ ] Use CoffeeScript</div></pre></td></tr></table></figure>
+<p>非常可爱的Yeoman吉祥物，使用空格键来选定或取消选项前面的x，这里我选择使用Twitter Bootstrap for Sass，不使用CoffeeScript。选定后回车，然后问你是否包含RequireJS，我选择包含。这时Yeoman会自动帮你搭好工程的架构，包括文件夹结构和一些必须的文件，然后会自动执行<code>bower install &amp;&amp; npm install</code>，前者安装各种前端依赖，如前面说的jQuery、Bootstrap、Backbone、Underscore、RequireJS等等，后者安装Grunt需要的一些依赖包，用于完成各种自动化任务。这里可能会比较慢，并且可能出现问题，如果报错，你可以直接手动执行<code>bower install</code>和<code>npm install</code>。其实<code>bower install</code>会查找当前目录下的<code>bower.json</code>文件，安装里面生命的各种依赖，而<code>npm install</code>会查找当前目录下的<code>package.json</code>安装里面的各种依赖，做过Node开发的应该不会陌生吧。<code>bower install</code>通常不会出什么问题，问题都出在<code>npm install</code>里面，如果有些依赖没安装成功，先删除工程目录下的的<code>node_modules</code>文件夹，然后重新执行<code>npm install</code>。比如我在Windows上碰到了如下问题：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pre-build <span class="built_in">test</span> failed, compiling from source...</div><div class="line">building is not supported on win32</div></pre></td></tr></table></figure>
+<p>这是在安装<code>grunt-contrib-imagemin</code>这个依赖的时候报的错，经过一番搜索，是因为这个<code>imagemin</code>又依赖<code>jpegtran-bin</code>，这个项目的0.2.0以上的版本在Windows上的build有问题导致的，Github上面有很多讨论，见<a href="https://github.com/yeoman/node-jpegtran-bin/issues/37" target="_blank" rel="external">1</a>，<a href="https://github.com/gruntjs/grunt-contrib-imagemin/issues/108" target="_blank" rel="external">2</a>，<a href="https://github.com/gruntjs/grunt-contrib-imagemin/issues/109" target="_blank" rel="external">3</a>，网上有很多解决方案，比如进入工程目录下的<code>node_modules/grunt-contrib-imagemin/</code>，修改<code>package.json</code>将其对<code>jpegtran-bin</code>的依赖版本修改为<code>0.2.0</code>，但经过尝试，我发现最简单的方式就是直接修改工程目录下的<code>package.json</code>，将<code>grunt-contrib-iamgemin</code>的版本修改为<code>0.2.0</code>，即去掉这一行<code>&quot;grunt-contrib-imagemin&quot;: &quot;~0.2.0&quot;,</code>中的<code>~</code>号即可。修改好后，按前面你说的，删除<code>node_modules</code>文件夹，重新执行<code>npm install</code>这次应该成功了吧！目前好像官方已经修复了这个问题，如果一切正常就不用管了。</p>
+<p>在开始Code之前，我们先来看看Yeoman帮我们干了些什么。除了刚才提到的用来管理前端依赖的<code>bower.json</code>，用来管理Grunt依赖的<code>package.json</code>，以及用来配置Grunt任务的<code>Gruntfile.js</code>，我们还发现主要的文件夹有<code>app</code>，<code>test</code>，<code>node_modules</code>，后两个就不用说了，一个存放测试的文件，一个用来存放Grunt的依赖。主要的项目文件都放在app目录下了，打开看看，熟悉的images、scripts、styles文件夹和idnex.html，这个不必多说，除此之外还有一个<code>bower_components</code>文件夹，这里面就是我们的前端依赖文件了，里面各种文件夹：jquery，backbone啊等等，都安装在这里了。由于我们主要使用Backbone+RequireJS，我们重点关注scripts文件夹。打开里面的<code>main.js</code>，可以发现里面已经为我们生成好了RequireJS的初始配置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>.config(&#123;</div><div class="line">    <span class="attr">shim</span>: &#123;</div><div class="line">        <span class="attr">underscore</span>: &#123;</div><div class="line">            <span class="attr">exports</span>: <span class="string">'_'</span></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">backbone</span>: &#123;</div><div class="line">            <span class="attr">deps</span>: [</div><div class="line">                <span class="string">'underscore'</span>,</div><div class="line">                <span class="string">'jquery'</span></div><div class="line">            ],</div><div class="line">            <span class="attr">exports</span>: <span class="string">'Backbone'</span></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">bootstrap</span>: &#123;</div><div class="line">            <span class="attr">deps</span>: [<span class="string">'jquery'</span>],</div><div class="line">            <span class="attr">exports</span>: <span class="string">'jquery'</span></div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">paths</span>: &#123;</div><div class="line">        <span class="attr">jquery</span>: <span class="string">'../bower_components/jquery/jquery'</span>,</div><div class="line">        <span class="attr">backbone</span>: <span class="string">'../bower_components/backbone/backbone'</span>,</div><div class="line">        <span class="attr">underscore</span>: <span class="string">'../bower_components/underscore/underscore'</span>,</div><div class="line">        <span class="attr">bootstrap</span>: <span class="string">'vendor/bootstrap'</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">require</span>([</div><div class="line">    <span class="string">'backbone'</span></div><div class="line">], <span class="function"><span class="keyword">function</span> (<span class="params">Backbone</span>) </span>&#123;</div><div class="line">    Backbone.history.start();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>是不是很方便啊！！！现在我们的项目已经是可运行状态了！</p>
+<h3 id="Grunt与LiveReload"><a href="#Grunt与LiveReload" class="headerlink" title="Grunt与LiveReload"></a>Grunt与LiveReload</h3><p>让我们先来看看Yeoman为我们初始化的工程什么样子吧。运行<code>grunt server</code>命令将启动一个简单的server来跑我们的工程，可以看到，grunt执行了各种任务，而这些任务都是可以在<code>Gruntfile.js</code>配置的，可以看这一行<code>grunt.registerTask(&#39;server&#39;, function (target) {</code>，运行<code>grunt server</code>执行的操作都可以在这个函数里配置。如果一切正常，会调用Chrome浏览器打开你的项目，在开启server的同时，更令人激动的是还开启了一个LiveReload的服务器，只要你在编辑器里修改源文件并保存，Chrome会自动加载改变，这对于调试是非常有用的。如果你没有装Compass可能会报错，安装一下即可。</p>
+<h3 id="使用Yeoman生成Model-View-Collection"><a href="#使用Yeoman生成Model-View-Collection" class="headerlink" title="使用Yeoman生成Model/View/Collection"></a>使用Yeoman生成Model/View/Collection</h3><p>Backbone的generator还提供了很多有用的功能，可以帮你生成指定的Model/View/Collection，这个有点类似Ruby On Rails。以有名的<a href="http://todomvc.com/" target="_blank" rel="external">TodoMVC</a>项目为例，我们要生成一个Todo的Model，一个Todos的Collection，以及相应的View，可以使用如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yo backbone:model Todo</div><div class="line">yo backbone:colleciton Todos</div><div class="line">yo backbone:view Todo</div><div class="line">yo backbone:view Todos</div></pre></td></tr></table></figure>
+<p>Yeoman会在相应的model/collection/view文件夹下生成相应的js文件，并写好框架给你填空，如<code>app\scripts\models\Todo.js</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">define([</div><div class="line">    <span class="string">'underscore'</span>,</div><div class="line">    <span class="string">'backbone'</span></div><div class="line">], <span class="function"><span class="keyword">function</span> (<span class="params">_, Backbone</span>) </span>&#123;</div><div class="line"><span class="meta">    'use strict'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> TodoModel = Backbone.Model.extend(&#123;</div><div class="line">        <span class="attr">defaults</span>: &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> TodoModel;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>另外，生成View还会帮你自动生成模板，如<code>app/scripts/templates/Todo.ejs</code>文件，并在相应的View文件Todo.js配置好：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> TodoView = Backbone.View.extend(&#123;</div><div class="line">    <span class="attr">template</span>: JST[<span class="string">'app/scripts/templates/Todo.ejs'</span>]</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>除此之外，我们知道TodoMVC里面是将LocalStorage作为存储的，那还需要安装Backbone的LocalStorage适配器，这不还是要自己下载相应的js吗？NO,NO,NO! 这次该Bower出场了。</p>
+<h3 id="利用Bower自动管理和安装依赖"><a href="#利用Bower自动管理和安装依赖" class="headerlink" title="利用Bower自动管理和安装依赖"></a>利用Bower自动管理和安装依赖</h3><p>Bower的使用和npm很像，利用<code>bower search backbone.localstorage</code>来搜索有没有这个库，答案是肯定的！然后运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bower install backbone.localstorage --save</div></pre></td></tr></table></figure>
+<p>则指定的库会自动下载到刚才的<code>bower_components</code>文件夹中，后面的参数<code>--save</code>则是将这个依赖自动添加到<code>bower.json</code>中，方便下次自动安装，因为<code>bower_components</code>文件夹一般是不在代码库中的。这里我认为Yeoman应该自动将这个新的依赖添加到<code>main.js</code>中的RequireJS配置中去，但是它没有这么做，还是需要手动来操作，这一点有点令我失望。找到<code>main.js</code>，在<code>shim</code>块中添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">backboneLocalstorage: &#123;</div><div class="line">    deps: [<span class="string">'backbone'</span>],</div><div class="line">    exports: <span class="string">'Store'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在<code>path</code>块中添加：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">backboneLocalstorage: <span class="string">'../bower_components/backbone.localStorage/backbone.localStorage'</span>,</div></pre></td></tr></table></figure>
+<p>大功告成，在需要LocalStorage的地方引用即可。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Yeoman的初体验就到这里了，经过体验，基本上3个小工具的作用和基本功能都已经有所了解。如果你想继续Code一个完整的Todo应用，参考<a href="https://github.com/tastejs/todomvc/tree/gh-pages/dependency-examples/backbone_require" target="_blank" rel="external">TodoMVC的官方Github</a>。当然，除了Backbone，Yeoman还支持目前各种主流的框架，如Google自家的AngularJS，Ember等等，如果都没法满足需要，也可以参考<a href="http://yeoman.io/generators.html" target="_blank" rel="external">官方文档</a>自己编写generator。总之，Yeoman是一个不可多得的开发工具，可以极大的提高效率，大家不妨来试试吧！</p>
+<p>P.S. 在接触Yeoman的过程中我发现了<a href="https://github.com/addyosmani" target="_blank" rel="external">大神Addy Osmani</a>，他不仅是Google Chrome的开发人员，而且参与多个开源项目，如Yeoman、TodoMVC等等，他还出了两本书，一本关于<a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/" target="_blank" rel="external">Javascript设计模式</a>，一本关于<a href="http://addyosmani.github.io/backbone-fundamentals/" target="_blank" rel="external">Backbone</a>，值得一读，前面那本在OSChina上有<a href="http://www.oschina.net/translate/learning-javascript-design-patterns" target="_blank" rel="external">中译本</a>，后面那本我刚买了，准备好好拜读。另外，我在Speckerdeck上看到了一份大神的<a href="https://speakerdeck.com/addyosmani/automating-front-end-workflow" target="_blank" rel="external">关于前端自动化的PPT</a>，其中介绍了包括Yeoman在内的各种工具以及很多非常实用的Sublime插件，相信看了以后会让你打开眼界，吐血推荐！</p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Yeoman/"> #Yeoman </a>
+          
+            <a href="/tags/BackboneJS/"> #BackboneJS </a>
+          
+            <a href="/tags/Bower/"> #Bower </a>
+          
+            <a href="/tags/Grunt/"> #Grunt </a>
+          
+            <a href="/tags/AngularJS/"> #AngularJS </a>
+          
+            <a href="/tags/RequireJS/"> #RequireJS </a>
+          
+            <a href="/tags/Addy-Osmani/"> #Addy Osmani </a>
+          
+            <a href="/tags/前端自动化/"> #前端自动化 </a>
+          
+            <a href="/tags/Javascript/"> #Javascript </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/11/30/understand-backbone-extend/">理解Backbone中extend的实现</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/10/24/migrate-from-wordpress-to-jekyll/">从Wordpress迁移到Jekyll</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div class="ds-thread" data-thread-key="_posts-2013-11-24-first-look-at-yeoman"
+               data-title="Yeoman初体验" data-url="http://pinkyjie.com/2013/11/24/first-look-at-yeoman/">
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="http://pinkyjie-blog.qiniudn.com/images/avatar.jpg" alt="马斯特" />
+          <p class="site-author-name">马斯特</p>
+        </div>
+        <p class="site-description motion-element">前端 | 溜冰 | Mac</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">184</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/PinkyJie" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://twitter.com/PinkyJie" target="_blank">Twitter</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/pinkyway" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://stackoverflow.com/users/689948/pinkyjie" target="_blank">StackOverflow</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Backbone的generator"><span class="nav-number">2.</span> <span class="nav-text">Backbone的generator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Grunt与LiveReload"><span class="nav-number">3.</span> <span class="nav-text">Grunt与LiveReload</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Yeoman生成Model-View-Collection"><span class="nav-number">4.</span> <span class="nav-text">使用Yeoman生成Model/View/Collection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用Bower自动管理和安装依赖"><span class="nav-number">5.</span> <span class="nav-text">利用Bower自动管理和安装依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2010 - 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">马斯特</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"pinkyjie-blog"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-45012422-1');ga('send','pageview');
+  </script>
+
+  
+<div style="position:relative; bottom: 23px">
+  <script src="http://s95.cnzz.com/stat.php?id=1253033676&web_id=1253033676&show=pic1" language="JavaScript">
+  </script>
+</div>
+
+
+</body>
+</html>

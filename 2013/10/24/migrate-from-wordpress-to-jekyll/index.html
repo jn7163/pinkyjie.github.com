@@ -1,0 +1,1019 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="o7yQBnLIoWby8Y5vNMQywBiMtev-ilWjXt89RQpTvVw" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端 | 溜冰 | Mac" />
+
+
+
+  <meta name="keywords" content="jekyll,wordpress,github,github pages,blog,mathjax,多说," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> 从Wordpress迁移到Jekyll // 进击的马斯特 </title>
+</head>
+
+<body>
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">进击的马斯特</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    <!--增加swiftype搜索功能-->
+    <form class="menu-item menu-item-search">
+      <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+    </form>
+    
+    <script type="text/javascript">
+      (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+      (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+      e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+      })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+      _st('install','8k3UxSuRWYkrhVg55bC3','2.0.0');
+    </script>
+    <!--增加swiftype搜索功能end-->
+    
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          分类
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          关于
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              从Wordpress迁移到Jekyll
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2013-10-24
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/网站相关/">网站相关</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/10/24/migrate-from-wordpress-to-jekyll/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="_posts-2013-10-24-migrate-from-wordpress-to-jekyll"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <p>上周末闲着没事干突然想把博客从Wordpress迁移到Github pages上，于是周日花了一天时间做迁移，期间各种折腾，终于变成了现在这样还算满意的情况。虽然我已经好久不写博客了，但俗话说“书非借不能读也”，博客这一迁移也激起了我重新写博客的欲望。再说，这个博客还身兼重任，那就是——养媳妇！哈哈～还是说说迁移中遇到的乱七八糟的问题吧～</p>
+<a id="more"></a>
+<h3 id="搭建本地环境"><a href="#搭建本地环境" class="headerlink" title="搭建本地环境"></a>搭建本地环境</h3><p>首先，自然是在自己的github上面new一个repository了，名字必须是<code>yourname.github.com</code>，虽然现在github pages的地址已经改为<code>yourname.github.io</code>了，但我还没有尝试过repository用io结尾行不。<br>完成以后，就是各种本地的设置了，搭建git环境，搭建ruby环境啊一类的，这里就不详细说了，ruby环境的搭建推荐使用<a href="https://rvm.io/" target="_blank" rel="external">RVM</a>，很方便的说，当然，貌似不支持windows。。。如果在widnows下我推荐使用云IDE，就好像浏览器里的虚拟机，<code>editor+terminal</code>，我常用<code>Nitrous.IO</code>，给个<a href="https://www.nitrous.io/join/OoRQwt0SaLc" target="_blank" rel="external">我的推荐链接</a>，有兴趣的可以试试。</p>
+<p>然后就要在本地安装<code>Jekyll</code>了，一句话<code>gem install jekyll</code>搞定。<a href="http://jekyllrb.com/" target="_blank" rel="external">Jekyll</a>是一个ruby编写的静态站点生成器，在github上搭博客就靠它。但直接用jekyll貌似外观太朴素了，推荐直接使用<a href="http://jekyllbootstrap.com/" target="_blank" rel="external">jekyll-bootstrap</a>，从名字就可以看出，这玩意把来自twitter的优秀CSS框架<code>bootstrap</code>结合进来，很多漂亮的主题可以选择，而且内置了很多常用的功能。直接从<code>jekyll-bootstrap</code>起步吧，先clone下来，然后把remote的地址改成自己的～</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> https://github.com/plusjade/jekyll-bootstrap.git yourname.github.com</div><div class="line"><span class="built_in">cd</span> yourname.github.com</div><div class="line">git remote <span class="built_in">set</span>-url origin git@github.com:yourname/yourname.github.com.git</div></pre></td></tr></table></figure>
+<p>然后<code>jekyll serve</code>就可以在本地<code>localhost:4000</code>看到博客的样子，当然，现在空空如也～</p>
+<h3 id="先换主题"><a href="#先换主题" class="headerlink" title="先换主题"></a>先换主题</h3><p>在导入文章进行各种设置之前，推荐先选一个自己喜欢的主题换上，因为后面很多定制涉及到修改主题文件，为了避免2次修改，先换一个主题比较方便。<code>jekyll-bootstrap</code>提供了一个<a href="http://themes.jekyllbootstrap.com/preview/twitter/" target="_blank" rel="external">主题预览网站</a>，上面就有很多不错的主题。点击页面下面的主题名字进行预览，选择喜欢的以后，点击蓝色的<code>Install Theme</code>按钮，复制里面的代码执行，比如我选择的<code>hooligan</code>，代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rake theme:install git=<span class="string">"https://github.com/dhulihan/hooligan.git"</span></div><div class="line">rake theme:switch name=<span class="string">"hooligan"</span></div></pre></td></tr></table></figure>
+<p>其中第一行将主题下载到<code>_theme_packages</code>里面，第二行切换到新主题。现在本地预览就可以看到新主题了。主题有两个相应的文件夹，一个是<code>_includes/themes/xxx</code>，这里放的是网页模板，另一个是 <code>assets/themes/xxx</code>，这里放的主题用到的css/js文件。我们要定制页面显示的内容通常修改第一个文件夹的东西，定制样式修改第二个，后面遇到了详细说。</p>
+<h3 id="Wordpress的文章迁移"><a href="#Wordpress的文章迁移" class="headerlink" title="Wordpress的文章迁移"></a>Wordpress的文章迁移</h3><p>现在可以导入原来的文章了，这个就比较闹心了，我的折腾时间有很大一部分花在这上面。<a href="http://jekyllrb.com/docs/migrations/" target="_blank" rel="external">官方文档</a>专门讲解了各个常用的博客系统怎么迁移过来，wordpress的步骤也不复杂，从管理后台导出xml，然后执行一条命令即可将所有文章转换成<code>.markdown</code>，将其拷入<code>_post</code>文件夹即可。这个时候你本地预览就可以看到文章，标签以及分类信息了。闹心的事情来了，为什么我预览报一堆错误？为什么我的显示跟预期的不一样？唉，一个一个说吧～</p>
+<h3 id="乱七八糟的Could-not-find-ref-id"><a href="#乱七八糟的Could-not-find-ref-id" class="headerlink" title="乱七八糟的Could not find ref_id"></a>乱七八糟的<code>Could not find ref_id</code></h3><p>这个问题浪费了我不少时间，最后发现原来是字符转义的问题！<code>markdown</code>语法里中括号<code>[]</code>是特殊字符，如果你的文章里出现则需要转义，加<code>\</code>号即可。Too Simple!</p>
+<h3 id="公式的显示"><a href="#公式的显示" class="headerlink" title="公式的显示"></a>公式的显示</h3><p>以前研究学术的时候写过好几篇满是公式的博文，原先wordpress里貌似用的是一种插件，到这里显然行不通了。一番搜索后发现一个叫<a href="http://www.mathjax.org/" target="_blank" rel="external">MathJax</a>的牛逼东西，用js来渲染公式。在<code>_includes/themes/hooligan/default.html</code>里加入</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>即可，这样就可以用<code>$$</code>作为开始结束符来输入公式了。注意这里的<code>hooligan</code>是你的主题名称，你的主题如果是别的就改成相应别的。这样的公式是独占一行的，如果要输入inline的公式，则还需要添加</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/x-mathjax-config"</span>&gt;</span><span class="undefined"></span></div><div class="line">    MathJax.Hub.Config(&#123;</div><div class="line">      tex2jax: &#123; inlineMath: [['$','$'], ['\\(','\\)']] &#125;</div><div class="line">    &#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这样，使用<code>$</code>作开始结束符就可以输入行内的公式了。这里有个坑，有可能会遇到类似<code>Liquid Exception: Variable xxx  was not properly terminated with regexp xxx</code>，这个我搜了半天，最后发现是公式内需要显示大括号时，原来会输入<code>\{\}</code>，但jekyll中<code>\</code>也需要转义，改成<code>\\{\\}</code>即可。同样的问题还有公式换行的时候，原先的<code>\\</code>改成<code>\\\\</code>才行。有时<code>[]</code>也需要转义。转义——多么痛的领悟。</p>
+<h3 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h3><p>把博客整到github上的应该多半都是程序员吧，博客自然少不了一堆公式。在github上直接用类似</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">undefined</div><div class="line"></div></pre></td></tr></table></figure>
+<p>即可，但不知道为什么我的高亮一直没发生效，后来还是乖乖的用</p>
+
+undefined
+
+
+<p>虽然写起来稍显复杂，但高亮效果不错，配合我的主题非常好看。另外，在写这篇文章的时候我又遇到一个问题，如何显示标签，比如像上面的代码里带有标签该如何转义书写呢，这个问题我也折腾了好久，很多人说用<code>&quot;</code>进行嵌套，能解决问题，但是有点搞不清楚为啥这么写，后来发现，原来官方早就给答案了，把内容放到<code>{% raw %}{% endraw %}</code>和<code>{{ "undefined`里面就不会进行tag解析了。
+
+### 图片迁移
+
+博客搬过来了，图片不多的话自然也搬过来吧～在`assets`文件夹下新建文件夹`images`和`files`，一个用来放图片，一个用来放文件附件。然后为了方便引用这两个路径，可以在`_config.yml`里定义变量：
+
+undefined
+
+然后就可以在文章里像这样`![](undefined/picture.jpg)`插入图片了。其实这里可以发现，`_config.yml`里就是这样定义变量的，然后文章里就可用`site.xxx`来访问了，后面添加评论的时候还会用到。`_config.yml`里还有很多有用的配置，比如作者信息，博客的名字等等，不多说，自己研究吧。添加图片路径后，巨大的工作量来自——下载原博客里的图片，这里推荐一个chrome插件[Fatkun图片批量下载](https://chrome.google.com/webstore/detail/fatkun-batch-download-ima/nnjjahlikiabnchcpehcpkdeckfgnohf?hl=zh-CN)，谁用谁知道。
+
+### 评论系统
+
+由于是静态网站，评论什么的就知道使用第三方的套件来实现了，`jekyll-bootstrap`里自带的是国外很有名的社交评论系统`disqus`，只要在`_config.yml`里配置自己的帐号即可。但入乡随俗嘛，我用`disqus 国内 山寨`为关键词Google了一把，立马发现了符合我朝国情的产品，类似[友言](http://www.uyan.cc/)，[多说](http://duoshuo.com/)等等，随便看了一下，最后决定多说吧。。。据说多说可以将原wordpress的评论导入，反正我是没成功。注册一个多说，填写相关的站点信息，就可以在`工具=>获取代码=>通用代码`里得到需要粘贴的代码，其中`<div class="ds-thread"></div>`是具体显示评论的代码，其他部分是js代码。仿照前面的，将js代码复制到`_includes/themes/hooligan/default.html`里。为了不写死代码，我们将`short_name`这一行修改为
+
+undefined
+
+后面我们会在`_config.yml`里配置这个`short_name`。然后另外的代码放哪里呢？首先，将你的多说信息配置到`_config.yml`里面，找到`_config.yml`里`comments`这一段，改成：
+
+undefined
+
+其中的`short_name`就是多说的通用代码里的`short_name`值。然后根据`jekll-bootstrap`的结构，评论由`_includes/JB/comments`管理，打开发现里面是一个ruby的`switch-case`分支结构，在`undefined`之前加上多说的判断即可：
+
+undefined
+
+可以看到，实际的评论代码是放在`_includes/JB/comments-probiders`目录下的，在该目录下新建一个文件`duoshuo`，然后将刚才通用代码里的`<div class="ds-thread"></div>`复制进去即可。因为这个`_includes/JB/comments`会被很多模板自动引用，所以评论已经被添加到需要的地方去了。另外，如果你想定制评论，比如每篇博客右侧显示最近的评论和最近的来访者，可以修改`_includes/themes/hooligan/page.html`，这个是页面的默认模板，加一个`<div class="span4">`，熟悉`bootstrap`的孩子一定不陌生，这里就是右侧边栏，在这个div的最后面加入：
+
+undefined
+
+### 首页的定制：分页与摘要
+
+到现在博客应该像模像样了吧，但唯一不爽的就是首页了，默认的首页`index.md`显示的是所有文章的存档，比较朴素，怎样改成像传统wordpress那样显示文章的摘要和合理分页呢？[官方文档](http://jekyllrb.com/docs/pagination/)同样专门有一节讲分页。首先，在`_config.yml`里配置分页，即添加`paginate: 5`，其中的`5`为每页的文章数，自己把握。然后，删除`index.md`，新建`index.html`，这一步很重要，我原来设置分页一直不成功就卡在这里，官方文档里也有讲，分页只对`html`生效！文档中有中规中矩的写法，大家可以参考，这里放出我修改过的版本。
+
+undefined
+
+头部就是主标题副标题，这个没啥说的，下面开始，`paginator.posts`里保存的是该页的所有文章信息，每篇文章的结构大致是`.post-wrapper > .entry-title > .entry-meta > .entry`的`div`嵌套，这些样式你可以在`assets/themes/hooligan/css/style.css`里自定义。其中可以看到`entry-meta`里会输出文章的分类信息和标签信息，`.entry`里输出摘要。摘要如何实现网上有千奇百怪的版本，我也试了很多，心力憔悴，最后发现居然一句话就能实现，网上还有很多为了这个自己写插件的。。。其实想想原理就不难，因为wordpress里使用`<!--more-->`来显示摘要，只要在`post.content`里查找`<!--more-->`的位置显示其前面的内容就是摘要啊！所以`{{ "{{ post.content | split: '<!--more-->' | first "}}}}</div></code>用这种类似管道的<code>filter</code>方式，先以<code>&lt;!--more--&gt;</code>调用<code>split</code>分割，然后用<code>first</code>取前面即可。其实我不太明白为什么直接写<code>{{"{{ post.content.split('!--more-->').first "}}}}</code>为啥不行。。。有懂的可以告诉我～后面的部分就是分页的页码了，我这里为了风格统一，套用了<code>bootstrap</code>的分页样式，具体可以看<code>bootstrap</code>的<a href="http://v2.bootcss.com/components.html#pagination" target="_blank" rel="external">分页文档</a>。这样“高大上”的首页就诞生了。</p>
+<h3 id="大段代码的显示"><a href="#大段代码的显示" class="headerlink" title="大段代码的显示"></a>大段代码的显示</h3><p>大段代码的显示推荐使用github的<a href="https://gist.github.com" target="_blank" rel="external">gist</a>，否则转义累死人啊！上面的大段代码就是用的gist显示的，配合了自定义的gist样式。这里值得说一下，gist也是个坑！关于在jekyll嵌入gist，可以使用官方的方案，直接写<code>&lt;script src=&quot;https://gist.github.com/yourname/xxx.js&quot;&gt;&lt;/script&gt;</code>，也可以用jekyll的gist标签：<code>{% raw %}{% gist xxx %}{% endraw %}</code>。很不幸，这两种方案都有问题，本地预览时正常显示，但上传到github后发现，gist后面的内容被截断，匪夷所思。经过一番算搜索发现，又是jekyll的标签解析惹得货啊。详细可以看这两篇文章：<a href="http://mystcolor.me/post/22455268027/fixing-your-embedding-gist-snippets" target="_blank" rel="external">Fixing your embedding gist snippets</a> 和 <a href="http://stackoverflow.com/questions/69913/why-dont-self-closing-script-tags-work" target="_blank" rel="external">Why don’t self-closing script tags work?</a>。简单来说就是，这两种方式会生成<code>&lt;script  src=&quot;https://gist.github.com/yourname/xxx.js&quot; /&gt;</code>这样的标签，而很多浏览器解析这样的“自关闭标签”有bug，很奇怪吧，非常简单的问题居然有bug！！那怎么破呢，非常简单，加个空格即可，如：<code>&lt;script src=&quot;https://gist.github.com/yourname/xxx.js&quot;&gt;  &lt;/script&gt;</code>。</p>
+<h3 id="push到github时没效果"><a href="#push到github时没效果" class="headerlink" title="push到github时没效果"></a>push到github时没效果</h3><p>一切就绪，push到github去吧，相信很多人遇到过这个问题：明明我本地预览正常，为啥push到github不生效呢？快去查查邮箱，有没有收到github给你发的<code>page build failure</code>邮件啊，我是收到过五六封。。。其实这是因为github为了安全考虑禁止使用第三方插件，所以首先删除你<code>_plugins</code>文件夹下除了<code>debug.rb</code>以外的其他文件，然后本地预览时使用<code>jekyll serve --safe --watch</code>命令，<code>--safe</code>确保满足github的安全要求，<code>--watch</code>可以不用重启jekyll使修改即时生效。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>好了，博客现在差不多了，但对美有要求的你应该不会停止。<code>jekyll-bootstrap</code>由于是以<code>bootstrap</code>为基础的，所以熟悉前端的孩子修改起来特别方便，比如首页加个侧边栏，各种样式修改，加入<code>font-awesome</code>图标等等，慢慢探索吧～用<code>bootstrap</code>的另外一大好处就是，这个框架本来就是响应式的，所以不用费心去像wordpress一样装个插件去优化手机版，各种尺寸的屏幕都能做到自适应，非常方便！快把你的博客也迁过来吧！</p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jekyll/"> #jekyll </a>
+          
+            <a href="/tags/wordpress/"> #wordpress </a>
+          
+            <a href="/tags/github/"> #github </a>
+          
+            <a href="/tags/github-pages/"> #github pages </a>
+          
+            <a href="/tags/blog/"> #blog </a>
+          
+            <a href="/tags/mathjax/"> #mathjax </a>
+          
+            <a href="/tags/多说/"> #多说 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/11/24/first-look-at-yeoman/">Yeoman初体验</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2012/03/17/secret-of-my-heart/">Secret of my heart</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div class="ds-thread" data-thread-key="_posts-2013-10-24-migrate-from-wordpress-to-jekyll"
+               data-title="从Wordpress迁移到Jekyll" data-url="http://pinkyjie.com/2013/10/24/migrate-from-wordpress-to-jekyll/">
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="http://pinkyjie-blog.qiniudn.com/images/avatar.jpg" alt="马斯特" />
+          <p class="site-author-name">马斯特</p>
+        </div>
+        <p class="site-description motion-element">前端 | 溜冰 | Mac</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">184</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/PinkyJie" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://twitter.com/PinkyJie" target="_blank">Twitter</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/pinkyway" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://stackoverflow.com/users/689948/pinkyjie" target="_blank">StackOverflow</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建本地环境"><span class="nav-number">1.</span> <span class="nav-text">搭建本地环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#先换主题"><span class="nav-number">2.</span> <span class="nav-text">先换主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Wordpress的文章迁移"><span class="nav-number">3.</span> <span class="nav-text">Wordpress的文章迁移</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#乱七八糟的Could-not-find-ref-id"><span class="nav-number">4.</span> <span class="nav-text">乱七八糟的Could not find ref_id</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公式的显示"><span class="nav-number">5.</span> <span class="nav-text">公式的显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码高亮"><span class="nav-number">6.</span> <span class="nav-text">代码高亮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大段代码的显示"><span class="nav-number">7.</span> <span class="nav-text">大段代码的显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#push到github时没效果"><span class="nav-number">8.</span> <span class="nav-text">push到github时没效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">9.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2010 - 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">马斯特</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"pinkyjie-blog"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-45012422-1');ga('send','pageview');
+  </script>
+
+  
+<div style="position:relative; bottom: 23px">
+  <script src="http://s95.cnzz.com/stat.php?id=1253033676&web_id=1253033676&show=pic1" language="JavaScript">
+  </script>
+</div>
+
+
+</body>
+</html>
