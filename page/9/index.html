@@ -26,6 +26,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="进击的马斯特" type="application/atom+xml" />
+
 
 
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
@@ -125,6 +127,98 @@
         <div id="content" class="content">
           
   <div id="posts" class="posts-expand">
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2010/11/26/move-your-research-platform-from-matlab-to-python/">
+                将你的科学计算从Matlab迁移到Python？
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2010-11-26
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/模式识别/">模式识别</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2010/11/26/move-your-research-platform-from-matlab-to-python/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="_posts-2010-11-26-move-your-research-platform-from-matlab-to-python"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>为什么要用问句作为文章的标题呢，因为我的答案是NO！Absolutely not！</p>
+<p>一切的一切起源于我看了一篇英文文章，说使用Python作科学计算有时比Matlab更加高效，还有那无数次见到的牛逼公式：$Python+Numpy+Scipy+Matplotlib\approx Matlab$，看的我心潮澎湃，我就寻思了，反正最近在做的那个算法用Matlab跑实验跑得不是太理想，要不咱也迁移一把，由于今天比较蛋疼，就决定开始尝试了，经过蛋疼的一天，我得出了开头那个结论：如果你有现成的Matlab算法，还是Matlab吧，如果你像我一样蛋疼，那就迁移吧。不相信，那就听我把遇到的一堆乱七八糟的事情娓娓道来吧，其中夹杂着我的一些弱弱的解决方案~~</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2010/11/26/move-your-research-platform-from-matlab-to-python/#more">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/"> #Python </a>
+          
+            <a href="/tags/matlab/"> #matlab </a>
+          
+            <a href="/tags/科学计算/"> #科学计算 </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
     
       
 
@@ -509,101 +603,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2010/09/11/solve-sdp-using-sedumi-yalmip/">
-                求解SDP问题—使用SeDuMi和YALMIP
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于 2010-09-11
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分类于
-            
-              <a href="/categories/模式识别/">模式识别</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2010/09/11/solve-sdp-using-sedumi-yalmip/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="_posts-2010-09-11-solve-sdp-using-sedumi-yalmip"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>SDP(SemiDefinite Programing，半定规划)是凸优化(Convex Optimization)的一种，貌似近些年来比较热，反正这个东西常常出现在我看的论文中。论文里一般是把一个问题转化为SDP，然后极不负责任的扔了一句可以使用SeDuMi等工具箱解决就完事了，搞的本人非常迷茫，于是决定一探究竟，谁知还搞了个意外收获，那就是YALMIP工具箱。<a href="http://sedumi.ie.lehigh.edu/">SeDuMi</a>和<a href="http://users.isy.liu.se/johanl/yalmip/">YALMIP</a>都是Matlab的工具箱，下载和安装请参见它们的主页。下面我就分别谈谈怎么样将两个工具箱应用于SDP求解吧。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2010/09/11/solve-sdp-using-sedumi-yalmip/#more">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/SDP/"> #SDP </a>
-          
-            <a href="/tags/SeDuMi/"> #SeDuMi </a>
-          
-            <a href="/tags/YALMIP/"> #YALMIP </a>
-          
-            <a href="/tags/凸优化/"> #凸优化 </a>
-          
-            <a href="/tags/半定规划/"> #半定规划 </a>
-          
-        </div>
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -639,27 +638,34 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-count">54</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">184</span>
+              <span class="site-state-item-count">185</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
 
         </div>
 
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
         
 
         <div class="links-of-author motion-element">

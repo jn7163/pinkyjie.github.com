@@ -26,6 +26,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="进击的马斯特" type="application/atom+xml" />
+
 
 
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
@@ -125,6 +127,102 @@
         <div id="content" class="content">
           
   <div id="posts" class="posts-expand">
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/02/09/controller-as-vs-scope/">
+                用$scope还是用controller as
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-02-09
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/前端开发/">前端开发</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/02/09/controller-as-vs-scope/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="_posts-2015-02-09-controller-as-vs-scope"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>AngularJS中在处理controller时提供了两种语法。</p>
+<ul>
+<li>第一种是，在DOM中使用<code>ng-controller=&quot;TestController&quot;</code>，这样在定义controller时需要将model绑定到$scope上。</li>
+<li>另一种是，在DOM中使用<code>ng-controller=&quot;TestController as test&quot;</code>，这样其实是将model直接绑定到controller的实例上。</li>
+</ul>
+<p>在AngularJS的官方Get Started以及各种文档中，多推荐第一种方式，导致很多人可能都不知道原来还有第二种方式，我也是最近看一篇文章时才注意到这个。那么这两种方式各有什么优劣势呢？在现实的开发中到底更推荐哪种方式呢？今天就来探究一下！</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/02/09/controller-as-vs-scope/#more">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AngularJS/"> #AngularJS </a>
+          
+            <a href="/tags/scope/"> #scope </a>
+          
+            <a href="/tags/controller/"> #controller </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
     
       
 
@@ -507,105 +605,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/08/02/git-notes-part-1/">
-                Git笔记(一)——[commit, checkout]
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于 2014-08-02
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分类于
-            
-              <a href="/categories/工具相关/">工具相关</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/08/02/git-notes-part-1/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="_posts-2014-08-02-git-notes-part-1"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>其实一直觉得自己是会用Git的，毕竟咱也是用Github的人啊！可是三月份找工作时候的一次面试颠覆了我的看法：</p>
-<blockquote>
-<p>Q: 用过Git吗？平常怎么用的？<br>A: 用过的，一般就是add，commit，push嘛<br>Q: branch用的多吗？git rebase这命令使用过吗？<br>A: 一般都是自己的项目用的，就一个人，没涉及到这么复杂的使用<br>Q: 那换个话题吧。。。</p>
-</blockquote>
-<p>这么一搞才发现，其实我只会皮毛啊。。。正好现在新公司是用Git的，我也趁机恶补一下！本文其实就是对<a href="http://marklodato.github.io/visual-git-guide/index-zh-cn.html">图解Git</a>这篇文章的一个实践。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/08/02/git-notes-part-1/#more">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Git/"> #Git </a>
-          
-            <a href="/tags/SourceTree/"> #SourceTree </a>
-          
-            <a href="/tags/版本控制/"> #版本控制 </a>
-          
-            <a href="/tags/git-commit/"> #git-commit </a>
-          
-            <a href="/tags/git-checkout/"> #git-checkout </a>
-          
-        </div>
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -641,27 +640,34 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-count">54</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">184</span>
+              <span class="site-state-item-count">185</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
 
         </div>
 
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
         
 
         <div class="links-of-author motion-element">
