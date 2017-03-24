@@ -1,28 +1,81 @@
 <!doctype html>
-<html class="theme-next use-motion ">
-<head>
+
+
+
   
 
-<meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
   <meta name="google-site-verification" content="o7yQBnLIoWby8Y5vNMQywBiMtev-ilWjXt89RQpTvVw" />
 
 
 
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
 
 
-    <meta name="description" content="前端 | 溜冰 | Mac" />
 
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Git,SourceTree,版本控制,git-diff,git-reset," />
+
+
 
 
 
@@ -30,151 +83,351 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
 
-  <title> Git笔记(二)——[diff, reset] // 进击的马斯特 </title>
+
+
+<meta name="description" content="书接上回，直入主题！如果你是接着上篇来的，那么先运行git reset HEAD test.txt和git checkout test.txt来放弃当前的更改，使最新的commit回到“commit temp”，这个时候运行git status，会看到“nothing to commit, working directory clean”。这里，“nothing to commit”说明暂存目录是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git笔记(二)——[diff, reset]">
+<meta property="og:url" content="http://pinkyjie.com/2014/08/09/git-notes-part-2/index.html">
+<meta property="og:site_name" content="进击的马斯特">
+<meta property="og:description" content="书接上回，直入主题！如果你是接着上篇来的，那么先运行git reset HEAD test.txt和git checkout test.txt来放弃当前的更改，使最新的commit回到“commit temp”，这个时候运行git status，会看到“nothing to commit, working directory clean”。这里，“nothing to commit”说明暂存目录是">
+<meta property="og:image" content="http://7jptbo.com1.z0.glb.clouddn.com/images/git-notes-13.png">
+<meta property="og:image" content="http://7jptbo.com1.z0.glb.clouddn.com/images/git-notes-15.png">
+<meta property="og:image" content="http://7jptbo.com1.z0.glb.clouddn.com/images/git-notes-16.png">
+<meta property="og:image" content="http://7jptbo.com1.z0.glb.clouddn.com/images/git-notes-17.png">
+<meta property="og:image" content="http://7jptbo.com1.z0.glb.clouddn.com/images/git-notes-18.png">
+<meta property="og:image" content="http://7jptbo.com1.z0.glb.clouddn.com/images/git-notes-19.png">
+<meta property="og:image" content="http://7jptbo.com1.z0.glb.clouddn.com/images/git-notes-20.png">
+<meta property="og:image" content="http://7jptbo.com1.z0.glb.clouddn.com/images/git-notes-21.png">
+<meta property="og:image" content="http://7jptbo.com1.z0.glb.clouddn.com/images/git-notes-22.png">
+<meta property="og:image" content="http://7jptbo.com1.z0.glb.clouddn.com/images/git-notes-23.png">
+<meta property="og:updated_time" content="2017-02-20T10:01:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git笔记(二)——[diff, reset]">
+<meta name="twitter:description" content="书接上回，直入主题！如果你是接着上篇来的，那么先运行git reset HEAD test.txt和git checkout test.txt来放弃当前的更改，使最新的commit回到“commit temp”，这个时候运行git status，会看到“nothing to commit, working directory clean”。这里，“nothing to commit”说明暂存目录是">
+<meta name="twitter:image" content="http://7jptbo.com1.z0.glb.clouddn.com/images/git-notes-13.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://pinkyjie.com/2014/08/09/git-notes-part-2/"/>
+
+
+
+
+
+  <title> Git笔记(二)——[diff, reset] | 进击的马斯特 </title>
 </head>
 
-<body>
-  <div class="container one-column page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-45012422-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1253033676&web_id=1253033676" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
-      <span class="logo">
-        <i class="icon-logo"></i>
-      </span>
-      <span class="site-title">进击的马斯特</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-
-  <ul id="menu" class="menu">
-     
-    <!--增加swiftype搜索功能-->
-    <form class="menu-item menu-item-search">
-      <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-    </form>
-    
-    <script type="text/javascript">
-      (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-      (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-      e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-      })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-
-      _st('install','8k3UxSuRWYkrhVg55bC3','2.0.0');
-    </script>
-    <!--增加swiftype搜索功能end-->
-    
-    
-      
-      <li class="menu-item menu-item-home">
-        <a href="/">
-          <i class="menu-item-icon icon-home"></i> <br />
-          首页
-        </a>
-      </li>
-    
-      
-      <li class="menu-item menu-item-categories">
-        <a href="/categories">
-          <i class="menu-item-icon icon-categories"></i> <br />
-          分类
-        </a>
-      </li>
-    
-      
-      <li class="menu-item menu-item-tags">
-        <a href="/tags">
-          <i class="menu-item-icon icon-tags"></i> <br />
-          标签
-        </a>
-      </li>
-    
-      
-      <li class="menu-item menu-item-archives">
-        <a href="/archives">
-          <i class="menu-item-icon icon-archives"></i> <br />
-          归档
-        </a>
-      </li>
-    
-      
-      <li class="menu-item menu-item-about">
-        <a href="/about">
-          <i class="menu-item-icon icon-about"></i> <br />
-          关于
-        </a>
-      </li>
-    
-  </ul>
-
-
-      </div>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">进击的马斯特</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
+      
+        <p class="site-subtitle">CODING MY LIFE</p>
+      
+  </div>
 
-    <div id="main" class="main">
-      <div class="main-inner">
-        <div id="content" class="content">
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
           
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '8k3UxSuRWYkrhVg55bC3','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
     
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  
 
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              Git笔记(二)——[diff, reset]
-            
-          
-        </h1>
-      
+  
+  
+  
 
-      <div class="post-meta">
-        <span class="post-time">
-          发表于 2014-08-09
-        </span>
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://pinkyjie.com/2014/08/09/git-notes-part-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="马斯特">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://pinkyjie-blog.qiniudn.com/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="进击的马斯特">
+    </span>
+
+    
+      <header class="post-header">
 
         
-          <span class="post-category">
-            &nbsp; | &nbsp; 分类于
+        
+          <h1 class="post-title" itemprop="name headline">
             
-              <a href="/categories/工具相关/">工具相关</a>
+            
+              
+                Git笔记(二)——[diff, reset]
+              
+            
+          </h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
+                <span class="post-meta-item-text">发表于</span>
               
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-09T22:32:41+10:00">
+                Aug 9th 2014
+              </time>
+            
+
+            
 
             
           </span>
-        
 
-        
           
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/08/09/git-notes-part-2/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="_posts-2014-08-09-git-notes-part-2"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具相关/" itemprop="url" rel="index">
+                    <span itemprop="name">工具相关</span>
+                  </a>
+                </span>
 
-    <div class="post-body">
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2014/08/09/git-notes-part-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
@@ -232,62 +485,98 @@
       
     </div>
 
-    <div class="post-footer">
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/Git/"> #Git </a>
+            <a href="/tags/Git/" rel="tag"># Git</a>
           
-            <a href="/tags/SourceTree/"> #SourceTree </a>
+            <a href="/tags/SourceTree/" rel="tag"># SourceTree</a>
           
-            <a href="/tags/版本控制/"> #版本控制 </a>
+            <a href="/tags/版本控制/" rel="tag"># 版本控制</a>
           
-            <a href="/tags/git-diff/"> #git-diff </a>
+            <a href="/tags/git-diff/" rel="tag"># git-diff</a>
           
-            <a href="/tags/git-reset/"> #git-reset </a>
+            <a href="/tags/git-reset/" rel="tag"># git-reset</a>
           
         </div>
+      
+
+      
+        
       
 
       
         <div class="post-nav">
-          <div class="post-nav-prev post-nav-item">
+          <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/08/10/git-notes-part-3/">Git笔记(三)——[cherry-pick, merge, rebase]</a>
+              <a href="/2014/08/06/solve-placeholder-incompatibility-using-angular-on-legacy-ie/" rel="next" title="使用AngularJS解决IE 8/9不支持placeholder的问题">
+                <i class="fa fa-chevron-left"></i> 使用AngularJS解决IE 8/9不支持placeholder的问题
+              </a>
             
           </div>
 
-          <div class="post-nav-next post-nav-item">
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/08/06/solve-placeholder-incompatibility-using-angular-on-legacy-ie/">使用AngularJS解决IE 8/9不支持placeholder的问题</a>
+              <a href="/2014/08/10/git-notes-part-3/" rel="prev" title="Git笔记(三)——[cherry-pick, merge, rebase]">
+                Git笔记(三)——[cherry-pick, merge, rebase] <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
       
 
       
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
       
     </div>
   </div>
 
 
-
-    
-      <div class="comments" id="comments">
-        
-          <div class="ds-thread" data-thread-key="_posts-2014-08-09-git-notes-part-2"
-               data-title="Git笔记(二)——[diff, reset]" data-url="http://pinkyjie.com/2014/08/09/git-notes-part-2/">
           </div>
-        
-      </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
     
   </div>
 
 
         </div>
-      </div>
-
-      
+        
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -297,12 +586,14 @@
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
       
+
+      
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -311,40 +602,55 @@
         </ul>
       
 
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="http://pinkyjie-blog.qiniudn.com/images/avatar.jpg" alt="马斯特" />
-          <p class="site-author-name">马斯特</p>
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://pinkyjie-blog.qiniudn.com/images/avatar.jpg"
+               alt="马斯特" />
+          <p class="site-author-name" itemprop="name">马斯特</p>
+           
+              <p class="site-description motion-element" itemprop="description">前端 | 溜冰 | Mac</p>
+          
         </div>
-        <p class="site-description motion-element">前端 | 溜冰 | Mac</p>
-        <div class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">55</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
+        <nav class="site-state motion-element">
 
-          <div class="site-state-item site-state-categories">
-            <a href="/categories">
-              <span class="site-state-item-count">9</span>
-              <span class="site-state-item-name">分类</span>
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-name">日志</span>
               </a>
-          </div>
+            </div>
+          
 
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">186</span>
-              <span class="site-state-item-name">标签</span>
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
               </a>
-          </div>
+            </div>
+          
 
-        </div>
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
 
         
           <div class="feed-link motion-element">
-            <a href="/atom.xml">
-              <i class="menu-item-icon icon-feed"></i>
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
               RSS
             </a>
           </div>
@@ -352,660 +658,230 @@
 
         <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-              <a href="https://github.com/PinkyJie" target="_blank">GitHub</a>
-            </span>
-            
-              <span class="links-of-author-item">
-              <a href="https://twitter.com/PinkyJie" target="_blank">Twitter</a>
-            </span>
-            
-              <span class="links-of-author-item">
-              <a href="http://weibo.com/pinkyway" target="_blank">Weibo</a>
-            </span>
-            
-              <span class="links-of-author-item">
-              <a href="http://stackoverflow.com/users/689948/pinkyjie" target="_blank">StackOverflow</a>
-            </span>
-            
-          
         </div>
 
         
         
-          <div class="cc-license motion-element">
-            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
             </a>
           </div>
         
 
-      </div>
+        
+        
+
+        
+
+
+      </section>
 
       
-        <div class="post-toc-wrap sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator"></div>
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
+
             
+              
+            
+
             
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#diff-来，叔叔给你检查身体"><span class="nav-number">1.</span> <span class="nav-text">diff - 来，叔叔给你检查身体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reset-有了我你随便咋折腾都行"><span class="nav-number">2.</span> <span class="nav-text">reset - 有了我你随便咋折腾都行</span></a></li></ol></div>
             
+
           </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
-        </div>
+        </section>
+      <!--/noindex-->
+      
+
       
 
     </div>
-  </div>
+  </aside>
 
 
-    </div>
+        
+      </div>
+    </main>
 
-    <div id="footer" class="footer">
+    <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
+        <div class="copyright" >
   
-  &copy; &nbsp;  2010 - 
-  2017
+  &copy;  2010 - 
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="icon-heart"></i>
+    <i class="fa fa-heart"></i>
   </span>
-  <span class="author">马斯特</span>
+  <span class="author" itemprop="copyrightHolder">马斯特</span>
 </div>
 
+
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT
+    NexT.Muse
   </a>
 </div>
 
 
+        
 
+        
       </div>
-    </div>
+    </footer>
 
-    <div class="back-to-top"></div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
   </div>
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
   
 
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('.content img').each(function () {
-        var $image = $(this);
-        var $imageWrapLink = $image.parent('a');
-
-        if ($imageWrapLink.size() < 1) {
-          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
-        }
-        $imageWrapLink.addClass('fancybox');
-      });
-    });
-    $('.fancybox').fancybox({
-      helpers: {
-        overlay: {
-          locked: false
-        }
-      }
-    });
-  </script>
-
-
-  <script type="text/javascript">
-  function hasMobileUA () {
-    var nav = window.navigator;
-    var ua = nav.userAgent;
-    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
-
-    return pa.test(ua);
-  }
-
-  function isDesktop () {
-    return screen.width > 991 && !hasMobileUA();
-  }
-
-  function isTablet () {
-    return screen.width < 992 && screen.width > 767 && hasMobileUA();
-  }
-
-  function isMobile () {
-    return screen.width < 767 && hasMobileUA();
-  }
-
-  function escapeSelector (selector) {
-    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
   }
 </script>
 
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" id="motion.global">
-  $(document).ready(function () {
-    var body = $('body');
-    var isSidebarVisible = false;
-    var sidebarToggle = $('.sidebar-toggle');
-    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
-    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
-    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
-    var sidebar = $('.sidebar');
-
-    var SIDEBAR_WIDTH = '320px';
-    var SIDEBAR_DISPLAY_DURATION = 300;
-
-    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
-
-    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
-    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
-    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
-
-    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
-    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
-    var sidebarToogleLine2ndStatusClose = {opacity: 0};
-
-    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
-    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
-    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
-
-    LogoAndMenuMotion();
-    sidebatToggleMotion();
-    postsListMotion();
-    backToTopMotion();
 
 
-    $(document)
-      .on('sidebar.isShowing', function () {
-        isDesktop() && body.velocity(
-          {paddingRight: SIDEBAR_WIDTH},
-          SIDEBAR_DISPLAY_DURATION
-        );
-        sidebarContentMotion();
-      })
-      .on('sidebar.isHiding', function () {});
 
-    function LogoAndMenuMotion() {
-      $.Velocity.RunSequence([
-        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
-        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
-        
-        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
-      ]);
-      $('.menu-item').velocity('transition.slideDownIn', {display: null});
-    }
-
-
-    function backToTopMotion () {
-      var b2top = $('.back-to-top');
-      b2top.on('click', function () {
-        body.velocity('scroll');
-      });
-    }
-
-    function sidebarShowMotion () {
-
-      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
-      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
-      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
-
-      sidebar.velocity({width: SIDEBAR_WIDTH}, {
-        display: 'block',
-        duration: SIDEBAR_DISPLAY_DURATION,
-        complete: function () {
-          sidebar.addClass('sidebar-active');
-          sidebar.trigger('sidebar.didShow');
-        }
-      });
-      sidebar.trigger('sidebar.isShowing');
-    }
-
-    function sidebarHideMotion () {
-      isDesktop() && body.velocity({paddingRight: 0});
-      sidebar.velocity('reverse');
-
-      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
-      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
-      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
-
-      sidebar.removeClass('sidebar-active');
-      sidebar.trigger('sidebar.isHiding');
-    };
-
-    function sidebarContentMotion () {
-      $('.sidebar .motion-element').velocity(
-        'transition.slideRightIn',
-        {stagger: 50, drag: true}
-      );
-    }
-
-    function postsListMotion () {
-      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
-      $('.post').velocity('transition.slideDownIn', postMotionOptions);
-    }
-
-    function sidebatToggleMotion () {
-      sidebarToggle.on('click', function () {
-        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
-        isSidebarVisible = !isSidebarVisible;
-      });
-
-      sidebarToggle.hover(function () {
-        if (isSidebarVisible) {return}
-        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
-        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
-        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
-      }, function () {
-        if (isSidebarVisible) {return}
-        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
-        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
-        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
-      });
-    }
-  });
-
-</script>
 
 
 
 
 
   
-  
-<script type="text/javascript" id="bootstrap.scrollspy.custom">
-  /* ========================================================================
-  * Bootstrap: scrollspy.js v3.3.2
-  * http://getbootstrap.com/javascript/#scrollspy
-  * ========================================================================
-  * Copyright 2011-2015 Twitter, Inc.
-  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-  * ======================================================================== */
-
-  /**
-   * Custom by iissnan
-   *
-   * - Add a `clear.bs.scrollspy` event.
-   * - Esacpe targets selector.
-   */
-
-
-  +function ($) {
-    'use strict';
-
-    // SCROLLSPY CLASS DEFINITION
-    // ==========================
-
-    function ScrollSpy(element, options) {
-      this.$body          = $(document.body)
-      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
-      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
-      this.selector       = (this.options.target || '') + ' .nav li > a'
-      this.offsets        = []
-      this.targets        = []
-      this.activeTarget   = null
-      this.scrollHeight   = 0
-
-      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
-      this.refresh()
-      this.process()
-    }
-
-    ScrollSpy.VERSION  = '3.3.2'
-
-    ScrollSpy.DEFAULTS = {
-      offset: 10
-    }
-
-    ScrollSpy.prototype.getScrollHeight = function () {
-      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
-    }
-
-    ScrollSpy.prototype.refresh = function () {
-      var that          = this
-      var offsetMethod  = 'offset'
-      var offsetBase    = 0
-
-      this.offsets      = []
-      this.targets      = []
-      this.scrollHeight = this.getScrollHeight()
-
-      if (!$.isWindow(this.$scrollElement[0])) {
-        offsetMethod = 'position'
-        offsetBase   = this.$scrollElement.scrollTop()
-      }
-
-      this.$body
-        .find(this.selector)
-        .map(function () {
-          var $el   = $(this)
-          var href  = $el.data('target') || $el.attr('href')
-          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
-
-          return ($href
-            && $href.length
-            && $href.is(':visible')
-            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
-        })
-        .sort(function (a, b) { return a[0] - b[0] })
-        .each(function () {
-          that.offsets.push(this[0])
-          that.targets.push(this[1])
-        })
-
-
-    }
-
-    ScrollSpy.prototype.process = function () {
-      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
-      var scrollHeight = this.getScrollHeight()
-      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
-      var offsets      = this.offsets
-      var targets      = this.targets
-      var activeTarget = this.activeTarget
-      var i
-
-      if (this.scrollHeight != scrollHeight) {
-        this.refresh()
-      }
-
-      if (scrollTop >= maxScroll) {
-        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
-      }
-
-      if (activeTarget && scrollTop < offsets[0]) {
-        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
-        this.activeTarget = null
-        return this.clear()
-      }
-
-      for (i = offsets.length; i--;) {
-        activeTarget != targets[i]
-          && scrollTop >= offsets[i]
-          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
-          && this.activate(targets[i])
-      }
-    }
-
-    ScrollSpy.prototype.activate = function (target) {
-      this.activeTarget = target
-
-      this.clear()
-
-      var selector = this.selector +
-        '[data-target="' + target + '"],' +
-        this.selector + '[href="' + target + '"]'
-
-      var active = $(selector)
-        .parents('li')
-        .addClass('active')
-
-      if (active.parent('.dropdown-menu').length) {
-        active = active
-          .closest('li.dropdown')
-          .addClass('active')
-      }
-
-      active.trigger('activate.bs.scrollspy')
-    }
-
-    ScrollSpy.prototype.clear = function () {
-      $(this.selector)
-        .parentsUntil(this.options.target, '.active')
-        .removeClass('active')
-    }
-
-
-    // SCROLLSPY PLUGIN DEFINITION
-    // ===========================
-
-    function Plugin(option) {
-      return this.each(function () {
-        var $this   = $(this)
-        var data    = $this.data('bs.scrollspy')
-        var options = typeof option == 'object' && option
-
-        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
-        if (typeof option == 'string') data[option]()
-      })
-    }
-
-    var old = $.fn.scrollspy
-
-    $.fn.scrollspy             = Plugin
-    $.fn.scrollspy.Constructor = ScrollSpy
-
-
-    // SCROLLSPY NO CONFLICT
-    // =====================
-
-    $.fn.scrollspy.noConflict = function () {
-      $.fn.scrollspy = old
-      return this
-    }
-
-
-    // SCROLLSPY DATA-API
-    // ==================
-
-    $(window).on('load.bs.scrollspy.data-api', function () {
-      $('[data-spy="scroll"]').each(function () {
-        var $spy = $(this)
-        Plugin.call($spy, $spy.data())
-      })
-    })
-
-  }(jQuery);
-</script>
-
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var $sidebarInner = $('.sidebar-inner');
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.didShow', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-          var self = this;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      $(indicator).velocity('stop').velocity({
-        opacity: action === 'show' ? 0.4 : 0
-      }, { duration: 100 });
-    }
-
-  });
-</script>
-
-
-  <script type="text/javascript" id="sidebar.nav">
-    $(document).ready(function () {
-      var html = $('html');
-
-      $('.sidebar-nav li').on('click', function () {
-        var item = $(this);
-        var activeTabClassName = 'sidebar-nav-active';
-        var activePanelClassName = 'sidebar-panel-active';
-        if (item.hasClass(activeTabClassName)) {
-          return;
-        }
-
-        var currentTarget = $('.' + activePanelClassName);
-        var target = $('.' + item.data('target'));
-
-        currentTarget.velocity('transition.slideUpOut', 200, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', 200)
-            .addClass(activePanelClassName);
-        });
-
-        item.siblings().removeClass(activeTabClassName);
-        item.addClass(activeTabClassName);
-      });
-
-      $('.post-toc a').on('click', function (e) {
-        e.preventDefault();
-        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        });
-      });
-
-      // Expand sidebar on post detail page by default, when post has a toc.
-      var $tocContent = $('.post-toc-content');
-      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
-        setTimeout(function () {
-          $('.sidebar-toggle').trigger('click');
-        }, 800);
-      }
-    });
-  </script>
 
 
 
 
   
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-  });
-</script>
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
 
 
   
   
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
 
   
     
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"pinkyjie-blog"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "97c12f7d7900436ca445becffbe0dc1a",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
   
 
 
-  
-  <script type="text/javascript">
-    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-    ga('create','UA-45012422-1');ga('send','pageview');
-  </script>
+
+
+
+
+
+
+
 
   
-<div style="position:relative; bottom: 23px">
-  <script src="http://s95.cnzz.com/stat.php?id=1253033676&web_id=1253033676&show=pic1" language="JavaScript">
-  </script>
-</div>
 
+
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
 
 </body>
 </html>

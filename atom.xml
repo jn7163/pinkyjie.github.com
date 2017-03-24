@@ -136,7 +136,7 @@
     <title>最近的海外面试（前端）经历</title>
     <link href="http://pinkyjie.com/2017/02/21/recent-overseas-interview-experiences/"/>
     <id>http://pinkyjie.com/2017/02/21/recent-overseas-interview-experiences/</id>
-    <published>2017-02-21T05:55:47.000Z</published>
+    <published>2017-02-21T02:55:47.000Z</published>
     <updated>2017-02-22T07:58:16.000Z</updated>
     
     <content type="html"><![CDATA[<p>从去年10月开始投简历到今年1月为止，这三个多月的时间我断断续续面了五六家海外的公司，主要集中在欧洲和澳洲，面的都是前端开发的职位。这里就介绍下整个面试经历，希望对有同样想法的同学有所帮助。</p>
@@ -296,7 +296,7 @@
     <title>webpack使用小记</title>
     <link href="http://pinkyjie.com/2016/03/05/webpack-tips/"/>
     <id>http://pinkyjie.com/2016/03/05/webpack-tips/</id>
-    <published>2016-03-05T07:29:17.000Z</published>
+    <published>2016-03-05T04:29:17.000Z</published>
     <updated>2017-02-20T10:01:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>如果前两年大家还在讨论grunt和gulp等构建工具的话，现在无疑是<a href="https://webpack.github.io/" target="_blank" rel="external">webapck</a>的时代。严格来讲，webpack其实和grunt/gulp根本不是一种东西，它不是一个构建工具，而是<code>module bundler</code>。简单来说，webpack将JS、CSS、HTML（包含各种预处理器）以及图片等等都视为“资源”，每个资源文件都是一个module文件，而module文件之间存在依赖，webpack就是根据module文件间的依赖将所有module打包（bundle）起来。而回忆我们用grunt/gulp构建项目时，做的很大一部分工作也无非是将JS、CSS、HTML编译合并压缩等等，所以从这个层面上讲用webpack和grunt/gulp得到的结果是一样的。但webpack好就好在使用loader的概念让配置更加容易，再也不用和一堆文件路径打交道了。这篇文章就讲一下自己在使用webpack时的一些实践。</p>
@@ -415,7 +415,7 @@
     <title>用TravisCI来做持续集成</title>
     <link href="http://pinkyjie.com/2016/02/27/continuous-integration-with-travis-ci/"/>
     <id>http://pinkyjie.com/2016/02/27/continuous-integration-with-travis-ci/</id>
-    <published>2016-02-27T06:35:57.000Z</published>
+    <published>2016-02-27T03:35:57.000Z</published>
     <updated>2017-02-20T10:01:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>持续集成的好处自不用说，一个是省了手动build部署的繁琐，二是每一个提交都有自动跑测试保证质量。平时在公司Jenkins用的比较多，开源世界里同样也有能和Jenkins比肩的好工具：<a href="https://travis-ci.org/" target="_blank" rel="external">TravisCI</a>。TravisCI可以和Github无缝集成，每次push都可以触发相应的操作，跑测试、自动部署都不在话下。这篇文章就记录一下我在<a href="https://github.com/PinkyJie/angular1-webpack-starter" target="_blank" rel="external">angular1-webpack-starter</a>项目上使用TravisCI的经验，最终实现的效果就是：提交一个commit后，自动跑单元测试，然后build项目，然后将测试覆盖率报告和站点部署到Github Pages上去，最后跑E2E测试。</p>
@@ -522,9 +522,9 @@
   
   <entry>
     <title>Angular里的E2E测试</title>
-    <link href="http://pinkyjie.com/2016/02/22/e2e-testing-in-angular/"/>
-    <id>http://pinkyjie.com/2016/02/22/e2e-testing-in-angular/</id>
-    <published>2016-02-21T14:39:13.000Z</published>
+    <link href="http://pinkyjie.com/2016/02/21/e2e-testing-in-angular/"/>
+    <id>http://pinkyjie.com/2016/02/21/e2e-testing-in-angular/</id>
+    <published>2016-02-21T11:39:13.000Z</published>
     <updated>2017-02-20T10:01:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>上一篇聊完了<a href="/2016/02/20/separation-of-concerns-in-unit-test/">单元测试</a>，这一篇来说说E2E测试。单元测试着眼的是“关注分离”，测的是一些函数单元是不是工作正常，而E2E则是集成测试，从最终用户的角度来进行端到端（End To End）的测试，测一些用户场景是不是正常。这篇文章就来探讨一下写E2E测试的最佳实践，本文使用protractor 2.x和jasmine 2.x，但一些思路和想法同样适用于别的框架。</p>
@@ -638,7 +638,7 @@
     <title>谈谈单元测试中的关注分离</title>
     <link href="http://pinkyjie.com/2016/02/20/separation-of-concerns-in-unit-test/"/>
     <id>http://pinkyjie.com/2016/02/20/separation-of-concerns-in-unit-test/</id>
-    <published>2016-02-20T04:34:34.000Z</published>
+    <published>2016-02-20T01:34:34.000Z</published>
     <updated>2017-02-20T10:01:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>前端的单元测试越来越受到重视，网上也有很多讲解Angular中如何写好单元测试的文章，我自己在最近的<a href="https://github.com/PinkyJie/angular1-webpack-starter" target="_blank" rel="external">angular1-webpack-starter</a>项目中也写了很多单元测试。单元测试的一个核心理念就是对“单元”进行隔离，然后单独测试。可是网上的很多教程存在不少误区：比如在controller的测试中去使用$httpBackend，在引入第三方service的时候使用真实的service等等，说到底都是没有实现“关注分离”（Separation of Concerns），“单元”没有真正的被隔离。这篇文章就谈谈Angular的单元测试中如何更好的实现关注分离。</p>
@@ -762,9 +762,9 @@
   
   <entry>
     <title>ES6与Angular 1.x</title>
-    <link href="http://pinkyjie.com/2016/02/12/angular-1-x-with-es6/"/>
-    <id>http://pinkyjie.com/2016/02/12/angular-1-x-with-es6/</id>
-    <published>2016-02-11T13:17:20.000Z</published>
+    <link href="http://pinkyjie.com/2016/02/11/angular-1-x-with-es6/"/>
+    <id>http://pinkyjie.com/2016/02/11/angular-1-x-with-es6/</id>
+    <published>2016-02-11T10:17:20.000Z</published>
     <updated>2017-02-20T10:01:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>ES6出来也很长时间了，把ES6应用在Angular 1.x的文章也不少，有了<code>class</code>这个语法糖Angular里的很多东西都可以写的比较规范了，但很多文章非要把Angular里的所有概念都写成class，这我就觉得没啥必要了。这篇文章就谈谈我自己在ES6和Angular 1.x上的一些实践。</p>
@@ -840,7 +840,7 @@
     <title>用Angular 1.x做组件式开发</title>
     <link href="http://pinkyjie.com/2016/01/31/component-based-development-with-angular-1x/"/>
     <id>http://pinkyjie.com/2016/01/31/component-based-development-with-angular-1x/</id>
-    <published>2016-01-31T07:51:58.000Z</published>
+    <published>2016-01-31T04:51:58.000Z</published>
     <updated>2017-02-20T10:01:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>自打去年参加了JSConf后一直断断续续看了很多React的资料，不得不承认React确实在很多方面给人耳目一新的感觉，尤其是组件化的思想给我留下了很深的印象。JSX的语法虽然一开始很难让人接受，但React将函数式编程的思维用在组件化上，确实值得借鉴。作为一个Angular死忠粉，自然很想把这种好的思维方式也用在Angular上了，于是就有了<a href="https://github.com/PinkyJie/angular1-webpack-starter" target="_blank" rel="external">angular1-webpack-starter</a>这个项目。这篇文章就来记录下用Angular来做纯组件式开发的一些尝试吧。</p>
@@ -934,7 +934,7 @@ undefined
     <title>JSConf2015（ShenJS）深圳之行有感</title>
     <link href="http://pinkyjie.com/2015/08/26/thoughts-from-jsconf-2015-in-shenzhen/"/>
     <id>http://pinkyjie.com/2015/08/26/thoughts-from-jsconf-2015-in-shenzhen/</id>
-    <published>2015-08-26T12:42:31.000Z</published>
+    <published>2015-08-26T10:42:31.000Z</published>
     <updated>2017-02-20T10:01:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>上个月11、12号飞深圳参加了今年的JS开发者大会，头一次参加这种大会还是挺兴奋的，见到了一些以前只知道名字的大牛，也开阔了视野。前段时间在公司分别给组内和全公司做了分享，PPT做的老累了，就拿劳动成果凑一篇博客吧。</p>
@@ -984,7 +984,7 @@ undefined
     <title>常用gulp插件介绍(二)</title>
     <link href="http://pinkyjie.com/2015/08/12/commonly-used-gulp-plugins-part-2/"/>
     <id>http://pinkyjie.com/2015/08/12/commonly-used-gulp-plugins-part-2/</id>
-    <published>2015-08-12T12:45:59.000Z</published>
+    <published>2015-08-12T10:45:59.000Z</published>
     <updated>2017-02-20T10:01:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>书接<a href="/2015/08/02/commonly-used-gulp-plugins-part-1/">上回</a>。</p>
@@ -1052,9 +1052,9 @@ undefined
     
       <category term="插件" scheme="http://pinkyjie.com/tags/%E6%8F%92%E4%BB%B6/"/>
     
-      <category term="gulp" scheme="http://pinkyjie.com/tags/gulp/"/>
-    
       <category term="generator-aio-angular" scheme="http://pinkyjie.com/tags/generator-aio-angular/"/>
+    
+      <category term="gulp" scheme="http://pinkyjie.com/tags/gulp/"/>
     
   </entry>
   
@@ -1062,7 +1062,7 @@ undefined
     <title>常用gulp插件介绍(一)</title>
     <link href="http://pinkyjie.com/2015/08/02/commonly-used-gulp-plugins-part-1/"/>
     <id>http://pinkyjie.com/2015/08/02/commonly-used-gulp-plugins-part-1/</id>
-    <published>2015-08-02T05:45:59.000Z</published>
+    <published>2015-08-02T03:45:59.000Z</published>
     <updated>2017-02-20T10:01:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>在写<a href="https://github.com/PinkyJie/generator-aio-angular" target="_blank" rel="external">generator-aio-angular</a>的过程中，gulp这一块发现了很多非常实用的插件，大大的增加了能自动化的范围，这篇文章就分门别类的简单介绍下常用的gulp插件吧。</p>
@@ -1181,9 +1181,9 @@ undefined
     
       <category term="插件" scheme="http://pinkyjie.com/tags/%E6%8F%92%E4%BB%B6/"/>
     
-      <category term="gulp" scheme="http://pinkyjie.com/tags/gulp/"/>
-    
       <category term="generator-aio-angular" scheme="http://pinkyjie.com/tags/generator-aio-angular/"/>
+    
+      <category term="gulp" scheme="http://pinkyjie.com/tags/gulp/"/>
     
   </entry>
   
@@ -1191,7 +1191,7 @@ undefined
     <title>基于ui-router的简单布局及其他应用</title>
     <link href="http://pinkyjie.com/2015/07/25/simple-layout-based-on-ui-router/"/>
     <id>http://pinkyjie.com/2015/07/25/simple-layout-based-on-ui-router/</id>
-    <published>2015-07-25T05:24:44.000Z</published>
+    <published>2015-07-25T03:24:44.000Z</published>
     <updated>2017-02-20T10:01:30.000Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://github.com/angular-ui/ui-router" target="_blank" rel="external">ui-router</a>与Angular自带的ngRoute最大的区别就是它是基于状态（state）的，而不是基于URL的。它带来的最大的便捷性就在于：</p>
@@ -1278,9 +1278,9 @@ undefined
   
   <entry>
     <title>Promise，其实我真的不懂你</title>
-    <link href="http://pinkyjie.com/2015/07/21/promise-actually-i-really-do-not-know-you/"/>
-    <id>http://pinkyjie.com/2015/07/21/promise-actually-i-really-do-not-know-you/</id>
-    <published>2015-07-20T14:25:26.000Z</published>
+    <link href="http://pinkyjie.com/2015/07/20/promise-actually-i-really-do-not-know-you/"/>
+    <id>http://pinkyjie.com/2015/07/20/promise-actually-i-really-do-not-know-you/</id>
+    <published>2015-07-20T12:25:26.000Z</published>
     <updated>2017-02-20T10:01:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>写过Angular的service的孩子肯定对Promise不陌生了吧，这玩意的出现可以说是极大改变了异步编程的写法，告别了让代码不停横向发展的<a href="http://callbackhell.com/" target="_blank" rel="external">Callback Hell</a>。一直以来自己都是按照网上流行的写法来写Promise的，并没有觉得有什么问题，直到看到这篇神一般的文章：<a href="http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html" target="_blank" rel="external">We have a problem with promises</a>，以及文中提到的Bluebird的Wiki中关于<a href="https://github.com/petkaantonov/bluebird/wiki/Promise-anti-patterns#the-deferred-anti-pattern" target="_blank" rel="external">Promise的Anti-pattern</a>，顿时有一种醍醐灌顶的感觉，敢情自己以前根本就没理解Promise啊。这篇文章就来讲讲最近在Promise上的心得体会。</p>
@@ -1335,19 +1335,19 @@ undefined
     
       <category term="AngularJS" scheme="http://pinkyjie.com/tags/AngularJS/"/>
     
-      <category term="generator-aio-angular" scheme="http://pinkyjie.com/tags/generator-aio-angular/"/>
-    
       <category term="promise" scheme="http://pinkyjie.com/tags/promise/"/>
     
       <category term="异步编程" scheme="http://pinkyjie.com/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="generator-aio-angular" scheme="http://pinkyjie.com/tags/generator-aio-angular/"/>
     
   </entry>
   
   <entry>
     <title>重构你的gulpfile</title>
-    <link href="http://pinkyjie.com/2015/03/25/refactor-your-gulpfile/"/>
-    <id>http://pinkyjie.com/2015/03/25/refactor-your-gulpfile/</id>
-    <published>2015-03-24T14:02:22.000Z</published>
+    <link href="http://pinkyjie.com/2015/03/24/refactor-your-gulpfile/"/>
+    <id>http://pinkyjie.com/2015/03/24/refactor-your-gulpfile/</id>
+    <published>2015-03-24T11:02:22.000Z</published>
     <updated>2017-02-20T10:01:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>前段时间在公司的新项目中尝试使用gulp替换grunt，体验非常棒！两者最大的区别就是grunt整个就像是一个配置文件，而gulp更像代码。这样的好处就是调试起来更方便直观。另外，利用Node.js的stream概念，让gulp的task看起来像管道一样，输入连着输出，输出又导入另一个输入，流程非常清晰易懂。自打用了这个，就再也不想回到闹心的grunt了。在用了一段时间后，问题来了：不知不觉gulpfile.js已经超过1000行了！每次要修改一个task就要费劲找半天，各种路径也是一团糟，非常难以维护了。那么，是时候重构gulpfile了！</p>
@@ -1398,6 +1398,8 @@ undefined
     
       <category term="前端自动化" scheme="http://pinkyjie.com/tags/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
     
+      <category term="generator-aio-angular" scheme="http://pinkyjie.com/tags/generator-aio-angular/"/>
+    
       <category term="gulp" scheme="http://pinkyjie.com/tags/gulp/"/>
     
       <category term="gulpfile" scheme="http://pinkyjie.com/tags/gulpfile/"/>
@@ -1406,15 +1408,13 @@ undefined
     
       <category term="分割task" scheme="http://pinkyjie.com/tags/%E5%88%86%E5%89%B2task/"/>
     
-      <category term="generator-aio-angular" scheme="http://pinkyjie.com/tags/generator-aio-angular/"/>
-    
   </entry>
   
   <entry>
     <title>一道有(bian)趣(tai)的CSS面试题</title>
-    <link href="http://pinkyjie.com/2015/03/03/an-interesting-css-interview/"/>
-    <id>http://pinkyjie.com/2015/03/03/an-interesting-css-interview/</id>
-    <published>2015-03-02T14:27:50.000Z</published>
+    <link href="http://pinkyjie.com/2015/03/02/an-interesting-css-interview/"/>
+    <id>http://pinkyjie.com/2015/03/02/an-interesting-css-interview/</id>
+    <published>2015-03-02T11:27:50.000Z</published>
     <updated>2017-02-20T10:01:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>今天在登录CodePen的时候看到一个弹窗，推荐一些网站的用法，其中<a href="http://blog.codepen.io/2015/01/22/interviewing-front-end-hires-codepen/" target="_blank" rel="external">有一篇</a>说很多公司通过CodePen来面试前端工程师，网站支持合作模式，可以实时观察被面试者敲代码，也可以实时沟通，觉得挺有意思，国外就是高端！点进去发现一道用来面试CSS的题目，因为一直觉得自己CSS不是特别好，就想我也做做试试。初看感觉应该不难吧，实际上做下来苦不堪言啊。。。</p>
@@ -1526,7 +1526,7 @@ undefined
     <title>AngularJS中controller和service的继承与扩展</title>
     <link href="http://pinkyjie.com/2015/02/11/inheritance-or-extension-for-controller-and-service-in-angularjs/"/>
     <id>http://pinkyjie.com/2015/02/11/inheritance-or-extension-for-controller-and-service-in-angularjs/</id>
-    <published>2015-02-11T11:47:00.000Z</published>
+    <published>2015-02-11T08:47:00.000Z</published>
     <updated>2017-02-20T10:01:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>最近公司要做的项目中牵扯到很多场景需要对controller和service进行继承和扩展的，总结一下心得体会。开讲之前，先明确一下这里的所谓的“继承”与“扩展”。</p>
@@ -1646,7 +1646,7 @@ undefined
     <title>用$scope还是用controller as</title>
     <link href="http://pinkyjie.com/2015/02/09/controller-as-vs-scope/"/>
     <id>http://pinkyjie.com/2015/02/09/controller-as-vs-scope/</id>
-    <published>2015-02-09T12:12:36.000Z</published>
+    <published>2015-02-09T09:12:36.000Z</published>
     <updated>2017-02-20T10:01:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>AngularJS中在处理controller时提供了两种语法。</p>
@@ -1713,7 +1713,7 @@ undefined
     <title>AngularJS中scope基于原型链的继承</title>
     <link href="http://pinkyjie.com/2015/02/07/prototypal-inheritance-of-scope-in-angularjs/"/>
     <id>http://pinkyjie.com/2015/02/07/prototypal-inheritance-of-scope-in-angularjs/</id>
-    <published>2015-02-07T07:17:22.000Z</published>
+    <published>2015-02-07T04:17:22.000Z</published>
     <updated>2017-02-20T10:01:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>相信大家写过AngularJS的都会发现，很多人在处理表单的数据绑定时，都习惯性的把ng-model绑定在$scope的一个对象属性上，而不是直接绑定在scope上。比如说使用<code>&lt;input name=&quot;name&quot; ng-model=&quot;data.name&quot; /&gt;</code>而不是<code>&lt;input name=&quot;name&quot; ng-model=&quot;name&quot; /&gt;</code>。这是为什么呢？这样在controller里面岂不是写起来更复杂吗？每次访问的时候都要多“点”一下，为什么不直接绑在$scope上呢？其实这样写自然是有它的好处的，而且这种写法也是推荐的最佳实践，尤其是在处理嵌套scope的情形下，这样写是很有必要的。为了弄清楚这么写的原因，我们需要深入的研究一下AngularJS里scope的继承。</p>
@@ -1786,9 +1786,9 @@ undefined
       <category term="前端开发" scheme="http://pinkyjie.com/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-      <category term="AngularJS" scheme="http://pinkyjie.com/tags/AngularJS/"/>
-    
       <category term="Javascript继承" scheme="http://pinkyjie.com/tags/Javascript%E7%BB%A7%E6%89%BF/"/>
+    
+      <category term="AngularJS" scheme="http://pinkyjie.com/tags/AngularJS/"/>
     
       <category term="scope" scheme="http://pinkyjie.com/tags/scope/"/>
     
@@ -1802,7 +1802,7 @@ undefined
     <title>Git笔记(三)——[cherry-pick, merge, rebase]</title>
     <link href="http://pinkyjie.com/2014/08/10/git-notes-part-3/"/>
     <id>http://pinkyjie.com/2014/08/10/git-notes-part-3/</id>
-    <published>2014-08-10T11:37:24.000Z</published>
+    <published>2014-08-10T09:37:24.000Z</published>
     <updated>2017-02-20T10:01:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>书接<a href="/2014/08/09/git-notes-part-2/">上回</a>，直入主题！这篇继续实践剩下的几个命令。</p>
@@ -1891,9 +1891,9 @@ undefined
   
   <entry>
     <title>Git笔记(二)——[diff, reset]</title>
-    <link href="http://pinkyjie.com/2014/08/10/git-notes-part-2/"/>
-    <id>http://pinkyjie.com/2014/08/10/git-notes-part-2/</id>
-    <published>2014-08-09T14:32:41.000Z</published>
+    <link href="http://pinkyjie.com/2014/08/09/git-notes-part-2/"/>
+    <id>http://pinkyjie.com/2014/08/09/git-notes-part-2/</id>
+    <published>2014-08-09T12:32:41.000Z</published>
     <updated>2017-02-20T10:01:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>书接<a href="/2014/08/02/git-notes-part-1/">上回</a>，直入主题！如果你是接着上篇来的，那么先运行<code>git reset HEAD test.txt</code>和<code>git checkout test.txt</code>来放弃当前的更改，使最新的commit回到“commit temp”，这个时候运行<code>git status</code>，会看到“nothing to commit, working directory clean”。这里，“nothing to commit”说明暂存目录是空的，“working directory clean”说明你的工作目录也没有任何修改。</p>
