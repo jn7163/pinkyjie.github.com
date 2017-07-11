@@ -13,6 +13,12 @@
 
 
 
+
+
+
+
+
+
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
@@ -70,7 +76,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Git,SourceTree,版本控制,git-commit,git-checkout," />
@@ -84,7 +90,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
@@ -136,7 +142,7 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -161,11 +167,7 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
 
 
 
-  <title> Git笔记(一)——[commit, checkout] | 进击的马斯特 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>Git笔记(一)——[commit, checkout] | 进击的马斯特</title>
   
 
 
@@ -187,6 +189,7 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
 
 
 
+
   <div style="display: none;">
     <script src="//s95.cnzz.com/z_stat.php?id=1253033676&web_id=1253033676" language="JavaScript"></script>
   </div>
@@ -195,6 +198,9 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
 
 
 
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -248,7 +254,7 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -258,7 +264,7 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -268,7 +274,7 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -278,7 +284,7 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+          <a href="/about/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -362,14 +368,7 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Git笔记(一)——[commit, checkout]
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">Git笔记(一)——[commit, checkout]</h1>
         
 
         <div class="post-meta">
@@ -417,16 +416,6 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a class="cloud-tie-join-count" href="/2014/08/02/git-notes-part-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -441,7 +430,6 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -560,7 +548,7 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
       
 
       
-        
+      
       
 
       
@@ -605,7 +593,39 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
           
   <div class="comments" id="comments">
     
-      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+      <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示评论</div>
+      <div id="container" style="display:none"></div>
+      <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+      <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+      <script>
+        const myTheme = {
+          render(state, instance) {
+            const container = document.createElement('div');
+            container.lang = "en-US";
+            container.className = 'gitment-container gitment-root-container';
+            container.appendChild(instance.renderHeader(state, instance));
+            container.appendChild(instance.renderEditor(state, instance));
+            container.appendChild(instance.renderComments(state, instance));
+            container.appendChild(instance.renderFooter(state, instance));
+            return container;
+          }
+        }
+        function showGitment() {
+          $("#gitment_title").attr("style", "display:none");
+          $("#container").attr("style", "").addClass("gitment_container");
+          var gitment = new Gitment({
+            id: window.location.pathname,
+            theme: myTheme,
+            owner: '马斯特',
+            repo: 'https://github.com/PinkyJie/pinkyjie.github.com',
+            oauth: {
+              client_id: 'f9f9e61911dad3c54abd',
+              client_secret: '2de8c1e8bc1bf553827b0da3bf65ae6e7f5956b7'
+            }
+          });
+          gitment.render('container');
+        }
+      </script>
     
   </div>
 
@@ -623,6 +643,7 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
   </div>
 
   <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
     <div class="sidebar-inner">
 
       
@@ -652,7 +673,7 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
 
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives">
+              <a href="/archives/">
                 <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">日志</span>
               </a>
@@ -802,6 +823,14 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
 
 
 
+
+
+
+
+
+
+
+
   
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
@@ -824,30 +853,29 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
 
 
   
@@ -862,21 +890,12 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
 
 
   
-    
-    <script>
-      var cloudTieConfig = {
-        url: document.location.href, 
-        sourceId: "",
-        productKey: "97c12f7d7900436ca445becffbe0dc1a",
-        target: "cloud-tie-wrapper"
-      };
-    </script>
-    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+
   
-
-
-
-
 
 
 
@@ -888,6 +907,8 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
 
 
 
+
+  
 
   
 
@@ -913,9 +934,11 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
+
+  
 
   
 

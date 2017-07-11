@@ -30,7 +30,7 @@
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/2014/03/01/liang-zi-down/</loc>
+    <loc>http://pinkyjie.com/2010/08/02/website-moved/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
@@ -51,21 +51,14 @@
   </url>
   
   <url>
+    <loc>http://pinkyjie.com/2010/07/28/elefant-introduction2/</loc>
+    
+    <lastmod>2017-02-20T10:01:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://pinkyjie.com/2010/09/11/solve-sdp-using-sedumi-yalmip/</loc>
-    
-    <lastmod>2017-02-20T10:01:30.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pinkyjie.com/2010/07/28/elefant-introduction1/</loc>
-    
-    <lastmod>2017-02-20T10:01:30.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pinkyjie.com/2010/10/10/newsinchina-free-vpn/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
@@ -79,7 +72,21 @@
   </url>
   
   <url>
+    <loc>http://pinkyjie.com/2010/10/10/newsinchina-free-vpn/</loc>
+    
+    <lastmod>2017-02-20T10:01:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://pinkyjie.com/2010/10/19/ubuntu-opencv-python/</loc>
+    
+    <lastmod>2017-02-20T10:01:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pinkyjie.com/2010/11/16/renamer-by-pinkyjie/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
@@ -94,6 +101,13 @@
   
   <url>
     <loc>http://pinkyjie.com/2010/12/19/fetch-webpage-by-python/</loc>
+    
+    <lastmod>2017-02-20T10:01:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pinkyjie.com/2011/02/24/covariance-pca/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
@@ -121,14 +135,14 @@
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/2011/02/24/covariance-pca/</loc>
+    <loc>http://pinkyjie.com/2011/04/07/android-call-sms-firewall-pinkyblocker/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/2011/04/07/android-call-sms-firewall-pinkyblocker/</loc>
+    <loc>http://pinkyjie.com/2011/06/27/angry-master/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
@@ -149,14 +163,7 @@
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/2010/11/16/renamer-by-pinkyjie/</loc>
-    
-    <lastmod>2017-02-20T10:01:30.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pinkyjie.com/2013/10/24/migrate-from-wordpress-to-jekyll/</loc>
+    <loc>http://pinkyjie.com/2013/11/24/first-look-at-yeoman/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
@@ -170,7 +177,7 @@
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/2013/11/24/first-look-at-yeoman/</loc>
+    <loc>http://pinkyjie.com/2013/10/24/migrate-from-wordpress-to-jekyll/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
@@ -198,14 +205,7 @@
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/2014/01/12/what-i-learn-from-making-resume/</loc>
-    
-    <lastmod>2017-02-20T10:01:30.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pinkyjie.com/2010/07/28/elefant-introduction2/</loc>
+    <loc>http://pinkyjie.com/2010/07/28/elefant-introduction1/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
@@ -219,13 +219,6 @@
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/2014/08/02/git-notes-part-1/</loc>
-    
-    <lastmod>2017-02-20T10:01:30.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://pinkyjie.com/2014/05/11/new-job/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
@@ -233,7 +226,21 @@
   </url>
   
   <url>
+    <loc>http://pinkyjie.com/2014/03/01/liang-zi-down/</loc>
+    
+    <lastmod>2017-02-20T10:01:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://pinkyjie.com/2014/08/06/solve-placeholder-incompatibility-using-angular-on-legacy-ie/</loc>
+    
+    <lastmod>2017-02-20T10:01:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pinkyjie.com/2014/08/02/git-notes-part-1/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
@@ -261,14 +268,14 @@
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/2015/02/11/inheritance-or-extension-for-controller-and-service-in-angularjs/</loc>
+    <loc>http://pinkyjie.com/2015/02/09/controller-as-vs-scope/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/2015/02/09/controller-as-vs-scope/</loc>
+    <loc>http://pinkyjie.com/2015/02/11/inheritance-or-extension-for-controller-and-service-in-angularjs/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
@@ -282,14 +289,14 @@
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/2015/07/20/promise-actually-i-really-do-not-know-you/</loc>
+    <loc>http://pinkyjie.com/2015/03/24/refactor-your-gulpfile/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/2015/03/24/refactor-your-gulpfile/</loc>
+    <loc>http://pinkyjie.com/2015/07/20/promise-actually-i-really-do-not-know-you/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
@@ -303,14 +310,14 @@
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/2015/08/12/commonly-used-gulp-plugins-part-2/</loc>
+    <loc>http://pinkyjie.com/2015/08/02/commonly-used-gulp-plugins-part-1/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/2015/08/02/commonly-used-gulp-plugins-part-1/</loc>
+    <loc>http://pinkyjie.com/2015/08/12/commonly-used-gulp-plugins-part-2/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
@@ -331,13 +338,6 @@
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/2016/02/21/e2e-testing-in-angular/</loc>
-    
-    <lastmod>2017-02-20T10:01:30.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://pinkyjie.com/2016/02/11/angular-1-x-with-es6/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
@@ -352,7 +352,7 @@
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/2010/07/28/elefant-introduction3/</loc>
+    <loc>http://pinkyjie.com/2016/02/21/e2e-testing-in-angular/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
@@ -373,14 +373,14 @@
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/2011/06/27/angry-master/</loc>
+    <loc>http://pinkyjie.com/2010/07/28/elefant-introduction4/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/2010/07/28/elefant-introduction4/</loc>
+    <loc>http://pinkyjie.com/2010/07/28/elefant-introduction3/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
@@ -401,14 +401,14 @@
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/2010/08/02/website-moved/</loc>
+    <loc>http://pinkyjie.com/tags/index.html</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://pinkyjie.com/tags/index.html</loc>
+    <loc>http://pinkyjie.com/2014/01/12/what-i-learn-from-making-resume/</loc>
     
     <lastmod>2017-02-20T10:01:30.000Z</lastmod>
     

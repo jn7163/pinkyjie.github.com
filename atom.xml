@@ -1052,9 +1052,9 @@ undefined
     
       <category term="插件" scheme="http://pinkyjie.com/tags/%E6%8F%92%E4%BB%B6/"/>
     
-      <category term="generator-aio-angular" scheme="http://pinkyjie.com/tags/generator-aio-angular/"/>
-    
       <category term="gulp" scheme="http://pinkyjie.com/tags/gulp/"/>
+    
+      <category term="generator-aio-angular" scheme="http://pinkyjie.com/tags/generator-aio-angular/"/>
     
   </entry>
   
@@ -1181,9 +1181,9 @@ undefined
     
       <category term="插件" scheme="http://pinkyjie.com/tags/%E6%8F%92%E4%BB%B6/"/>
     
-      <category term="generator-aio-angular" scheme="http://pinkyjie.com/tags/generator-aio-angular/"/>
-    
       <category term="gulp" scheme="http://pinkyjie.com/tags/gulp/"/>
+    
+      <category term="generator-aio-angular" scheme="http://pinkyjie.com/tags/generator-aio-angular/"/>
     
   </entry>
   
@@ -1335,11 +1335,11 @@ undefined
     
       <category term="AngularJS" scheme="http://pinkyjie.com/tags/AngularJS/"/>
     
+      <category term="generator-aio-angular" scheme="http://pinkyjie.com/tags/generator-aio-angular/"/>
+    
       <category term="promise" scheme="http://pinkyjie.com/tags/promise/"/>
     
       <category term="异步编程" scheme="http://pinkyjie.com/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="generator-aio-angular" scheme="http://pinkyjie.com/tags/generator-aio-angular/"/>
     
   </entry>
   
@@ -1398,8 +1398,6 @@ undefined
     
       <category term="前端自动化" scheme="http://pinkyjie.com/tags/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
     
-      <category term="generator-aio-angular" scheme="http://pinkyjie.com/tags/generator-aio-angular/"/>
-    
       <category term="gulp" scheme="http://pinkyjie.com/tags/gulp/"/>
     
       <category term="gulpfile" scheme="http://pinkyjie.com/tags/gulpfile/"/>
@@ -1407,6 +1405,8 @@ undefined
       <category term="重构" scheme="http://pinkyjie.com/tags/%E9%87%8D%E6%9E%84/"/>
     
       <category term="分割task" scheme="http://pinkyjie.com/tags/%E5%88%86%E5%89%B2task/"/>
+    
+      <category term="generator-aio-angular" scheme="http://pinkyjie.com/tags/generator-aio-angular/"/>
     
   </entry>
   
@@ -1786,9 +1786,9 @@ undefined
       <category term="前端开发" scheme="http://pinkyjie.com/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-      <category term="Javascript继承" scheme="http://pinkyjie.com/tags/Javascript%E7%BB%A7%E6%89%BF/"/>
-    
       <category term="AngularJS" scheme="http://pinkyjie.com/tags/AngularJS/"/>
+    
+      <category term="Javascript继承" scheme="http://pinkyjie.com/tags/Javascript%E7%BB%A7%E6%89%BF/"/>
     
       <category term="scope" scheme="http://pinkyjie.com/tags/scope/"/>
     
