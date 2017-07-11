@@ -618,9 +618,9 @@
     
       <category term="AngularJS" scheme="http://pinkyjie.com/tags/AngularJS/"/>
     
-      <category term="ES6" scheme="http://pinkyjie.com/tags/ES6/"/>
-    
       <category term="promise" scheme="http://pinkyjie.com/tags/promise/"/>
+    
+      <category term="ES6" scheme="http://pinkyjie.com/tags/ES6/"/>
     
       <category term="angular1-webpack-starter" scheme="http://pinkyjie.com/tags/angular1-webpack-starter/"/>
     
@@ -830,9 +830,9 @@
     
       <category term="ES6" scheme="http://pinkyjie.com/tags/ES6/"/>
     
-      <category term="ESLint" scheme="http://pinkyjie.com/tags/ESLint/"/>
-    
       <category term="angular1-webpack-starter" scheme="http://pinkyjie.com/tags/angular1-webpack-starter/"/>
+    
+      <category term="ESLint" scheme="http://pinkyjie.com/tags/ESLint/"/>
     
   </entry>
   
@@ -920,13 +920,13 @@ undefined
     
       <category term="ES6" scheme="http://pinkyjie.com/tags/ES6/"/>
     
-      <category term="angular1-webpack-starter" scheme="http://pinkyjie.com/tags/angular1-webpack-starter/"/>
-    
       <category term="组件式开发" scheme="http://pinkyjie.com/tags/%E7%BB%84%E4%BB%B6%E5%BC%8F%E5%BC%80%E5%8F%91/"/>
     
       <category term="Webpack" scheme="http://pinkyjie.com/tags/Webpack/"/>
     
       <category term="directive" scheme="http://pinkyjie.com/tags/directive/"/>
+    
+      <category term="angular1-webpack-starter" scheme="http://pinkyjie.com/tags/angular1-webpack-starter/"/>
     
   </entry>
   
