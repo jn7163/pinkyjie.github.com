@@ -424,7 +424,7 @@
 <h3 id="公式的显示"><a href="#公式的显示" class="headerlink" title="公式的显示"></a>公式的显示</h3><p>以前研究学术的时候写过好几篇满是公式的博文，原先wordpress里貌似用的是一种插件，到这里显然行不通了。一番搜索后发现一个叫<a href="http://www.mathjax.org/" target="_blank" rel="external">MathJax</a>的牛逼东西，用js来渲染公式。在<code>_includes/themes/hooligan/default.html</code>里加入</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>即可，这样就可以用<code>$$</code>作为开始结束符来输入公式了。注意这里的<code>hooligan</code>是你的主题名称，你的主题如果是别的就改成相应别的。这样的公式是独占一行的，如果要输入inline的公式，则还需要添加</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/x-mathjax-config"</span>&gt;</span><span class="javascript"></span></div><div class="line">    MathJax.Hub.Config(&#123;</div><div class="line">      <span class="attr">tex2jax</span>: &#123; <span class="attr">inlineMath</span>: [[<span class="string">'$'</span>,<span class="string">'$'</span>], [<span class="string">'\\('</span>,<span class="string">'\\)'</span>]] &#125;</div><div class="line">    &#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/x-mathjax-config"</span>&gt;</span><span class="undefined"></span></div><div class="line">    MathJax.Hub.Config(&#123;</div><div class="line">      tex2jax: &#123; inlineMath: [['$','$'], ['\\(','\\)']] &#125;</div><div class="line">    &#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>这样，使用<code>$</code>作开始结束符就可以输入行内的公式了。这里有个坑，有可能会遇到类似<code>Liquid Exception: Variable xxx  was not properly terminated with regexp xxx</code>，这个我搜了半天，最后发现是公式内需要显示大括号时，原来会输入<code>\{\}</code>，但jekyll中<code>\</code>也需要转义，改成<code>\\{\\}</code>即可。同样的问题还有公式换行的时候，原先的<code>\\</code>改成<code>\\\\</code>才行。有时<code>[]</code>也需要转义。转义——多么痛的领悟。</p>
 <h3 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h3><p>把博客整到github上的应该多半都是程序员吧，博客自然少不了一堆公式。在github上直接用类似</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">undefined</div><div class="line"></div></pre></td></tr></table></figure>
@@ -586,8 +586,8 @@ undefined
           var gitment = new Gitment({
             id: window.location.pathname,
             theme: myTheme,
-            owner: '马斯特',
-            repo: 'https://github.com/PinkyJie/pinkyjie.github.com',
+            owner: 'PinkyJie',
+            repo: 'pinkyjie.github.com',
             oauth: {
               client_id: 'f9f9e61911dad3c54abd',
               client_secret: '2de8c1e8bc1bf553827b0da3bf65ae6e7f5956b7'
@@ -684,6 +684,35 @@ undefined
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/PinkyJie" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github-alt"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/PinkyJie" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/689948/pinkyjie" target="_blank" title="StackOverflow">
+                  
+                    <i class="fa fa-fw fa-stack-overflow"></i>
+                  
+                  StackOverflow
+                </a>
+              </span>
+            
           
         </div>
 
