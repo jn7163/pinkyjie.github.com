@@ -593,7 +593,7 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
           
   <div class="comments" id="comments">
     
-      <div id="container" style="display:none"></div>
+      <div id="container" class="gitment_container"></div>
       <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
       <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
       <script>
@@ -610,8 +610,6 @@ Q: 用过Git吗？平常怎么用的？A: 用过的，一般就是add，commit�
           }
         }
         function showGitment() {
-          $("#gitment_title").attr("style", "display:none");
-          $("#container").attr("style", "").addClass("gitment_container");
           var gitment = new Gitment({
             id: window.location.pathname,
             theme: myTheme,
